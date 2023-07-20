@@ -9,12 +9,21 @@ const cardInfo = [
     { name: 'bearFour', image: './images/bear-four.webp' },
     { name: 'bearFour', image: './images/bear-four.webp' },
 ];
-
 // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
-/** This function takes the array of cards and randomly shuffles them */
-function randomiseCards() {
-    const shuffledCards = cardInfo.sort(() => Math.random() - 0.5);
-    console.log(shuffledCards);
+const shuffledCards = cardInfo.sort(() => Math.random() - 0.5);
+
+/** This function generates cards into the game-container section */
+function generateCards() {
+    for (i = 0; i < shuffledCards.length; i++) {
+        // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.className = 'cardFront';
+        card.className = 'cardBack';
+        card.textContent = '?';
+        document.getElementById('game-container').appendChild(card);
+    }
 }
+generateCards();
 
 
