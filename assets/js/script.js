@@ -16,14 +16,16 @@ const shuffledCards = cardInfo.sort(() => Math.random() - 0.5);
 function generateCards() {
     for (i = 0; i < shuffledCards.length; i++) {
         // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
-        const card = document.createElement('div');
-        card.className = 'card';
-        card.className = 'cardFront';
-        card.className = 'cardBack';
-        card.textContent = '?';
-        document.getElementById('game-container').appendChild(card);
+        const cards = document.createElement('div');
+        // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
+        cards.classList.add('card', 'cardFront', 'cardBack');
+        cards.textContent = '?';
+        document.getElementById('game-container').appendChild(cards);
     }
 }
 generateCards();
+
+cardArea.addEventListener('click',);
+
 
 
