@@ -39,5 +39,4 @@ function generateCards() {
         cards.appendChild(cardBack);
     }
 }
-generateCards();
 
