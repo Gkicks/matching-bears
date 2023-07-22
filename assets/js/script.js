@@ -10,6 +10,10 @@ const cardInfo = [
     { name: 'bearFour', image: 'assets/images/bear-four.webp' },
 ];
 /** This function generates cards into the game-container section */
+
+// To prepare the game when the DOM has loaded
+addEventListener('DOMContentLoaded', generateCards());
+
 function generateCards() {
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
