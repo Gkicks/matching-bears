@@ -27,6 +27,7 @@ function generateCards() {
         const cardFront = document.createElement('img');
         cardFront.classList.add('cardFront');
         cardFront.setAttribute('src', cardInfo[i].image);
+        cardFront.setAttribute('alt', 'image of a bear');
         cards.appendChild(cardFront);
 
         const cardBack = document.createElement('div');
