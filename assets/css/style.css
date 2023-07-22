@@ -29,13 +29,24 @@ h1 {
 }
 
 .card {
+    border: 2px solid #312C2D;
+    border-radius: 10px;
+    position: relative;
     background-color: #d5bda9;
     color: #312C2D;
     font-size: 13rem;
     text-align: center;
-    border: 2px solid #312C2D;
+}
+
+.cardBack {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
     border-radius: 10px;
-    position: relative;
+    /* z-index: 100; */
+    /* visibility: hidden; */
 }
 
 .cardFront {
