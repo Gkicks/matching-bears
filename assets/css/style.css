@@ -65,3 +65,7 @@ h1 {
     background: #F6F4F3;
     padding: 5%;
 }
+
+.toggleCard {
+    transform: rotateY(180deg);
+}

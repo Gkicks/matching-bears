@@ -37,6 +37,11 @@ function generateCards() {
         const cardBack = document.createElement('div');
         cardBack.classList.add('cardBack');
         cards.appendChild(cardBack);
+
+        // https://www.w3schools.com/howto/howto_js_toggle_class.asp
+        cards.addEventListener('click', function turnCard() {
+            cards.classList.toggle('toggleCard');
+        });
     }
 }
 
