@@ -59,6 +59,7 @@ h1 {
 .cardBack {
     background: #BA9D8C;
     backface-visibility: hidden;
+    text-align: center;
 }
 
 .cardFront {

@@ -24,8 +24,7 @@ function generateCards() {
         const cards = document.createElement('div');
         // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
         cards.classList.add('card');
-        cards.textContent = '?';
-        cards.setAttribute('name', cardInfo[i].name);
+        // cards.textContent = '?';
         cardArea.appendChild(cards);
 
         const cardFront = document.createElement('img');
@@ -35,13 +34,44 @@ function generateCards() {
         cards.appendChild(cardFront);
 
         const cardBack = document.createElement('div');
+        cardBack.textContent = '?';
         cardBack.classList.add('cardBack');
+        cardBack.setAttribute('name', cardInfo[i].name);
         cards.appendChild(cardBack);
 
         // https://www.w3schools.com/howto/howto_js_toggle_class.asp
         cards.addEventListener('click', function turnCard() {
             cards.classList.toggle('toggleCard');
         });
+
     }
 }
 
+/**
+ * This function checks if the two cards clicked match
+ */
+// https://stackoverflow.com/questions/28444457/get-id-of-element-clicked
+// document.addEventListener('click', function (e) {
+//     console.log(e.target);
+// });
+
+
+
+// function checkMatch() {
+// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+// const cardBacks = document.querySelectorAll('.cardBack');
+// document.addEventListener('click', function flipCard(event) {
+//     event.target.classList.add('flipCard');
+// });
+
+// const flippedCards = document.getElementsByClassName('flipCard');
+
+// if (flippedCards.length === 2) {
+//     if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+//         console.log("It's a match!");
+//     } else {
+//         console.log("Not a match!");
+//     };
+// };
+// };
+// checkMatch();
