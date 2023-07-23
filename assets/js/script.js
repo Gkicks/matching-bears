@@ -78,8 +78,6 @@ function checkMatch() {
             flipCount.textContent = flips + 2;
             flips = parseInt(flipCount.textContent);
 
-
-
             if (matchedCards.length === cards.length) {
                 const winningBanner = document.getElementById('won-game');
                 winningBanner.style.opacity = 1;
@@ -115,6 +113,9 @@ document.addEventListener('click', function flipCard(event) {
     checkMatch();
 });
 
+/**
+ * This function increases the timer by one every second
+ */
 // JavaScript & the DOM  Getting Set Up  The < script > Element;
 setInterval(function () {
     let currentTime = timeCount.innerHTML;
@@ -122,6 +123,3 @@ setInterval(function () {
     timeCount.innerHTML = currentTime;
 }, 1000);
 
-// function restartGame() {
-//     document.location.reload;
-// }

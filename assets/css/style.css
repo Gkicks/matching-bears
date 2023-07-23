@@ -81,14 +81,12 @@ h1 {
     display: flex;
     width: 90%;
     justify-content: space-around;
-    /* margin: auto 5rem; */
 }
 
 #game-info h2 {
     font-size: 4em;
     color: #4D3B32;
     display: block;
-    /* text-align: center; */
 }
 
 #won-game {
