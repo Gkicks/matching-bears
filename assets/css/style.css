@@ -11,6 +11,7 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    position: relative;
 }
 
 h1 {
@@ -45,6 +46,7 @@ h1 {
     font-size: 15vh;
     transition: transform 0.5s ease-in-out;
     transform-style: preserve-3d;
+    cursor: pointer;
 }
 
 .cardBack,
@@ -87,4 +89,29 @@ h1 {
     color: #4D3B32;
     display: block;
     /* text-align: center; */
+}
+
+#won-game {
+    height: 100%;
+    width: 100%;
+    font-size: 0.5rem;
+    padding: 0px 15vw;
+    position: absolute;
+    top: 10%;
+    background: #F6F4F3;
+    opacity: 0;
+    pointer-events: none;
+}
+
+#won-game button {
+    height: 10vh;
+    width: 50%;
+    text-align: center;
+    font-size: 5vh;
+    color: #4D3B32;
+    background: #D5BDA9;
+    border: 2px solid #4D3B32;
+    margin: 5vh 25%;
+    border-radius: 25px;
+    pointer-events: all;
 }

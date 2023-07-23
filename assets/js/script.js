@@ -11,12 +11,14 @@ const cardInfo = [
 ];
 const cards = document.getElementsByClassName('card');
 const flippedCards = document.getElementsByClassName('flipCard');
+const matchedCards = [];
 const timeCount = document.getElementById('time');
 let time = 0;
 timeCount.textContent = time;
 const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
+const button = document.getElementById('restart-won');
 
 // To prepare the game when the DOM has loaded
 addEventListener('DOMContentLoaded', generateCards());
@@ -67,6 +69,7 @@ function checkMatch() {
 
             for (let card of flippedCards) {
                 card.style.pointerEvents = 'none';
+                matchedCards.push(card);
             }
 
             flippedCards[0].classList.remove('flipCard');
@@ -76,6 +79,14 @@ function checkMatch() {
             flips = parseInt(flipCount.textContent);
 
 
+
+            if (matchedCards.length === cards.length) {
+                const winningBanner = document.getElementById('won-game');
+                winningBanner.style.opacity = 1;
+                button.addEventListener('click', function () { location.reload(); });
+
+
+            } else { }
 
         } else {
 
@@ -110,3 +121,7 @@ setInterval(function () {
     currentTime++;
     timeCount.innerHTML = currentTime;
 }, 1000);
+
+// function restartGame() {
+//     document.location.reload;
+// }
