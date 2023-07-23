@@ -47,31 +47,39 @@ function generateCards() {
     }
 }
 
+// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+const cardBacks = document.getElementsByClassName('cardBack');
+document.addEventListener('click', function flipCard(event) {
+    event.target.classList.add('flipCard');
+    checkMatch();
+});
+
 /**
  * This function checks if the two cards clicked match
  */
-// https://stackoverflow.com/questions/28444457/get-id-of-element-clicked
-// document.addEventListener('click', function (e) {
-//     console.log(e.target);
-// });
+function checkMatch() {
+    const flippedCards = document.getElementsByClassName('flipCard');
+    const cards = document.getElementsByClassName('cards');
 
-
-
-// function checkMatch() {
-// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-// const cardBacks = document.querySelectorAll('.cardBack');
-// document.addEventListener('click', function flipCard(event) {
-//     event.target.classList.add('flipCard');
-// });
-
-// const flippedCards = document.getElementsByClassName('flipCard');
-
-// if (flippedCards.length === 2) {
-//     if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-//         console.log("It's a match!");
-//     } else {
-//         console.log("Not a match!");
-//     };
-// };
-// };
-// checkMatch();
+    if (flippedCards.length === 2) {
+        if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+            console.log("It's a match!");
+            // remove flipCard class
+            let parent = this.parentNode;
+            flippedCards[0].parent.classList.remove('toggleCard');
+            flippedCards[0].parent.classList.remove('toggleCard');
+            flippedCards[0].classList.remove('flipCard');
+            flippedCards[0].classList.remove('flipCard');
+            // for (let i = 0; i < flippedCards.length; i++);
+            // flippedCards[0].classList.remove('flipCard');
+            // make it so it can no longer be clicked
+        } else {
+            console.log("Not a match!");
+            let parent = this.parentNode;
+            flippedCards[0].parent.classList.remove('toggleCard');
+            flippedCards[0].parent.classList.remove('toggleCard');
+            flippedCards[0].classList.remove('flipCard');
+            flippedCards[0].classList.remove('flipCard');
+        };
+    };
+}
