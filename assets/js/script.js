@@ -9,11 +9,13 @@ const cardInfo = [
     { name: 'bearFour', image: 'assets/images/bear-four.webp' },
     { name: 'bearFour', image: 'assets/images/bear-four.webp' },
 ];
-/** This function generates cards into the game-container section */
+const cards = document.getElementsByClassName('card');
+const flippedCards = document.getElementsByClassName('flipCard');
 
 // To prepare the game when the DOM has loaded
 addEventListener('DOMContentLoaded', generateCards());
 
+/** This function generates cards into the game-container section */
 function generateCards() {
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
@@ -47,39 +49,39 @@ function generateCards() {
     }
 }
 
-// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-const cardBacks = document.getElementsByClassName('card');
-document.addEventListener('click', function flipCard(event) {
-    event.target.classList.add('flipCard');
-    checkMatch();
-});
-
 /**
  * This function checks if the two cards clicked match
  */
 function checkMatch() {
-    const flippedCards = document.getElementsByClassName('flipCard');
-    const cards = document.getElementsByClassName('cards');
 
     if (flippedCards.length === 2) {
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+
             console.log("It's a match!");
-            // remove flipCard class
-            let parent = this.parentNode;
-            flippedCards[0].parent.classList.remove('toggleCard');
-            flippedCards[0].parent.classList.remove('toggleCard');
+
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
-            // for (let i = 0; i < flippedCards.length; i++);
-            // flippedCards[0].classList.remove('flipCard');
-            // make it so it can no longer be clicked
+
         } else {
+
             console.log("Not a match!");
-            let parent = this.parentNode;
-            flippedCards[0].parent.classList.remove('toggleCard');
-            flippedCards[0].parent.classList.remove('toggleCard');
+
+            for (let card of flippedCards) {
+                setTimeout(function () {
+                    card.classList.remove('toggleCard');
+                }, 1500);
+            }
+
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
+
         };
     };
 }
+
+// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+// const cardBacks = document.getElementsByClassName('card');
+document.addEventListener('click', function flipCard(event) {
+    event.target.classList.add('flipCard');
+    checkMatch();
+});
