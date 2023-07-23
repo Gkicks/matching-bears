@@ -24,6 +24,7 @@ function generateCards() {
         const cards = document.createElement('div');
         // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
         cards.classList.add('card');
+        cards.setAttribute('name', cardInfo[i].name);
         // cards.textContent = '?';
         cardArea.appendChild(cards);
 
@@ -36,7 +37,6 @@ function generateCards() {
         const cardBack = document.createElement('div');
         cardBack.textContent = '?';
         cardBack.classList.add('cardBack');
-        cardBack.setAttribute('name', cardInfo[i].name);
         cards.appendChild(cardBack);
 
         // https://www.w3schools.com/howto/howto_js_toggle_class.asp
@@ -48,7 +48,7 @@ function generateCards() {
 }
 
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-const cardBacks = document.getElementsByClassName('cardBack');
+const cardBacks = document.getElementsByClassName('card');
 document.addEventListener('click', function flipCard(event) {
     event.target.classList.add('flipCard');
     checkMatch();
