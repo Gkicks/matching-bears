@@ -11,6 +11,9 @@ const cardInfo = [
 ];
 const cards = document.getElementsByClassName('card');
 const flippedCards = document.getElementsByClassName('flipCard');
+const timeCount = document.getElementById('time');
+let time = 0;
+timeCount.textContent = time;
 
 // To prepare the game when the DOM has loaded
 addEventListener('DOMContentLoaded', generateCards());
@@ -89,3 +92,10 @@ document.addEventListener('click', function flipCard(event) {
     event.target.classList.add('flipCard');
     checkMatch();
 });
+
+// JavaScript & the DOM  Getting Set Up  The < script > Element;
+setInterval(function () {
+    let currentTime = timeCount.innerHTML;
+    currentTime++;
+    timeCount.innerHTML = currentTime;
+}, 1000);
