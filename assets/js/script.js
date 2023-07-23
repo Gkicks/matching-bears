@@ -59,6 +59,10 @@ function checkMatch() {
 
             console.log("It's a match!");
 
+            for (let card of flippedCards) {
+                card.style.pointerEvents = 'none';
+            }
+
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
 
@@ -66,6 +70,7 @@ function checkMatch() {
 
             console.log("Not a match!");
 
+            // https://stackoverflow.com/questions/69300285/how-to-remove-a-class-with-delay-after-a-button-is-pressed
             for (let card of flippedCards) {
                 setTimeout(function () {
                     card.classList.remove('toggleCard');
@@ -80,7 +85,6 @@ function checkMatch() {
 }
 
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-// const cardBacks = document.getElementsByClassName('card');
 document.addEventListener('click', function flipCard(event) {
     event.target.classList.add('flipCard');
     checkMatch();
