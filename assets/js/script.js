@@ -14,6 +14,9 @@ const flippedCards = document.getElementsByClassName('flipCard');
 const timeCount = document.getElementById('time');
 let time = 0;
 timeCount.textContent = time;
+const flipCount = document.getElementById('flips');
+let flips = 0;
+flipCount.textContent = flips;
 
 // To prepare the game when the DOM has loaded
 addEventListener('DOMContentLoaded', generateCards());
@@ -69,6 +72,11 @@ function checkMatch() {
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
 
+            flipCount.textContent = flips + 2;
+            flips = parseInt(flipCount.textContent);
+
+
+
         } else {
 
             console.log("Not a match!");
@@ -82,6 +90,9 @@ function checkMatch() {
 
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
+
+            flipCount.textContent = flips + 2;
+            flips = parseInt(flipCount.textContent);
 
         };
     };
