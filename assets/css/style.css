@@ -114,6 +114,7 @@ h1 {
     pointer-events: all;
 }
 
+/* To make the congratulations screen appear slowly */
 .won-game-show {
     animation: won-grow 1s forwards;
 }

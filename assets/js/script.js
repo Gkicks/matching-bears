@@ -78,10 +78,11 @@ function checkMatch() {
             flips = parseInt(flipCount.textContent);
 
             if (matchedCards.length === cards.length) {
-                const winningBanner = document.getElementById('won-game');
-                winningBanner.classList.add('won-game-show');
+                setTimeout(function () {
+                    const winningBanner = document.getElementById('won-game');
+                    winningBanner.classList.add('won-game-show');
+                }, 1500);
                 button.addEventListener('click', function () { location.reload(); });
-
 
             } else { }
 
