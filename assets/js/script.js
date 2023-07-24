@@ -53,7 +53,6 @@ function generateCards() {
         cards.addEventListener('click', function turnCard() {
             cards.classList.toggle('toggleCard');
         });
-
     }
 }
 
@@ -80,7 +79,7 @@ function checkMatch() {
 
             if (matchedCards.length === cards.length) {
                 const winningBanner = document.getElementById('won-game');
-                winningBanner.style.opacity = 1;
+                winningBanner.classList.add('won-game-show');
                 button.addEventListener('click', function () { location.reload(); });
 
 

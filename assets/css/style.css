@@ -113,3 +113,17 @@ h1 {
     border-radius: 25px;
     pointer-events: all;
 }
+
+.won-game-show {
+    animation: won-grow 1s forwards;
+}
+
+@keyframes won-grow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
