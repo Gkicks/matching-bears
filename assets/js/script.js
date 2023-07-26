@@ -8,13 +8,18 @@ const cardInfo = [
     { name: 'bearThree', image: 'assets/images/bear-three.webp' },
     { name: 'bearFour', image: 'assets/images/bear-four.webp' },
     { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
 ];
 const cards = document.getElementsByClassName('card');
 const flippedCards = document.getElementsByClassName('flipCard');
 const matchedCards = [];
-const timeCount = document.getElementById('time');
-let time = 0;
-timeCount.textContent = time;
 const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
@@ -116,19 +121,44 @@ function generateCards() {
     };
 }
 
+const timeCount = document.getElementById('time');
+// let time = 100;
+time = timeCount.textContent;
+
+
+function difficulty() {
+    const selectDifficulty = document.getElementById('select-difficulty');
+    const selectedValue = selectDifficulty.value;
+    if (selectedValue === 'easy') {
+        let time = 100;
+        timeCount.textContent = time;
+        console.log(selectedValue);
+    } else if (selectedValue === 'medium') {
+        let time = 60;
+        timeCount.textContent = time;
+        console.log(selectedValue);
+    } else {
+        let time = 20;
+        timeCount.textContent = time;
+        console.log(selectedValue);
+    };
+}
+
+
 /**
- * This function increases the timer by one every second
+ * This function decreases the timer by one every second
  */
 // JavaScript & the DOM  Getting Set Up  The < script > Element;
 setInterval(function () {
     let currentTime = timeCount.innerHTML;
-    currentTime++;
+    currentTime--;
     timeCount.innerHTML = currentTime;
 }, 1000);
 
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
 
+// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
 const howToPlay = document.getElementById('how-to-play');
 const howToPlayTitle = document.getElementById('how-to-play-title');
 let state = 0;
@@ -160,3 +190,4 @@ continueButton.addEventListener('click', function () {
     howToPlay.style.height = '10vh';
 });
 
+// add event default to click functions?
