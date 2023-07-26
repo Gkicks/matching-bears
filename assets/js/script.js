@@ -1,3 +1,4 @@
+// declared variables
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
     { name: 'bearOne', image: 'assets/images/bear-one.webp' },
@@ -40,7 +41,6 @@ function generateCards() {
         // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
         cards.classList.add('card');
         cards.setAttribute('name', cardInfo[i].name);
-        // cards.textContent = '?';
         cardArea.appendChild(cards);
 
         const cardFront = document.createElement('img');
@@ -54,11 +54,13 @@ function generateCards() {
         cardBack.classList.add('cardBack');
         cards.appendChild(cardBack);
 
+        // create a toggle function that toggles between the face of the card that's showing
         // https://www.w3schools.com/howto/howto_js_toggle_class.asp
         cards.addEventListener('click', function turnCard() {
             cards.classList.toggle('toggleCard');
         });
 
+        // adds a flipCard class when a card has been clicked over
         // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
         cards.addEventListener('click', function flipCard() {
             cards.classList.add('flipCard');
@@ -66,48 +68,60 @@ function generateCards() {
         });
     }
 
+    /**
+     * This function compares the names of the two flipped cards and check if they match
+     */
     function checkMatch() {
 
+        // function doesn't execute until it's checked that two cards have been flipped
         if (flippedCards.length === 2) {
 
+            // checks if the name value of the two cards match
             if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
 
-                console.log("It's a match!");
-
+                // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
                 for (let card of flippedCards) {
                     card.style.pointerEvents = 'none';
                     matchedCards.push(card);
                 }
 
+                // removes the flipCard class for those cards that have been matched
                 flippedCards[0].classList.remove('flipCard');
                 flippedCards[0].classList.remove('flipCard');
 
+                // adds two to the flip counter each time two cards are flipped
                 flipCount.textContent = flips + 2;
                 flips = parseInt(flipCount.textContent);
 
+                // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
                 if (matchedCards.length === cards.length) {
+                    // delays animation by half a second to improve user experience
                     setTimeout(function () {
                         const cardFronts = document.getElementsByClassName('cardFront');
+                        // adds the won-game-bears class which causes the cards to have a wiggle animation
                         for (card of cardFronts) {
                             card.classList.add('won-game-bears');
                         }
                     }, 500);
 
+                    // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
                     setTimeout(function () {
                         const winningBanner = document.getElementById('won-game');
+                        winningBanner.style.height = '100%';
+                        winningBanner.style.width = '100%';
                         winningBanner.classList.add('won-game-show');
                     }, 2000);
+                    // button on winning page to refresh the browser and restart the game
                     button.addEventListener('click', function () { location.reload(); });
                 }
             } else {
-
-                console.log("Not a match!");
-
+                // code if the two flipped cards don't match
                 // https://stackoverflow.com/questions/69300285/how-to-remove-a-class-with-delay-after-a-button-is-pressed
                 for (let card of flippedCards) {
+                    // removes the toggleCard class so the card flip back over. One second timer set so the card still flips over before flipping back
                     setTimeout(function () {
                         card.classList.remove('toggleCard');
-                    }, 1500);
+                    }, 1000);
                 }
 
                 flippedCards[0].classList.remove('flipCard');
@@ -121,8 +135,8 @@ function generateCards() {
     };
 }
 
+// create function that gives different time limits depending on the difficulty selected
 const timeCount = document.getElementById('time');
-// let time = 100;
 time = timeCount.textContent;
 
 
@@ -155,9 +169,11 @@ setInterval(function () {
     timeCount.innerHTML = currentTime;
 }, 1000);
 
+//button to give the user the opportunity to restart the game at any time
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
 
+// to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
 const howToPlay = document.getElementById('how-to-play');
 const howToPlayTitle = document.getElementById('how-to-play-title');
@@ -171,6 +187,7 @@ howToPlayTitle.addEventListener('click', function () {
         instructions.style.margin = '3vh 0';
         howToPlay.style.height = '100%';
         state = 1;
+        // to remove the how to play instructions when the how to play area is clicked again
     } else {
         instructions.style.visibility = 'hidden';
         instructions.style.height = '0';
@@ -181,6 +198,7 @@ howToPlayTitle.addEventListener('click', function () {
     }
 });
 
+// a continue button in the how to play area to give the user anpther option on how to close this
 const continueButton = document.getElementById('continue-button');
 continueButton.addEventListener('click', function () {
     instructions.style.visibility = 'hidden';
@@ -191,3 +209,7 @@ continueButton.addEventListener('click', function () {
 });
 
 // add event default to click functions?
+// work out the difficulty function
+// tidy up formatting
+// add sound?
+// improve images

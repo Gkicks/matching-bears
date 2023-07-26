@@ -17,8 +17,10 @@
 
 <body>
 
+    <!-- main title -->
     <h1>Matching Bears</h1>
 
+    <!-- how to play information and difficulty selector -->
     <section id="game-start-info">
         <div id="how-to-play">
             <h2 id="how-to-play-title">How to Play</h2>
@@ -49,11 +51,14 @@
         <div id="game-container"></div>
     </div>
 
+    <!-- gives info on time countdown and how many flips the user has taken -->
     <div id="game-info">
         <h2>Time: <span id="time"></span></h2>
         <button id="restart-game">Restart Game</button>
         <h2>Flips: <span id="flips"></span></h2>
     </div>
+
+    <!-- to appear when user has matched all cards -->
     <div id="won-game">
         <h1>Congratulations - you found all the matching bears! Press below to start a new game:</h1>
         <button id="restart-won">Restart Game</button>
@@ -61,6 +66,10 @@
 
     <!-- link to JavaScript file -->
     <script src="assets/js/script.js"></script>
+
+    <!-- information message for users using browsers that don't support Javascript  -->
+    <noscript>Your browser does not support JavaScript</noscript>
+
 </body>
 
 </html>
