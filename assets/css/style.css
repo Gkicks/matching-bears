@@ -21,8 +21,17 @@ h1 {
     margin-top: 6vh;
 }
 
+#game-start-info {
+    display: -webkit-inline-box;
+    /* justify-content: space-evenly; */
+    width: 100%;
+    margin-left: 29vw;
+}
+
 #how-to-play {
-    width: 30%;
+    width: 45%;
+    height: 10vh;
+    text-align: center;
 }
 
 #how-to-play h2 {
@@ -32,20 +41,53 @@ h1 {
     background: #D5BDA9;
     width: 50%;
     border-radius: 25px;
-    margin-top: 2vh;
-    margin-left: 20%;
-    padding: 5px;
+    margin: 2vh 20% 0px 20%;
+    padding: 10px 5px;
+    border: 2px solid #4D3B32;
 }
 
-#how-to-play p {
+#instructions {
     visibility: hidden;
+    text-align: center;
+    font-size: 1.5em;
+    background: #BA9D8C;
+    color: #4D3B32;
+    border-radius: 25px;
+    height: 0px;
+    /* padding: 2vh; */
+    /* z-index: 100; */
+}
+
+#how-to-play button {
+    height: 0px;
+    width: 20%;
+    text-align: center;
+    font-size: 1em;
+    color: #4D3B32;
+    background: #D5BDA9;
+    border: 2px solid #4D3B32;
+    margin-top: 2vh;
+    border-radius: 25px;
+}
+
+#select-difficulty {
+    font-size: 2em;
+    color: #4D3B32;
+    text-align: center;
+    background: #D5BDA9;
+    /* width: 50%; */
+    border-radius: 25px;
+    margin: 2vh 20% 0px 20%;
+    padding: 10px 5px;
+    border: 2px solid #4D3B32;
 }
 
 #game-container-outer {
     height: 44vh;
     background: #D5BDA9;
     border-radius: 25px;
-    margin: 5vh;
+    margin-top: 3vh;
+    /* margin: 5vh; */
 }
 
 #game-container {

@@ -129,10 +129,34 @@ setInterval(function () {
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
 
-const howToPlay = document.getElementById('how-to-play-title');
-howToPlay.addEventListener('mouseover', function () {
-    instructions.style.visibility = 'visible';
+const howToPlay = document.getElementById('how-to-play');
+const howToPlayTitle = document.getElementById('how-to-play-title');
+let state = 0;
+howToPlayTitle.addEventListener('click', function () {
+    if (state == 0) {
+        instructions.style.visibility = 'visible';
+        instructions.style.height = '100%';
+        instructions.style.padding = '20px 10px';
+        continueButton.style.height = '7vh';
+        instructions.style.margin = '3vh 0';
+        howToPlay.style.height = '100%';
+        state = 1;
+    } else {
+        instructions.style.visibility = 'hidden';
+        instructions.style.height = '0';
+        instructions.style.transfrom = '2s';
+        continueButton.style.height = '0';
+        howToPlay.style.height = '10vh';
+        state = 0;
+    }
 });
-howToPlay.addEventListener('mouseout', function () {
+
+const continueButton = document.getElementById('continue-button');
+continueButton.addEventListener('click', function () {
     instructions.style.visibility = 'hidden';
+    instructions.style.height = '0';
+    instructions.style.transfrom = '2s';
+    continueButton.style.height = '0';
+    howToPlay.style.height = '10vh';
 });
+
