@@ -64,6 +64,7 @@ function generateCards() {
     function checkMatch() {
 
         if (flippedCards.length === 2) {
+
             if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
 
                 console.log("It's a match!");
@@ -127,3 +128,11 @@ setInterval(function () {
 
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
+
+const howToPlay = document.getElementById('how-to-play-title');
+howToPlay.addEventListener('mouseover', function () {
+    instructions.style.visibility = 'visible';
+});
+howToPlay.addEventListener('mouseout', function () {
+    instructions.style.visibility = 'hidden';
+});
