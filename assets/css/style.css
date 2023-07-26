@@ -25,7 +25,7 @@ h1 {
     height: 44vh;
     background: #D5BDA9;
     border-radius: 25px;
-    margin: 2rem;
+    margin: 5vh;
 }
 
 #game-container {
@@ -46,7 +46,6 @@ h1 {
     font-size: 15vh;
     transition: transform 0.5s ease-in-out;
     transform-style: preserve-3d;
-    cursor: pointer;
 }
 
 .cardBack,
@@ -78,15 +77,58 @@ h1 {
 }
 
 #game-info {
-    display: flex;
-    width: 90%;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: repeat(3, 30vw);
+    /* width: 70%; */
+    /* justify-content: space-around; */
+    text-align: center;
+    align-items: center;
+    margin-top: 2vh;
 }
 
 #game-info h2 {
     font-size: 4em;
     color: #4D3B32;
-    display: block;
+    /* display: block; */
+}
+
+#game-info button {
+    height: 7vh;
+    /* width: 20vw; */
+    text-align: center;
+    font-size: 2em;
+    color: #4D3B32;
+    background: #D5BDA9;
+    border: 2px solid #4D3B32;
+    margin: 2vh 0;
+    border-radius: 25px;
+    /* pointer-events: all; */
+}
+
+.won-game-bears {
+    animation: wiggle 1s infinite;
+}
+
+@keyframes wiggle {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    50% {
+        transform: rotate(0deg);
+    }
+
+    75% {
+        transform: rotate(-20deg);
+    }
+
+    100% {
+        transform: rotate(0deg);
+    }
 }
 
 #won-game {
@@ -116,7 +158,7 @@ h1 {
 
 /* To make the congratulations screen appear slowly */
 .won-game-show {
-    animation: won-grow 1s forwards;
+    animation: won-grow 2s forwards;
 }
 
 @keyframes won-grow {

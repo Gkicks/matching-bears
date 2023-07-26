@@ -53,65 +53,67 @@ function generateCards() {
         cards.addEventListener('click', function turnCard() {
             cards.classList.toggle('toggleCard');
         });
+
+        // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+        cards.addEventListener('click', function flipCard() {
+            cards.classList.add('flipCard');
+            checkMatch();
+        });
     }
-}
 
-/**
- * This function checks if the two cards clicked match
- */
-function checkMatch() {
+    function checkMatch() {
 
-    if (flippedCards.length === 2) {
-        if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+        if (flippedCards.length === 2) {
+            if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
 
-            console.log("It's a match!");
+                console.log("It's a match!");
 
-            for (let card of flippedCards) {
-                card.style.pointerEvents = 'none';
-                matchedCards.push(card);
+                for (let card of flippedCards) {
+                    card.style.pointerEvents = 'none';
+                    matchedCards.push(card);
+                }
+
+                flippedCards[0].classList.remove('flipCard');
+                flippedCards[0].classList.remove('flipCard');
+
+                flipCount.textContent = flips + 2;
+                flips = parseInt(flipCount.textContent);
+
+                if (matchedCards.length === cards.length) {
+                    setTimeout(function () {
+                        const cardFronts = document.getElementsByClassName('cardFront');
+                        for (card of cardFronts) {
+                            card.classList.add('won-game-bears');
+                        }
+                    }, 500);
+
+                    setTimeout(function () {
+                        const winningBanner = document.getElementById('won-game');
+                        winningBanner.classList.add('won-game-show');
+                    }, 2000);
+                    button.addEventListener('click', function () { location.reload(); });
+                }
+            } else {
+
+                console.log("Not a match!");
+
+                // https://stackoverflow.com/questions/69300285/how-to-remove-a-class-with-delay-after-a-button-is-pressed
+                for (let card of flippedCards) {
+                    setTimeout(function () {
+                        card.classList.remove('toggleCard');
+                    }, 1500);
+                }
+
+                flippedCards[0].classList.remove('flipCard');
+                flippedCards[0].classList.remove('flipCard');
+
+                flipCount.textContent = flips + 2;
+                flips = parseInt(flipCount.textContent);
+
             }
-
-            flippedCards[0].classList.remove('flipCard');
-            flippedCards[0].classList.remove('flipCard');
-
-            flipCount.textContent = flips + 2;
-            flips = parseInt(flipCount.textContent);
-
-            if (matchedCards.length === cards.length) {
-                setTimeout(function () {
-                    const winningBanner = document.getElementById('won-game');
-                    winningBanner.classList.add('won-game-show');
-                }, 1500);
-                button.addEventListener('click', function () { location.reload(); });
-
-            } else { }
-
-        } else {
-
-            console.log("Not a match!");
-
-            // https://stackoverflow.com/questions/69300285/how-to-remove-a-class-with-delay-after-a-button-is-pressed
-            for (let card of flippedCards) {
-                setTimeout(function () {
-                    card.classList.remove('toggleCard');
-                }, 1500);
-            }
-
-            flippedCards[0].classList.remove('flipCard');
-            flippedCards[0].classList.remove('flipCard');
-
-            flipCount.textContent = flips + 2;
-            flips = parseInt(flipCount.textContent);
-
-        };
+        }
     };
 }
-
-// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-document.addEventListener('click', function flipCard(event) {
-    event.target.classList.add('flipCard');
-    checkMatch();
-});
 
 /**
  * This function increases the timer by one every second
@@ -123,3 +125,5 @@ setInterval(function () {
     timeCount.innerHTML = currentTime;
 }, 1000);
 
+const restartButton = document.getElementById('restart-game');
+restartButton.addEventListener('click', function () { location.reload(); });
