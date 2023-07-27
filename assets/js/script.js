@@ -139,23 +139,20 @@ function generateCards() {
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
-const selectDifficulty = document.getElementById('select-difficulty');;
+const selectDifficulty = document.getElementById('select-difficulty');
 
 selectDifficulty.addEventListener('change', function difficulty() {
     if (selectDifficulty.value === 'easy') {
         let time = '100';
         timeCount.textContent = time;
-        console.log(selectDifficulty.value);
     } else if (selectDifficulty.value === 'medium') {
         let time = '60';
         timeCount.textContent = time;
-        console.log(selectDifficulty.value);
     } else {
-        let time = '20';
+        let time = '5';
         timeCount.textContent = time;
-        console.log(selectDifficulty.value);
     };
-});;
+});
 
 /**
  * This function decreases the timer by one every second
@@ -165,6 +162,19 @@ setInterval(function () {
     let currentTime = timeCount.innerHTML;
     currentTime--;
     timeCount.innerHTML = currentTime;
+
+    // check to see if the timer reaches zero
+    if (timeCount.textContent === '0') {
+        console.log('lost');
+        // losing banner to appear
+        const losingBanner = document.getElementById('lost-game');
+        losingBanner.style.height = '100%';
+        losingBanner.style.width = '100%';
+        losingBanner.classList.add('lost-game-show');
+        // button on losing page to refresh the browser and restart the game
+        const button = document.getElementById('restart-lost');
+        button.addEventListener('click', function () { location.reload(); });
+    };
 }, 1000);
 
 //button to give the user the opportunity to restart the game at any time
@@ -206,8 +216,9 @@ continueButton.addEventListener('click', function () {
     howToPlay.style.height = '10vh';
 });
 
+// function lost();
+
 // add event default to click functions?
-// work out the difficulty function
 // tidy up formatting
 // add sound?
 // improve images

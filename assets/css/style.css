@@ -234,3 +234,46 @@ h1 {
         opacity: 1;
     }
 }
+
+/* losing page to appear when the time runs out */
+#lost-game {
+    height: 0%;
+    width: 0%;
+    font-size: 0.5rem;
+    padding: 0px 15vw;
+    position: absolute;
+    top: 0;
+    padding-top: 10vh;
+    background: #F6F4F3;
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* refreshes the document and takes the user back to the start of the game */
+#lost-game button {
+    height: 10vh;
+    width: 50%;
+    text-align: center;
+    font-size: 5vh;
+    color: #4D3B32;
+    background: #D5BDA9;
+    border: 2px solid #4D3B32;
+    margin: 5vh 25%;
+    border-radius: 25px;
+    pointer-events: all;
+}
+
+/* To make the congratulations screen appear slowly */
+.lost-game-show {
+    animation: lost-grow 2s forwards;
+}
+
+@keyframes lost-grow {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
