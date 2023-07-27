@@ -137,27 +137,25 @@ function generateCards() {
 
 // create function that gives different time limits depending on the difficulty selected
 const timeCount = document.getElementById('time');
-time = timeCount.textContent;
+let time = '100';
+timeCount.textContent = time;
+const selectDifficulty = document.getElementById('select-difficulty');;
 
-
-function difficulty() {
-    const selectDifficulty = document.getElementById('select-difficulty');
-    const selectedValue = selectDifficulty.value;
-    if (selectedValue === 'easy') {
-        let time = 100;
+selectDifficulty.addEventListener('change', function difficulty() {
+    if (selectDifficulty.value === 'easy') {
+        let time = '100';
         timeCount.textContent = time;
-        console.log(selectedValue);
-    } else if (selectedValue === 'medium') {
-        let time = 60;
+        console.log(selectDifficulty.value);
+    } else if (selectDifficulty.value === 'medium') {
+        let time = '60';
         timeCount.textContent = time;
-        console.log(selectedValue);
+        console.log(selectDifficulty.value);
     } else {
-        let time = 20;
+        let time = '20';
         timeCount.textContent = time;
-        console.log(selectedValue);
+        console.log(selectDifficulty.value);
     };
-}
-
+});;
 
 /**
  * This function decreases the timer by one every second
@@ -213,3 +211,5 @@ continueButton.addEventListener('click', function () {
 // tidy up formatting
 // add sound?
 // improve images
+// make the website responsive
+// add 404 page
