@@ -15,23 +15,25 @@ body {
     position: relative;
 }
 
-h1 {
+/* start page which appears when the user first loads the page */
+
+.start-game {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    background: #F6F4F3;
+    opacity: 1;
+}
+
+.start-game h1 {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
     margin-top: 4vh;
-}
-
-/* section with  how to play instructions and difficulty selector  */
-#game-start-info {
-    display: -webkit-inline-box;
-    width: 100%;
-    margin-left: 29vw;
-}
-
-#how-to-play {
-    width: 30%;
-    text-align: center;
 }
 
 #how-to-play h2 {
@@ -39,9 +41,8 @@ h1 {
     color: #4D3B32;
     text-align: center;
     background: #D5BDA9;
-    width: 50%;
     border-radius: 25px;
-    margin: 2vh 20% 0px 20%;
+    margin: 2vh 30%;
     padding: 10px 5px;
     border: 2px solid #4D3B32;
 }
@@ -49,14 +50,73 @@ h1 {
 #instructions {
     visibility: hidden;
     text-align: center;
-    font-size: 1.5em;
+    font-size: 0.5em;
     background: #BA9D8C;
     color: #4D3B32;
     border-radius: 25px;
     height: 0px;
 }
 
-#how-to-play button {
+.start-game p {
+    font-size: 3em;
+    color: #4D3B32;
+    margin: 2vh 0;
+}
+
+#start-form {
+    width: 70%;
+    display: flex;
+    justify-content: center;
+}
+
+#enter-name {
+    height: 7vh;
+    width: 50%;
+    border-radius: 25px;
+    font-size: 2em;
+    margin: 2vh 2vw;
+    /* padding: 0 5vw; */
+    text-align: center;
+    background: #F6F4F3;
+}
+
+#start-button {
+    height: 7vh;
+    width: 30%;
+    border-radius: 25px;
+    font-size: 2em;
+    padding: 0 5vw;
+    margin: 2vh 2vw;
+    text-align: center;
+    color: #4D3B32;
+    /* text-align: center; */
+    background: #D5BDA9;
+    border: 1px solid #4D3B32;
+}
+
+
+
+
+
+
+
+#title {
+    font-size: 6em;
+    color: #4D3B32;
+    text-align: center;
+    margin-top: 4vh;
+}
+
+/* section with  how to play instructions and difficulty selector  */
+/* #game-start-info { */
+/* display: -webkit-inline-box; */
+/* width: 100%; */
+/* margin-left: 29vw; */
+/* } */
+
+
+
+/* #how-to-play button {
     height: 0px;
     width: 20%;
     text-align: center;
@@ -66,7 +126,7 @@ h1 {
     border: 2px solid #4D3B32;
     margin-top: 2vh;
     border-radius: 25px;
-}
+} */
 
 #select-difficulty-div {
     margin-left: 10vw;
@@ -104,7 +164,6 @@ h1 {
 .card {
     border: 2px solid #312C2D;
     border-radius: 10px;
-    /* box-sizing: border-box; */
     position: relative;
     background: #d5bda9;
     color: #312C2D;
@@ -124,29 +183,18 @@ h1 {
     /* To disable click on the child div and image of card div */
     /* https: //stackoverflow.com/questions/28083708/how-to-disable-clicking-inside-div */
     pointer-events: none;
-    /* object-fit: scale-down; */
 }
 
 .cardBack {
     background: #BA9D8C;
     backface-visibility: hidden;
     text-align: center;
-    /* object-fit: scale-down; */
 }
 
 .cardFront {
     background: #F6F4F3;
     padding: 5%;
-    /* object-fit: scale-down; */
 }
-
-/* img { */
-/* object-fit: scale-down; */
-/* border-radius: 25px; */
-/* padding: 50%; */
-/* max-width: 0%; */
-/* max-height: 90%; */
-/* } */
 
 .toggleCard {
     transform: rotateY(180deg);
@@ -204,18 +252,7 @@ h1 {
     }
 }
 
-#start-game {
-    height: 0%;
-    width: 0%;
-    font-size: 0.5rem;
-    padding: 0px 15vw;
-    position: absolute;
-    top: 0;
-    padding-top: 10vh;
-    background: #F6F4F3;
-    opacity: 0;
-    pointer-events: none;
-}
+
 
 /* winning page to appear when the user has matched all the cards */
 #won-game {
