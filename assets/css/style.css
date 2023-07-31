@@ -103,7 +103,8 @@ h1 {
 
 .card {
     border: 2px solid #312C2D;
-    border-radius: 25px;
+    border-radius: 10px;
+    /* box-sizing: border-box; */
     position: relative;
     background: #d5bda9;
     color: #312C2D;
@@ -119,22 +120,33 @@ h1 {
     width: 100%;
     top: 0;
     left: 0;
-    border-radius: 25px;
+    border-radius: 10px;
     /* To disable click on the child div and image of card div */
     /* https: //stackoverflow.com/questions/28083708/how-to-disable-clicking-inside-div */
     pointer-events: none;
+    /* object-fit: scale-down; */
 }
 
 .cardBack {
     background: #BA9D8C;
     backface-visibility: hidden;
     text-align: center;
+    /* object-fit: scale-down; */
 }
 
 .cardFront {
     background: #F6F4F3;
     padding: 5%;
+    /* object-fit: scale-down; */
 }
+
+/* img { */
+/* object-fit: scale-down; */
+/* border-radius: 25px; */
+/* padding: 50%; */
+/* max-width: 0%; */
+/* max-height: 90%; */
+/* } */
 
 .toggleCard {
     transform: rotateY(180deg);
@@ -190,6 +202,19 @@ h1 {
     100% {
         transform: rotate(0deg);
     }
+}
+
+#start-game {
+    height: 0%;
+    width: 0%;
+    font-size: 0.5rem;
+    padding: 0px 15vw;
+    position: absolute;
+    top: 0;
+    padding-top: 10vh;
+    background: #F6F4F3;
+    opacity: 0;
+    pointer-events: none;
 }
 
 /* winning page to appear when the user has matched all the cards */
