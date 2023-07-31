@@ -1,3 +1,13 @@
+// to move from the start screen to the main screen
+const StartGameButton = document.getElementById('start-button');
+StartGameButton.addEventListener('click', mainPage);
+
+function mainPage(event) {
+    const startGame = document.getElementById('start-game-div');
+    startGame.classList.remove('start-game');
+    event.preventDefault();
+}
+
 // declared variables
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
@@ -27,7 +37,7 @@ flipCount.textContent = flips;
 const button = document.getElementById('restart-won');
 
 // To prepare the game when the DOM has loaded
-addEventListener('DOMContentLoaded', generateCards());
+// addEventListener('DOMContentLoaded', generateCards());
 
 /** This function generates cards into the game-container section */
 function generateCards() {
@@ -189,32 +199,32 @@ let state = 0;
 howToPlayTitle.addEventListener('click', function () {
     if (state == 0) {
         instructions.style.visibility = 'visible';
-        instructions.style.height = '100%';
+        instructions.style.height = '75%';
         instructions.style.padding = '20px 10px';
-        continueButton.style.height = '7vh';
-        instructions.style.margin = '3vh 0';
-        howToPlay.style.height = '100%';
+        // continueButton.style.height = '7vh';
+        instructions.style.margin = '0 12.5%';
+        howToPlay.style.height = '50%';
         state = 1;
         // to remove the how to play instructions when the how to play area is clicked again
     } else {
         instructions.style.visibility = 'hidden';
         instructions.style.height = '0';
-        instructions.style.transfrom = '2s';
-        continueButton.style.height = '0';
-        howToPlay.style.height = '10vh';
+        // instructions.style.transfrom = '2s';
+        // continueButton.style.height = '0';
+        howToPlay.style.height = '15vh';
         state = 0;
     }
 });
 
 // a continue button in the how to play area to give the user anpther option on how to close this
-const continueButton = document.getElementById('continue-button');
-continueButton.addEventListener('click', function () {
-    instructions.style.visibility = 'hidden';
-    instructions.style.height = '0';
-    instructions.style.transfrom = '2s';
-    continueButton.style.height = '0';
-    howToPlay.style.height = '10vh';
-});
+// const continueButton = document.getElementById('continue-button');
+// continueButton.addEventListener('click', function () {
+//     instructions.style.visibility = 'hidden';
+//     instructions.style.height = '0';
+//     instructions.style.transfrom = '2s';
+//     continueButton.style.height = '0';
+//     howToPlay.style.height = '10vh';
+// });
 
 // function lost();
 
