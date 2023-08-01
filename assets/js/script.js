@@ -2,9 +2,10 @@
 const StartGameButton = document.getElementById('start-button');
 StartGameButton.addEventListener('click', mainPage);
 
+const startGame = document.querySelector('#start-game-div');
 function mainPage(event) {
-    const startGame = document.getElementById('start-game-div');
-    startGame.classList.remove('start-game');
+    startGame.removeAttribute('id');
+    startGame.classList.add('hide-div');
     event.preventDefault();
 }
 
