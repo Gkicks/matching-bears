@@ -17,7 +17,13 @@ body {
 
 /* start page which appears when the user first loads the page */
 
-.start-game {
+.hide-div {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+#start-game-div {
     height: 100%;
     width: 100%;
     display: flex;
@@ -29,7 +35,7 @@ body {
     opacity: 1;
 }
 
-.start-game h1 {
+#start-game-div h1 {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
