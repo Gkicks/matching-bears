@@ -17,18 +17,18 @@ function generateCards() {
         { name: 'bearOne', image: 'assets/images/bear-one.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     ];
     // const cards = document.getElementsByClassName('card');
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
@@ -72,11 +72,9 @@ function flipCard() {
 }
 
 /**
-     * This function compares the names of the two flipped cards and check if they match
-     */
-
+* This function compares the names of the two flipped cards and check if they match
+*/
 const matchedCards = [];
-
 function checkMatch() {
 
     const flippedCards = document.getElementsByClassName('flipCard');
@@ -95,8 +93,10 @@ function checkMatch() {
             }
 
             // removes the flipCard class for those cards that have been matched
-            flippedCards[0].classList.remove('flipCard');
-            flippedCards[0].classList.remove('flipCard');
+            setTimeout(function () {
+                flippedCards[0].classList.remove('flipCard');
+                flippedCards[0].classList.remove('flipCard');
+            }, 1500);
 
             // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
             if (matchedCards.length === cards.length) {
@@ -127,8 +127,11 @@ function checkMatch() {
                     card.classList.remove('toggleCard');
                 }, 1000);
             }
-            flippedCards[0].classList.remove('flipCard');
-            flippedCards[0].classList.remove('flipCard');
+
+            setTimeout(function () {
+                flippedCards[0].classList.remove('flipCard');
+                flippedCards[0].classList.remove('flipCard');
+            }, 1500);
         }
     }
 };
@@ -149,7 +152,7 @@ cards.forEach(card => {
     card.addEventListener('click', flipCard);
     card.addEventListener('click', checkMatch);
     card.addEventListener('click', countFlip);
-
+    // card.addEventListener('click', checkFlip);
 });
 
 // create function that gives different time limits depending on the difficulty selected

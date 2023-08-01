@@ -100,12 +100,6 @@ body {
     border: 1px solid #4D3B32;
 }
 
-
-
-
-
-
-
 #title {
     font-size: 6em;
     color: #4D3B32;
@@ -204,6 +198,10 @@ body {
 
 .toggleCard {
     transform: rotateY(180deg);
+}
+
+.flipCard {
+    pointer-events: none;
 }
 
 /* section with time countdown, restart button and number of flips counter */
