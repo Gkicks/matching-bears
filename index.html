@@ -44,11 +44,11 @@
     </div>
 
     <!-- to appear at the start of the game  -->
-    <div id="start-game-div">
+    <div id="start-game-div-id" class="start-game">
         <h1>Matching Bears</h1>
         <div id="how-to-play">
             <h2 id="how-to-play-title">How to Play</h2>
-            <div id="instructions">
+            <div id="instructions-div" class="instructions-hidden">
                 <p>There are eight sets of matching bears. Can you find them all before the timer runs out?
                     Select your difficulty from the drop down box and click a square to begin. <br><br> Easy - you have
                     100 seconds to find the matches <br> Medium - you have 60 seconds to find the matches <br> Hard -
@@ -69,8 +69,8 @@
     </div>
 
     <!-- to appear when the timer runs out -->
-    <div id="lost-game" class="hide-div">
-        <h1>Sorry, you didn't match all the bears in time! Press below to start a new game:</h1>
+    <div id="lost-game">
+        <h1 id="losing-title"></h1>
         <button id="restart-lost">Restart Game</button>
     </div>
 

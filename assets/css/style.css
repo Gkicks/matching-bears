@@ -16,7 +16,7 @@ body {
 }
 
 /* start page which appears when the user first loads the page */
-#start-game-div {
+.start-game {
     height: 100%;
     width: 100%;
     display: flex;
@@ -28,7 +28,7 @@ body {
     opacity: 1;
 }
 
-#start-game-div h1 {
+#start-game-div-id h1 {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
@@ -46,24 +46,37 @@ body {
     border: 2px solid #4D3B32;
 }
 
-#instructions {
+.instructions-hidden {
     visibility: hidden;
+    /* font-size: 0.5em; */
+
+    /* height: 0px; */
+}
+
+.instructions-visable {
+    visibility: visible;
+    height: 130%;
+    width: 85%;
     text-align: center;
-    font-size: 0.5em;
+    padding: 20px 10px;
+    margin: 0 7.5%;
+    font-size: 1.5em;
+    color: #4D3B32;
     background: #BA9D8C;
     color: #4D3B32;
     border-radius: 25px;
-    height: 0px;
 }
 
-#start-game-div p {
+#start-game-div-id>p {
     font-size: 3em;
     color: #4D3B32;
     margin: 2vh 0;
+    width: 80%;
+    text-align: center;
 }
 
 #start-form {
-    width: 70%;
+    width: 60%;
     display: flex;
     justify-content: center;
 }
@@ -249,6 +262,12 @@ body {
     background: #F6F4F3;
     opacity: 0;
     pointer-events: none;
+}
+
+#winning-title {
+    font-size: 5em;
+    color: #4D3B32;
+    text-align: center;
 }
 
 /* refreshes the document and takes the user back to the start of the game */
