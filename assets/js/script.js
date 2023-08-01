@@ -1,13 +1,40 @@
+// to display the how to play instructions with the 'how to play' area is clicked 
+// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
+const howToPlay = document.getElementById('how-to-play');
+const howToPlayTitle = document.getElementById('how-to-play-title');
+const ontructions = document.querySelector('#instructions');
+let state = 0;
+howToPlayTitle.addEventListener('click', function () {
+    if (state == 0) {
+        instructions.style.visibility = 'visible';
+        instructions.style.height = '130%';
+        instructions.style.width = '85%';
+        instructions.style.padding = '20px 10px';
+        instructions.style.margin = '0vh 7.5%';
+        howToPlay.style.height = '45%';
+        state = 1;
+        // to remove the how to play instructions when the how to play area is clicked again
+    } else {
+        instructions.style.visibility = 'hidden';
+        instructions.style.height = '0';
+        instructions.style.transfrom = '2s';
+        howToPlay.style.height = '10vh';
+        state = 0;
+    }
+});
+
 // to move from the start screen to the main screen
 const StartGameButton = document.getElementById('start-button');
-StartGameButton.addEventListener('click', mainPage);
-
 const startGame = document.querySelector('#start-game-div');
-function mainPage(event) {
-    startGame.removeAttribute('id');
-    startGame.classList.add('hide-div');
-    event.preventDefault();
-}
+const input = document.querySelector('#enter-name');
+// hides the start-game-div by removing the id and putting in a hide-div class
+StartGameButton.addEventListener('click', function mainPage(event) {
+    if (input.value.length > 0) {
+        startGame.removeAttribute('id');
+        startGame.classList.add('hide-div');
+        event.preventDefault();
+    };
+});
 
 /** This function generates cards into the game-container section */
 function generateCards() {
@@ -17,18 +44,18 @@ function generateCards() {
         { name: 'bearOne', image: 'assets/images/bear-one.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     ];
     // const cards = document.getElementsByClassName('card');
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
@@ -40,16 +67,17 @@ function generateCards() {
         // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
         const cards = document.createElement('div');
         // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
+        // add cards
         cards.classList.add('card');
         cards.setAttribute('name', cardInfo[i].name);
         cardArea.appendChild(cards);
-
+        // add card front, showing the image, to each card
         const cardFront = document.createElement('img');
         cardFront.classList.add('cardFront');
         cardFront.setAttribute('src', cardInfo[i].image);
         cardFront.setAttribute('alt', 'image of a bear');
         cards.appendChild(cardFront);
-
+        // add card back to each card
         const cardBack = document.createElement('div');
         cardBack.textContent = '?';
         cardBack.classList.add('cardBack');
@@ -61,12 +89,18 @@ generateCards();
 
 // create a toggle function that toggles between the face of the card that's showing;;
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
+/**
+ * This function adds or removes the class 'toggleCard' whenever a card is clicked
+ */
 function turnCard() {
     this.classList.toggle('toggleCard');
 }
 
 // adds a flipCard class when a card has been clicked over;
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+/**
+ * This function add a class of 'flipCard' to any card that is clicked
+ */
 function flipCard() {
     this.classList.add('flipCard');
 }
@@ -92,7 +126,9 @@ function checkMatch() {
                 matchedCards.push(card);
             }
 
-            // removes the flipCard class for those cards that have been matched
+            // removes the flipCard class for those cards that have been matched. 
+            // There is a setTimeout of 1.5 seconds as this is how long it takes the card to flip back. 
+            // This prevents the user from being able to click it again
             setTimeout(function () {
                 flippedCards[0].classList.remove('flipCard');
                 flippedCards[0].classList.remove('flipCard');
@@ -108,13 +144,21 @@ function checkMatch() {
                         card.classList.add('won-game-bears');
                     }
                 }, 500);
+
                 // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
                 setTimeout(function () {
                     const winningBanner = document.getElementById('won-game');
+                    const winningBannerHeading = document.querySelector('#winning-title');
+                    const timeCount = document.getElementById('time');
+                    const timeRemaining = timeCount.textContent;
+                    const flipCount = document.getElementById('flips');
+                    const flipsTaken = flipCount.textContent;
                     winningBanner.style.height = '100%';
                     winningBanner.style.width = '100%';
                     winningBanner.classList.add('won-game-show');
+                    winningBannerHeading.textContent = `Congratulations ${input.value} - you found all the matching bears with ${flipsTaken} flips and with ${timeRemaining} seconds remaining! Press below to start a new game:`;
                 }, 2000);
+
                 // button on winning page to refresh the browser and restart the game
                 button.addEventListener('click', function () { location.reload(); });
             }
@@ -201,28 +245,7 @@ setInterval(function () {
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
 
-// to display the how to play instructions with the 'how to play' area is clicked 
-// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
-const howToPlay = document.getElementById('how-to-play');
-const howToPlayTitle = document.getElementById('how-to-play-title');
-let state = 0;
-howToPlayTitle.addEventListener('click', function () {
-    if (state == 0) {
-        instructions.style.visibility = 'visible';
-        instructions.style.height = '100%';
-        instructions.style.padding = '20px 10px';
-        instructions.style.margin = '3vh 0';
-        howToPlay.style.height = '100%';
-        state = 1;
-        // to remove the how to play instructions when the how to play area is clicked again
-    } else {
-        instructions.style.visibility = 'hidden';
-        instructions.style.height = '0';
-        instructions.style.transfrom = '2s';
-        howToPlay.style.height = '10vh';
-        state = 0;
-    }
-});
+
 
 // function lost();
 

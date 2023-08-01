@@ -1,4 +1,4 @@
-/* universal selector */
+/* universal selectors */
 * {
     margin: 0;
     padding: 0;
@@ -16,13 +16,6 @@ body {
 }
 
 /* start page which appears when the user first loads the page */
-
-.hide-div {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
 #start-game-div {
     height: 100%;
     width: 100%;
@@ -39,7 +32,7 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    margin-top: 4vh;
+    margin-top: 6vh;
 }
 
 #how-to-play h2 {
@@ -63,7 +56,7 @@ body {
     height: 0px;
 }
 
-.start-game p {
+#start-game-div p {
     font-size: 3em;
     color: #4D3B32;
     margin: 2vh 0;
@@ -81,7 +74,6 @@ body {
     border-radius: 25px;
     font-size: 2em;
     margin: 2vh 2vw;
-    /* padding: 0 5vw; */
     text-align: center;
     background: #F6F4F3;
 }
@@ -95,11 +87,18 @@ body {
     margin: 2vh 2vw;
     text-align: center;
     color: #4D3B32;
-    /* text-align: center; */
     background: #D5BDA9;
     border: 1px solid #4D3B32;
 }
 
+/* this class hides the div once the user has clicked submit */
+.hide-div {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+/* main page */
 #title {
     font-size: 6em;
     color: #4D3B32;
@@ -107,30 +106,11 @@ body {
     margin-top: 4vh;
 }
 
-/* section with  how to play instructions and difficulty selector  */
-/* #game-start-info { */
-/* display: -webkit-inline-box; */
-/* width: 100%; */
-/* margin-left: 29vw; */
-/* } */
-
-
-
-/* #how-to-play button {
-    height: 0px;
-    width: 20%;
-    text-align: center;
-    font-size: 1em;
+/* section with difficulty selector  */
+#select-difficulty-div label {
+    font-size: 2em;
     color: #4D3B32;
-    background: #D5BDA9;
-    border: 2px solid #4D3B32;
-    margin-top: 2vh;
-    border-radius: 25px;
-} */
-
-#select-difficulty-div {
-    margin-left: 10vw;
-    width: 30%;
+    float: left;
 }
 
 #select-difficulty {
@@ -139,9 +119,10 @@ body {
     text-align: center;
     background: #D5BDA9;
     border-radius: 25px;
-    margin: 2vh 20% 0px 20%;
-    padding: 10px 5px;
+    margin-left: 2vw;
+    padding: 5px;
     border: 2px solid #4D3B32;
+    float: right;
 }
 
 /* card playing area */
@@ -255,8 +236,6 @@ body {
         transform: rotate(0deg);
     }
 }
-
-
 
 /* winning page to appear when the user has matched all the cards */
 #won-game {
