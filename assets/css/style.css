@@ -264,7 +264,8 @@ body {
     pointer-events: none;
 }
 
-#winning-title {
+#winning-title,
+#losing-title {
     font-size: 5em;
     color: #4D3B32;
     text-align: center;

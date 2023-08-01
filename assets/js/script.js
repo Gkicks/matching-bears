@@ -225,8 +225,6 @@ function countFlip() {
     flips = parseInt(flipCount.textContent);
 }
 
-
-
 // create function that gives different time limits depending on the difficulty selected
 const timeCount = document.getElementById('time');
 let time = '100';
@@ -260,12 +258,15 @@ setInterval(function () {
         console.log('lost');
         // losing banner to appear
         const losingBanner = document.getElementById('lost-game');
+        const losingBannerHeading = document.querySelector('#losing-title');
         losingBanner.style.height = '100%';
         losingBanner.style.width = '100%';
         losingBanner.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
         const button = document.getElementById('restart-lost');
         button.addEventListener('click', function () { location.reload(); });
+        losingBannerHeading.textContent = `Sorry, ${input.value} you didn't match all the bears in time! 
+                 Press below to start a new game:`;
     };
 }, 1000);
 
