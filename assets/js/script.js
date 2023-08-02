@@ -5,7 +5,6 @@ const cardFronts = document.getElementsByClassName('cardFront');
 // an array for the cards to go in when matched
 const matchedCards = [];
 
-
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
 const howToPlay = document.querySelector('#how-to-play');
@@ -193,6 +192,7 @@ for (let card of cards) {
  */
 function disableGame() {
     const toggledCards = document.getElementsByClassName('toggleCard');
+    // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
         for (let card of cards) {
             card.removeEventListener('click', turnCard);

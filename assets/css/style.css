@@ -309,3 +309,11 @@ body {
         opacity: 1;
     }
 }
+
+/* so all buttons type elements increase slightly on hover */
+button:hover,
+#how-to-play-title:hover,
+#start-button:hover {
+    transition: all 2s ease-out;
+    transform: scale(1.1);
+}
