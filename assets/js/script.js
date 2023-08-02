@@ -27,16 +27,24 @@ howToPlayTitle.addEventListener('click', function () {
 });
 
 // to move from the start screen to the main screen
-const StartGameButton = document.getElementById('start-button');
+const startGameButton = document.getElementById('start-button');
 const startGame = document.querySelector('#start-game-div-id');
 const input = document.querySelector('#enter-name');
+// const instructions = document.querySelector('#instructions-div');
 // hides the start-game-div by removing the id and putting in a hide-div class
-StartGameButton.addEventListener('click', function mainPage(event) {
+startGameButton.addEventListener('click', function mainPage(event) {
     if (input.value.length > 0) {
         startGame.removeAttribute('id');
         startGame.classList.add('hide-div');
+        input.removeAttribute('id');
+        input.classList.add('hide-div');
+        startGameButton.removeAttribute('id');
+        startGameButton.classList.add('hide-div');
+        instructions.removeAttribute('id');
+        instructions.classList.add('hide-div');
+        howToPlay.classList.add('hide-div');
         event.preventDefault();
-    };
+    }
 });
 
 /** This function generates cards into the game-container section */
@@ -191,8 +199,8 @@ for (let card of cards) {
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
  */
+const toggledCards = document.getElementsByClassName('toggleCard');
 function disableGame() {
-    const toggledCards = document.getElementsByClassName('toggleCard');
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
         for (let card of cards) {
@@ -213,6 +221,8 @@ function disableGame() {
         };
     }
 }
+
+setInterval(disableGame, 500);
 
 const flipCount = document.getElementById('flips');
 let flips = 0;
@@ -245,13 +255,20 @@ selectDifficulty.addEventListener('change', function difficulty() {
 /**
  * This function decreases the timer by one every second
  */
-function TimeGame() {
+function timeGame() {
     let currentTime = timeCount.innerHTML;
     currentTime--;
     timeCount.innerHTML = currentTime;
+    setTimeout(timeGame, 1000);
+    for (let card of cards) {
+        card.removeEventListener('click', timeGame);
+    }
 }
 
-setInterval(TimeGame, 1000);
+for (let card of cards) {
+    card.addEventListener('click', timeGame);
+}
+
 
 /**
  * This function checks, each second, if the timer has reached zero. If so it will 
