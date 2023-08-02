@@ -153,6 +153,7 @@ function wonGame() {
         // delays animation by half a second to improve user experience
         setTimeout(function () {
             // adds the won-game-bears class which causes the cards to have a wiggle animation
+            // const cardFronts = document.getElementsByClassName('cardFront');
             for (card of cardFronts) {
                 card.classList.add('won-game-bears');
             }
@@ -200,7 +201,6 @@ function disableGame() {
             card.removeEventListener('click', checkMatch);
             card.removeEventListener('click', wonGame);
             card.removeEventListener('click', countFlip);
-            console.log('something');
         }
     } else {
         for (let card of cards) {
@@ -220,7 +220,6 @@ flipCount.textContent = flips;
 
 function countFlip() {
     flipCount.textContent = flips + 1;
-    console.log('card flipped');
     flips = parseInt(flipCount.textContent);
 }
 
@@ -246,12 +245,19 @@ selectDifficulty.addEventListener('change', function difficulty() {
 /**
  * This function decreases the timer by one every second
  */
-// JavaScript & the DOM  Getting Set Up  The < script > Element;
-setInterval(function () {
+function TimeGame() {
     let currentTime = timeCount.innerHTML;
     currentTime--;
     timeCount.innerHTML = currentTime;
+}
 
+setInterval(TimeGame, 1000);
+
+/**
+ * This function checks, each second, if the timer has reached zero. If so it will 
+ * display a lost game page
+ */
+function lostGame() {
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
         // losing banner to appear
@@ -262,18 +268,16 @@ setInterval(function () {
         // button on losing page to refresh the browser and restart the game
         const button = document.getElementById('restart-lost');
         button.addEventListener('click', function () { location.reload(); });
-        losingBannerHeading.textContent = `Sorry, ${input.value}, you didn't match all the bears in time! 
+        losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
                  Press below to start a new game:`;
     };
-}, 1000);
+}
+
+setInterval(lostGame, 1000);
 
 //button to give the user the opportunity to restart the game at any time
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
-
-
-
-// function lost();
 
 // add event default to click functions?
 // tidy up formatting
