@@ -50,16 +50,16 @@ function generateCards() {
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
         { name: 'bearThree', image: 'assets/images/bear-three.webp' },
         { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     ];
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
@@ -161,17 +161,16 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-            const winningBanner = document.getElementById('won-game');
-            const winningBannerHeading = document.querySelector('#winning-title');
+            const winningPage = document.getElementById('won-game');
+            const winningPageHeading = document.querySelector('#winning-title');
             const timeCount = document.getElementById('time');
             const timeRemaining = timeCount.textContent;
             const flipCount = document.getElementById('flips');
             const flipsTaken = flipCount.textContent;
-            winningBanner.style.height = '100%';
-            winningBanner.style.width = '100%';
-            winningBanner.classList.add('won-game-show');
-            winningBannerHeading.textContent = `Congratulations ${input.value} - you found all the matching bears in 
-                    ${flipsTaken} flips and with ${timeRemaining} seconds remaining! Press below to start a new game:`;
+            winningPage.classList.remove('won-game-hidden');
+            winningPage.classList.add('won-game-show');
+            winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
+                    ${flipsTaken} flips and with ${timeRemaining} seconds remaining. Press below to start a new game:`;
         }, 2000);
 
         // button on winning page to refresh the browser and restart the game
@@ -255,17 +254,15 @@ setInterval(function () {
 
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
-        console.log('lost');
         // losing banner to appear
         const losingBanner = document.getElementById('lost-game');
         const losingBannerHeading = document.querySelector('#losing-title');
-        losingBanner.style.height = '100%';
-        losingBanner.style.width = '100%';
+        losingBanner.classList.remove('lost-game-hidden');
         losingBanner.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
         const button = document.getElementById('restart-lost');
         button.addEventListener('click', function () { location.reload(); });
-        losingBannerHeading.textContent = `Sorry, ${input.value} you didn't match all the bears in time! 
+        losingBannerHeading.textContent = `Sorry, ${input.value}, you didn't match all the bears in time! 
                  Press below to start a new game:`;
     };
 }, 1000);

@@ -32,7 +32,7 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    margin-top: 6vh;
+    margin: 6vh 0;
 }
 
 #how-to-play h2 {
@@ -48,9 +48,6 @@ body {
 
 .instructions-hidden {
     visibility: hidden;
-    /* font-size: 0.5em; */
-
-    /* height: 0px; */
 }
 
 .instructions-visable {
@@ -116,7 +113,7 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    margin-top: 4vh;
+    margin: 3vh 0;
 }
 
 /* section with difficulty selector  */
@@ -250,18 +247,13 @@ body {
     }
 }
 
-/* winning page to appear when the user has matched all the cards */
-#won-game {
+/* winning page / losing page to appear when the user has either matched all the cards or run out of time */
+.won-game.hidden,
+.lost-game-hidden {
     height: 0%;
     width: 0%;
-    font-size: 0.5rem;
-    padding: 0px 15vw;
-    position: absolute;
-    top: 0;
-    padding-top: 10vh;
-    background: #F6F4F3;
+    visibility: hidden;
     opacity: 0;
-    pointer-events: none;
 }
 
 #winning-title,
@@ -272,7 +264,8 @@ body {
 }
 
 /* refreshes the document and takes the user back to the start of the game */
-#won-game button {
+.won-game-show button,
+.lost-game-show button {
     height: 10vh;
     width: 50%;
     text-align: center;
@@ -285,55 +278,29 @@ body {
     pointer-events: all;
 }
 
+.won-game-hidden button,
+.lost-game-hidden button {
+    visibility: hidden;
+    height: 0;
+    width: 0;
+}
+
 /* To make the congratulations screen appear slowly */
-.won-game-show {
-    animation: won-grow 2s forwards;
-}
-
-@keyframes won-grow {
-    from {
-        opacity: 0;
-    }
-
-    to {
-        opacity: 1;
-    }
-}
-
-/* losing page to appear when the time runs out */
-#lost-game {
-    height: 0%;
-    width: 0%;
+.won-game-show,
+.lost-game-show {
+    visibility: visible;
+    height: 100%;
+    width: 100%;
     font-size: 0.5rem;
     padding: 0px 15vw;
     position: absolute;
     top: 0;
-    padding-top: 10vh;
+    padding-top: 25vh;
     background: #F6F4F3;
-    opacity: 0;
-    pointer-events: none;
+    animation: won-grow 2s forwards;
 }
 
-/* refreshes the document and takes the user back to the start of the game */
-#lost-game button {
-    height: 10vh;
-    width: 50%;
-    text-align: center;
-    font-size: 5vh;
-    color: #4D3B32;
-    background: #D5BDA9;
-    border: 2px solid #4D3B32;
-    margin: 5vh 25%;
-    border-radius: 25px;
-    pointer-events: all;
-}
-
-/* To make the congratulations screen appear slowly */
-.lost-game-show {
-    animation: lost-grow 2s forwards;
-}
-
-@keyframes lost-grow {
+@keyframes won-grow {
     from {
         opacity: 0;
     }
