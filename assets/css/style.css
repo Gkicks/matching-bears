@@ -343,3 +343,23 @@ button:hover,
     font-size: 300%;
     margin-bottom: 50px;
 }
+
+#return-to-home-outer {
+    width: 100%;
+    height: auto;
+    text-align: center;
+    margin-top: 50px;
+    margin-bottom: 8vh;
+}
+
+#return-to-home {
+    height: 50px;
+    width: 50%;
+    border: 1px solid #4D3B32;
+    border-radius: 999px;
+    font-size: 100%;
+    background-color: #D5BDA9;
+    color: #4D3B32;
+}
+
+/* media queries */
