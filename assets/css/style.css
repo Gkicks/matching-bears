@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Laila&family=Playfair+Display&display=swap');
+
 /* universal selectors */
 * {
     margin: 0;
@@ -13,6 +15,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    font-family: 'playfair display', cursive;
 }
 
 /* start page which appears when the user first loads the page */
@@ -29,6 +32,7 @@ body {
 }
 
 #start-game-div-id h1 {
+    font-family: 'laila', sans-serif;
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
@@ -110,6 +114,7 @@ body {
 
 /* main page */
 #title {
+    font-family: 'laila', sans-serif;
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
