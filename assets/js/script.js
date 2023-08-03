@@ -269,7 +269,6 @@ for (let card of cards) {
     card.addEventListener('click', timeGame);
 }
 
-
 /**
  * This function checks, each second, if the timer has reached zero. If so it will 
  * display a lost game page
@@ -290,15 +289,13 @@ function lostGame() {
     };
 }
 
-setInterval(lostGame, 1000);
+setInterval(lostGame, 100);
 
 //button to give the user the opportunity to restart the game at any time
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () { location.reload(); });
 
 // add event default to click functions?
-// tidy up formatting
 // add sound?
-// improve images
 // make the website responsive
 // add 404 page
