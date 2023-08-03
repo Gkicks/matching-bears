@@ -1,13 +1,8 @@
-// global variables
-const cards = document.getElementsByClassName('card');
-const flippedCards = document.getElementsByClassName('flipCard');
-const cardFronts = document.getElementsByClassName('cardFront');
-// an array for the cards to go in when matched
-const matchedCards = [];
+/*jshint esversion: 6 */
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
-const howToPlay = document.querySelector('#how-to-play');
+let howToPlay = document.querySelector('#how-to-play');
 const howToPlayTitle = document.querySelector('#how-to-play-title');
 const instructions = document.querySelector('#instructions-div');
 let state = 0;
@@ -59,16 +54,16 @@ function generateCards() {
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
         { name: 'bearThree', image: 'assets/images/bear-three.webp' },
         { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     ];
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
@@ -98,21 +93,32 @@ function generateCards() {
 
 generateCards();
 
+let gameCards = document.querySelectorAll('.card');
+const cardFronts = document.getElementsByClassName('cardFront');
+
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
  * This function adds or removes the class 'toggleCard' whenever a card is clicked
  */
 function turnCard() {
     this.classList.toggle('toggleCard');
-}
+};
 
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
+// https://foolishdeveloper.com/how-to-play-sound-on-click-using-javascript/
 /**
- * This function add a class of 'flipCard' to any card that is clicked
+ * This function add a class of 'flipCard' and sound effect to any card that is clicked
  */
 function flipCard() {
     this.classList.add('flipCard');
+    audio = new Audio('assets/audio/card-flip-audio.mp3');
+    audio.play();
 }
+
+const flippedCards = document.getElementsByClassName('flipCard');
+
+// an array for the cards to go in when matched
+let matchedCards = [];
 
 /**
 * This function compares the names of the two flipped cards and check if they match
@@ -159,12 +165,12 @@ function checkMatch() {
  */
 function wonGame() {
     // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
-    if (matchedCards.length === cards.length) {
+    if (matchedCards.length === gameCards.length) {
         // delays animation by half a second to improve user experience
         setTimeout(function () {
             // adds the won-game-bears class which causes the cards to have a wiggle animation
             // const cardFronts = document.getElementsByClassName('cardFront');
-            for (card of cardFronts) {
+            for (let card of cardFronts) {
                 card.classList.add('won-game-bears');
             }
         }, 500);
@@ -189,14 +195,14 @@ function wonGame() {
     }
 }
 
-for (let card of cards) {
+for (let card of gameCards) {
     card.addEventListener('click', turnCard);
     card.addEventListener('click', flipCard);
     card.addEventListener('click', checkMatch);
     card.addEventListener('click', wonGame);
     card.addEventListener('click', countFlip);
     card.addEventListener('click', disableGame);
-};
+}
 
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
@@ -205,7 +211,7 @@ const toggledCards = document.getElementsByClassName('toggleCard');
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
-        for (let card of cards) {
+        for (let card of gameCards) {
             card.removeEventListener('click', turnCard);
             card.removeEventListener('click', flipCard);
             card.removeEventListener('click', checkMatch);
@@ -213,14 +219,14 @@ function disableGame() {
             card.removeEventListener('click', countFlip);
         }
     } else {
-        for (let card of cards) {
+        for (let card of gameCards) {
             card.addEventListener('click', turnCard);
             card.addEventListener('click', flipCard);
             card.addEventListener('click', checkMatch);
             card.addEventListener('click', wonGame);
             card.addEventListener('click', countFlip);
             card.addEventListener('click', disableGame);
-        };
+        }
     }
 }
 
@@ -251,7 +257,7 @@ selectDifficulty.addEventListener('change', function difficulty() {
     } else {
         let time = '5';
         timeCount.textContent = time;
-    };
+    }
 });
 
 /**
@@ -262,12 +268,12 @@ function timeGame() {
     currentTime--;
     timeCount.innerHTML = currentTime;
     setTimeout(timeGame, 1000);
-    for (let card of cards) {
+    for (let card of gameCards) {
         card.removeEventListener('click', timeGame);
     }
 }
 
-for (let card of cards) {
+for (let card of gameCards) {
     card.addEventListener('click', timeGame);
 }
 
@@ -288,7 +294,7 @@ function lostGame() {
         button.addEventListener('click', function () { location.reload(); });
         losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
                  Press below to start a new game:`;
-    };
+    }
 }
 
 setInterval(lostGame, 100);
