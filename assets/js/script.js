@@ -2,7 +2,7 @@
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
-let howToPlay = document.querySelector('#how-to-play');
+const howToPlay = document.querySelector('#how-to-play');
 const howToPlayTitle = document.querySelector('#how-to-play-title');
 const instructions = document.querySelector('#instructions-div');
 let state = 0;
@@ -27,7 +27,6 @@ howToPlayTitle.addEventListener('click', function () {
 const startGameButton = document.getElementById('start-button');
 const startGame = document.querySelector('#start-game-div-id');
 const input = document.querySelector('#enter-name');
-// const instructions = document.querySelector('#instructions-div');
 // hides the start-game-div by removing the id and putting in a hide-div class
 startGameButton.addEventListener('click', function mainPage(event) {
     if (input.value.length > 0) {
@@ -52,18 +51,18 @@ function generateCards() {
         { name: 'bearOne', image: 'assets/images/bear-one.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
         { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     ];
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
@@ -200,6 +199,7 @@ function wonGame() {
     }
 }
 
+// function listeners {
 for (let card of gameCards) {
     card.addEventListener('click', flipCard);
     card.addEventListener('click', turnCard);
@@ -208,6 +208,9 @@ for (let card of gameCards) {
     card.addEventListener('click', countFlip);
     card.addEventListener('click', disableGame);
 }
+// }
+
+// document.addEventListener('');
 
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
@@ -267,8 +270,9 @@ function difficulty() {
 
 selectDifficulty.addEventListener('change', difficulty);
 
+// https://www.w3schools.com/jsref/prop_select_disabled.asp
 function disableDifficulty() {
-    selectDifficulty.removeEventListener('change', difficulty);
+    document.getElementById("select-difficulty").disabled = true;
 }
 
 for (let card of gameCards) {
@@ -318,6 +322,7 @@ setInterval(lostGame, 100);
 const restartButton = document.getElementById('restart-game');
 restartButton.addEventListener('click', function () {
     location.reload();
+    // https://sabe.io/blog/javascript-yes-no-confirmation-box?utm_content=cmp-true
     confirm('Are you sure you want to restart the game?');
 });
 
