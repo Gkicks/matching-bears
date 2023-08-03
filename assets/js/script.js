@@ -316,7 +316,10 @@ setInterval(lostGame, 100);
 
 //button to give the user the opportunity to restart the game at any time
 const restartButton = document.getElementById('restart-game');
-restartButton.addEventListener('click', function () { location.reload(); });
+restartButton.addEventListener('click', function () {
+    location.reload();
+    confirm('Are you sure you want to restart the game?');
+});
 
 // add event default to click functions?
 // add sound?
