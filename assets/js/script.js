@@ -110,9 +110,9 @@ function turnCard() {
  * This function add a class of 'flipCard' and sound effect to any card that is clicked
  */
 function flipCard() {
-    this.classList.add('flipCard');
     audio = new Audio('assets/audio/card-flip-audio.mp3');
     audio.play();
+    this.classList.add('flipCard');
 }
 
 const flippedCards = document.getElementsByClassName('flipCard');
@@ -132,6 +132,11 @@ function checkMatch() {
 
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+
+            setTimeout(function () {
+                audio = new Audio('assets/audio/card-match-audio.mp3');
+                audio.play();
+            }, 700);
 
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
@@ -196,8 +201,8 @@ function wonGame() {
 }
 
 for (let card of gameCards) {
-    card.addEventListener('click', turnCard);
     card.addEventListener('click', flipCard);
+    card.addEventListener('click', turnCard);
     card.addEventListener('click', checkMatch);
     card.addEventListener('click', wonGame);
     card.addEventListener('click', countFlip);
@@ -247,7 +252,7 @@ let time = '100';
 timeCount.textContent = time;
 const selectDifficulty = document.getElementById('select-difficulty');
 
-selectDifficulty.addEventListener('change', function difficulty() {
+function difficulty() {
     if (selectDifficulty.value === 'easy') {
         let time = '100';
         timeCount.textContent = time;
@@ -258,7 +263,17 @@ selectDifficulty.addEventListener('change', function difficulty() {
         let time = '5';
         timeCount.textContent = time;
     }
-});
+};
+
+selectDifficulty.addEventListener('change', difficulty);
+
+function disableDifficulty() {
+    selectDifficulty.removeEventListener('change', difficulty);
+}
+
+for (let card of gameCards) {
+    card.addEventListener('click', disableDifficulty);
+}
 
 /**
  * This function decreases the timer by one every second
