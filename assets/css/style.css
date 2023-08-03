@@ -401,16 +401,6 @@ button:hover,
 
 /* for screens less than 600px */
 @media (max-width: 600px) {
-<<<<<<< HEAD
-
-    #start-game-div-id h1,
-    #title {
-        font-size: 3em;
-    }
-
-    #start-game-div-id h1 {
-        margin-bottom: 2vh;
-=======
     #start-game-div-id h1 {
         font-size: 3em;
         margin-bottom: 2vh;
@@ -418,7 +408,6 @@ button:hover,
 
     #title {
         font-size: 3em;
->>>>>>> c5c6e30 (add sound effect to card flip)
     }
 
     #how-to-play h2 {
@@ -484,10 +473,6 @@ button:hover,
         font-size: 1em;
     }
 
-<<<<<<< HEAD
-    #enter-name,
-    #start-button,
-=======
     #enter-name {
         font-size: 0.8em;
         height: 5vh;
@@ -498,7 +483,6 @@ button:hover,
         height: 5vh;
     }
 
->>>>>>> c5c6e30 (add sound effect to card flip)
     #game-info button,
     .instructions-visable {
         font-size: 0.8em;
@@ -506,14 +490,11 @@ button:hover,
 
     #start-game-div-id>p {
         font-size: 1.5em;
-<<<<<<< HEAD
-=======
         margin: 0;
     }
 
     .instructions-visable {
         height: 70%;
->>>>>>> c5c6e30 (add sound effect to card flip)
     }
 
     #select-difficulty,
@@ -523,10 +504,6 @@ button:hover,
 
     #game-container-outer {
         height: 28vh;
-<<<<<<< HEAD
-
-=======
->>>>>>> c5c6e30 (add sound effect to card flip)
     }
 
     #game-container {
@@ -543,8 +520,4 @@ button:hover,
     #game-info h2 {
         font-size: 1em;
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> c5c6e30 (add sound effect to card flip)
 }
