@@ -5,6 +5,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
     background: #F6F4F3;
     height: 100%;
@@ -13,6 +17,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden;
 }
 
 /* start page which appears when the user first loads the page */
@@ -374,5 +379,145 @@ button:hover,
 
 /* media queries */
 
-/* for screens less than 758px */
-@media (max-width: 758px) {}
+/* for screens less than 1140px */
+@media (max-width: 1140px) {
+    #game-info h2 {
+        font-size: 3em;
+    }
+
+    #start-game-div-id h1 {
+        margin: 4vh 0;
+    }
+}
+
+/* for screens less than 840px */
+@media (max-width: 840px) {
+
+    #start-game-div-id h1,
+    #title {
+        font-size: 4em;
+    }
+
+    #enter-name,
+    #start-button,
+    #game-info button {
+        font-size: 1.5em;
+    }
+
+    #game-info h2 {
+        font-size: 2em;
+    }
+}
+
+/* for screens less than 600px */
+@media (max-width: 600px) {
+
+    #start-game-div-id h1,
+    #title {
+        font-size: 3em;
+    }
+
+    #start-game-div-id h1 {
+        margin-bottom: 2vh;
+    }
+
+    #how-to-play h2 {
+        font-size: 1.5em;
+    }
+
+    #start-game-div-id>p {
+        font-size: 2em;
+    }
+
+    .instructions-visable {
+        font-size: 1em;
+    }
+
+    .howToPlayVisible {
+        height: 40vh;
+    }
+
+    #enter-name,
+    #start-button,
+    #game-info button {
+        font-size: 1em;
+    }
+
+    #select-difficulty,
+    #select-difficulty-div label {
+        font-size: 1.5em;
+    }
+
+    #game-info button {
+        height: 5vh;
+    }
+
+    #game-container-outer {
+        height: 38vh;
+    }
+
+    #game-container {
+        grid-template-columns: repeat(4, 8vh);
+        grid-template-rows: repeat(4, 8vh);
+        grid-gap: 1.5vh;
+        margin: 1.5vh;
+    }
+
+    .card {
+        font-size: 6vh;
+    }
+
+    #game-info h2 {
+        font-size: 1.5em;
+    }
+}
+
+/* for screens less than 355px */
+@media (max-width: 355px) {
+
+    #start-game-div-id h1,
+    #title {
+        font-size: 2em;
+    }
+
+    #how-to-play h2 {
+        font-size: 1em;
+    }
+
+    #enter-name,
+    #start-button,
+    #game-info button,
+    .instructions-visable {
+        font-size: 0.8em;
+    }
+
+    #start-game-div-id>p {
+        font-size: 1.5em;
+    }
+
+    #select-difficulty,
+    #select-difficulty-div label {
+        font-size: 1em;
+    }
+
+    #game-container-outer {
+        height: 28vh;
+
+    }
+
+    #game-container {
+        grid-template-columns: repeat(4, 6vh);
+        grid-template-rows: repeat(4, 6vh);
+        grid-gap: 1vh;
+        margin: 1vh;
+    }
+
+    .card {
+        font-size: 4vh;
+    }
+
+    #game-info h2 {
+        font-size: 1em;
+    }
+
+}
