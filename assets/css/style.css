@@ -101,6 +101,16 @@ body {
     border: 1px solid #4D3B32;
 }
 
+/* styling for instructions dropdown */
+
+.how-to-play-dropbox {
+    height: 10vh;
+}
+
+.howToPlayVisible {
+    height: 45vh;
+}
+
 /* this class hides the div once the user has clicked submit */
 .hide-div {
     height: 0;
@@ -363,3 +373,6 @@ button:hover,
 }
 
 /* media queries */
+
+/* for screens less than 758px */
+@media (max-width: 758px) {}

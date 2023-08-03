@@ -15,13 +15,15 @@ howToPlayTitle.addEventListener('click', function () {
     if (state == 0) {
         instructions.classList.add('instructions-visable');
         instructions.classList.remove('instructions-hidden');
-        howToPlay.style.height = '45vh';
+        howToPlay.classList.remove('how-to-play-dropbox');
+        howToPlay.classList.add('howToPlayVisible');
         state = 1;
         // to remove the how to play instructions when the how to play area is clicked again
     } else {
         instructions.classList.remove('instructions-visable');
         instructions.classList.add('instructions-hidden');
-        howToPlay.style.height = '10vh';
+        howToPlay.classList.add('how-to-play-dropbox');
+        howToPlay.classList.remove('howToPlayVisible');
         state = 0;
     }
 });
