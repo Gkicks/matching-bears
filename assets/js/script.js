@@ -37,13 +37,13 @@ let flips = 0;
 flipCount.textContent = flips;
 const winningPage = document.getElementById('won-game');
 const winningPageHeading = document.querySelector('#winning-title');
-const flipsTaken = flipCount.textContent;
+// const flipsTaken = flipCount.textContent;
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
-const timeRemaining = timeCount.textContent;
+// const timeRemaining = timeCount.textContent;
 const selectDifficulty = document.getElementById('select-difficulty');
 const losingBanner = document.getElementById('lost-game');
 const losingBannerHeading = document.querySelector('#losing-title');
@@ -134,7 +134,7 @@ function generateCards() {
             // card.addEventListener('click', abortTime);
             // card.addEventListener('click', function () {
             //     if (abort === false) {
-            card.EventListener('click', checkMatch);
+            card.addEventListener('click', checkMatch);
             card.addEventListener('click', wonGame);
             card.addEventListener('click', countFlip);
             card.addEventListener('click', disableGame);
@@ -228,11 +228,11 @@ function wonGame() {
             winningPage.classList.remove('won-game-hidden');
             winningPage.classList.add('won-game-show');
             winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
-                    ${flipsTaken} flips and with ${timeRemaining} seconds remaining. Press below to start a new game:`;
+                    ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
 
-        // button on winning page to refresh the browser and restart the game
-        // buttonWon.addEventListener('click', function () { location.reload(); });
+        // button on winning page to refresh the browser and restart the game;
+        buttonWon.addEventListener('click', restartGame);
     }
 }
 
@@ -321,7 +321,7 @@ function lostGame() {
         losingBanner.classList.remove('lost-game-hidden');
         losingBanner.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
-        // button.addEventListener('click', function () { location.reload(); });
+        buttonLost.addEventListener('click', restartGame);
         losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
@@ -342,6 +342,12 @@ function restartGame() {
     // https://stackoverflow.com/questions/14555214/remove-all-divs-from-in-a-parent-div
     document.getElementById('game-container').innerHTML = "";
     generateCards();
+    losingBanner.classList.add('lost-game-hidden');
+    losingBanner.classList.remove('lost-game-show');
+    losingBannerHeading.textContent = '';
+    winningPage.classList.add('won-game-hidden');
+    winningPage.classList.remove('won-game-show');
+    winningPageHeading.textContent = '';
 }
 
 function abortTime() {
@@ -349,13 +355,11 @@ function abortTime() {
     if (abort === true) {
         // console.log(abort);
         // if (abort === true) {
-    console.log(abort);
-    if (abort === true) {
         abort = false;
     }
 }
 
-    for (let card of gameCards) {
+for (let card of gameCards) {
     card.addEventListener('click, abortTime');
 }
 
@@ -364,4 +368,4 @@ restartButton.addEventListener('click', restartGame);
 // // add event default to click functions?
 // // add sound?
 // // make the website responsive
-// // add 404 winningPage
+// // add 404 page
