@@ -8,6 +8,13 @@ const startGame = document.querySelector('#start-game-div-id');
 const input = document.querySelector('#enter-name');
 const gameCards = document.querySelectorAll('.card');
 const cardFronts = document.getElementsByClassName('cardFront');
+const flippedCards = document.getElementsByClassName('flipCard');
+const toggledCards = document.getElementsByClassName('toggleCard');
+// an array for the cards to go in when matched
+let matchedCards = [];
+const flipCount = document.getElementById('flips');
+let flips = 0;
+flipCount.textContent = flips;
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
@@ -100,8 +107,6 @@ function generateCards() {
 
 generateCards();
 
-
-
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
  * This function adds or removes the class 'toggleCard' whenever a card is clicked
@@ -121,18 +126,10 @@ function flipCard() {
     audio.play();
 }
 
-const flippedCards = document.getElementsByClassName('flipCard');
-
-// an array for the cards to go in when matched
-let matchedCards = [];
-
 /**
 * This function compares the names of the two flipped cards and check if they match
 */
 function checkMatch() {
-
-    // const button = document.getElementById('restart-won');
-
     // function doesn't execute until it's checked that two cards have been flipped
     if (flippedCards.length === 2) {
 
@@ -213,7 +210,6 @@ for (let card of gameCards) {
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
  */
-const toggledCards = document.getElementsByClassName('toggleCard');
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
@@ -237,10 +233,6 @@ function disableGame() {
 }
 
 setInterval(disableGame, 500);
-
-const flipCount = document.getElementById('flips');
-let flips = 0;
-flipCount.textContent = flips;
 
 function countFlip() {
     flipCount.textContent = flips + 1;
