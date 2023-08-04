@@ -98,28 +98,13 @@ function startGame() {
     startGameButton.addEventListener('click', generateCards);
 }
 
-function restartGame() {
-    if (selectDifficulty.value === 'easy') {
-        timeCount.textContent = '100';
-    } else if (selectDifficulty.value === 'medium') {
-        timeCount.textContent = '60';
-    } else {
-        timeCount.textContent = '30';
-    }
-    flipCount.textContent = '0';
-    for (let card of gameCards) {
-        card.classList.remove('toggleCard');
-    }
-}
-
-restartButton.addEventListener('click', restartGame);
 
 /** This function generates cards into the game-container section */
 function generateCards() {
-    // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
-    // randomise the array  
+    //     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
+    //     // randomise the array  
     cardInfo.sort(() => Math.random() - 0.5);
-    // create the HTML
+    //     // create the HTML
     for (let i = 0; i < cardInfo.length; i++) {
         // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
         let cardsDiv = document.createElement('div');
@@ -140,16 +125,22 @@ function generateCards() {
         cardBack.classList.add('cardBack');
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
-    }
-    for (let card of gameCards) {
-        card.addEventListener('click', turnCard);
-        card.addEventListener('click', timeGame);
-        card.addEventListener('click', flipCard);
-        card.addEventListener('click', checkMatch);
-        card.addEventListener('click', wonGame);
-        card.addEventListener('click', countFlip);
-        card.addEventListener('click', disableGame);
-        card.addEventListener('click', audioFlipPlay);
+
+        for (let card of gameCards) {
+            card.addEventListener('click', turnCard);
+            card.addEventListener('click', abortTime);
+            card.addEventListener('click', timeGame);
+            card.addEventListener('click', flipCard);
+            // card.addEventListener('click', abortTime);
+            // card.addEventListener('click', function () {
+            //     if (abort === false) {
+            card.EventListener('click', checkMatch);
+            card.addEventListener('click', wonGame);
+            card.addEventListener('click', countFlip);
+            card.addEventListener('click', disableGame);
+            card.addEventListener('click', disableDifficulty);
+            card.addEventListener('click', audioPlay);
+        }
     }
 }
 
@@ -159,8 +150,9 @@ function generateCards() {
  */
 function turnCard() {
     this.classList.toggle('toggleCard');
-    console.log('turn working');
 }
+
+
 
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
 // https://foolishdeveloper.com/how-to-play-sound-on-click-using-javascript/
@@ -169,12 +161,15 @@ function turnCard() {
  */
 function flipCard() {
     this.classList.add('flipCard');
-    console.log('flip working');
 }
 
-function audioFlipPlay() {
-    audioFlip.play();
-    console.log('audio.flip');
+
+function audioPlay() {
+    if (flippedCards.length === '2' && flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+        audioFlip.play();
+    } else {
+        audioMatch.play();
+    }
 }
 
 /**
@@ -186,8 +181,6 @@ function checkMatch() {
 
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-            audioMatch.play();
-            console.log('match working');
 
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
@@ -249,7 +242,7 @@ function wonGame() {
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
-        for (let card of cards) {
+        for (let card of gameCards) {
             card.removeEventListener('click', turnCard);
             card.removeEventListener('click', flipCard);
             card.removeEventListener('click', checkMatch);
@@ -257,7 +250,7 @@ function disableGame() {
             card.removeEventListener('click', countFlip);
         }
     } else {
-        for (let card of cards) {
+        for (let card of gameCards) {
             card.addEventListener('click', turnCard);
             card.addEventListener('click', flipCard);
             card.addEventListener('click', checkMatch);
@@ -268,6 +261,7 @@ function disableGame() {
     }
 }
 
+// this fixes a delay for the user being able to click the next card
 setInterval(disableGame, 500);
 
 function countFlip() {
@@ -276,32 +270,42 @@ function countFlip() {
 }
 
 // create function that gives different time limits depending on the difficulty selected
-
 function difficulty() {
     if (selectDifficulty.value === 'easy') {
-        let time = '100';
-        timeCount.textContent = time;
+        time = 100;
+        timeCount.textContent = '100';
     } else if (selectDifficulty.value === 'medium') {
-        let time = '60';
-        timeCount.textContent = time;
+        time = 60;
+        timeCount.textContent = '60';
     } else {
-        let time = '5';
-        timeCount.textContent = time;
+        time = 30;
+        timeCount.textContent = '5';
     }
 }
 
 selectDifficulty.addEventListener('change', difficulty);
 
+function disableDifficulty() {
+    // https://www.w3schools.com/jsref/prop_select_disabled.asp
+    document.getElementById("select-difficulty").disabled = true;
+}
+
 /**
  * This function decreases the timer by one every second
  */
+let abort = false;
 function timeGame() {
-    let currentTime = timeCount.innerHTML;
-    currentTime--;
-    timeCount.innerHTML = currentTime;
-    setTimeout(timeGame, 1000);
-    for (let card of gameCards) {
-        card.removeEventListener('click', timeGame);
+    if (abort) {
+        return;
+    } else {
+        let currentTime = timeCount.innerHTML;
+        currentTime--;
+        timeCount.innerHTML = currentTime;
+        setTimeout(timeGame, 1000);
+        // to stop the function being called with every click
+        for (let card of gameCards) {
+            card.removeEventListener('click', timeGame);
+        }
     }
 }
 
@@ -325,10 +329,39 @@ function lostGame() {
 
 setInterval(lostGame, 100);
 
-//button to give the user the opportunity to restart the game at any time
-// restartButton.addEventListener('click', function () { location.reload(); });
+function restartGame() {
+    for (let card of gameCards) {
+        card.classList.remove('toggleCard');
+        card.style.pointerEvents = 'all';
+    }
+    document.getElementById("select-difficulty").disabled = false;
+    abort = true;
+    difficulty();
+    flips = 0;
+    flipCount.textContent = 0;
+    // https://stackoverflow.com/questions/14555214/remove-all-divs-from-in-a-parent-div
+    document.getElementById('game-container').innerHTML = "";
+    generateCards();
+}
+
+function abortTime() {
+    // console.log(abort);
+    if (abort === true) {
+        // console.log(abort);
+        // if (abort === true) {
+    console.log(abort);
+    if (abort === true) {
+        abort = false;
+    }
+}
+
+    for (let card of gameCards) {
+    card.addEventListener('click, abortTime');
+}
+
+restartButton.addEventListener('click', restartGame);
 
 // // add event default to click functions?
 // // add sound?
 // // make the website responsive
-// // add 404 page
+// // add 404 winningPage
