@@ -103,8 +103,15 @@ function startGame() {
         card.addEventListener('click', turnCard);
         card.addEventListener('click', timeGame);
     }
+    if (selectDifficulty.value === 'easy') {
+        time = '100';
+    } else if (selectDifficulty.value === 'medium') {
+        time = '60';
+    } else {
+        time = '30';
+    }
+    flips = '0';
 }
-
 
 /** This function generates cards into the game-container section */
 function generateCards() {
