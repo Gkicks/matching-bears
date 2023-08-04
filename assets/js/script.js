@@ -1,12 +1,18 @@
-/*jshint esversion: 6 */
+// global variables
+
+const howToPlay = document.querySelector('#how-to-play');
+const howToPlayTitle = document.querySelector('#how-to-play-title');
+const instructions = document.querySelector('#instructions-div');
+const startGameButton = document.getElementById('start-button');
+const startGame = document.querySelector('#start-game-div-id');
+const input = document.querySelector('#enter-name');
+const gameCards = document.querySelectorAll('.card');
+const cardFronts = document.getElementsByClassName('cardFront');
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
-let howToPlay = document.querySelector('#how-to-play');
-const howToPlayTitle = document.querySelector('#how-to-play-title');
-const instructions = document.querySelector('#instructions-div');
 let state = 0;
-howToPlayTitle.addEventListener('click', function () {
+function howToPlayInstructions() {
     if (state == 0) {
         instructions.classList.add('instructions-visable');
         instructions.classList.remove('instructions-hidden');
@@ -21,15 +27,14 @@ howToPlayTitle.addEventListener('click', function () {
         howToPlay.classList.remove('howToPlayVisible');
         state = 0;
     }
-});
+}
+
+howToPlayTitle.addEventListener('click', howToPlayInstructions);
 
 // to move from the start screen to the main screen
-const startGameButton = document.getElementById('start-button');
-const startGame = document.querySelector('#start-game-div-id');
-const input = document.querySelector('#enter-name');
-// const instructions = document.querySelector('#instructions-div');
 // hides the start-game-div by removing the id and putting in a hide-div class
-startGameButton.addEventListener('click', function mainPage(event) {
+
+function hideStartPage() {
     if (input.value.length > 0) {
         startGame.removeAttribute('id');
         startGame.classList.add('hide-div');
@@ -42,7 +47,9 @@ startGameButton.addEventListener('click', function mainPage(event) {
         howToPlay.classList.add('hide-div');
         event.preventDefault();
     }
-});
+}
+
+startGameButton.addEventListener('click', hideStartPage);
 
 /** This function generates cards into the game-container section */
 function generateCards() {
@@ -93,8 +100,7 @@ function generateCards() {
 
 generateCards();
 
-let gameCards = document.querySelectorAll('.card');
-const cardFronts = document.getElementsByClassName('cardFront');
+
 
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
