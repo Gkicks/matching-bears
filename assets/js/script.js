@@ -3,7 +3,7 @@ const howToPlay = document.querySelector('#how-to-play');
 const howToPlayTitle = document.querySelector('#how-to-play-title');
 const instructions = document.querySelector('#instructions-div');
 const startGameButton = document.getElementById('start-button');
-const startGame = document.querySelector('#start-game-div-id');
+const startGameDiv = document.querySelector('#start-game-div-id');
 const input = document.querySelector('#enter-name');
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
@@ -39,6 +39,7 @@ const winningPage = document.getElementById('won-game');
 const winningPageHeading = document.querySelector('#winning-title');
 const flipsTaken = flipCount.textContent;
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
+const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
@@ -75,10 +76,10 @@ howToPlayTitle.addEventListener('click', howToPlayInstructions);
 // to move from the start screen to the main screen
 // hides the start-game-div by removing the id and putting in a hide-div class
 
-function hideStartPage() {
+function hideStartPage(event) {
     if (input.value.length > 0) {
-        startGame.removeAttribute('id');
-        startGame.classList.add('hide-div');
+        startGameDiv.removeAttribute('id');
+        startGameDiv.classList.add('hide-div');
         input.removeAttribute('id');
         input.classList.add('hide-div');
         startGameButton.removeAttribute('id');
@@ -90,7 +91,20 @@ function hideStartPage() {
     }
 }
 
-startGameButton.addEventListener('click', hideStartPage);
+document.addEventListener('DOMContentLoaded', loadGame);
+
+function loadGame() {
+    startGameButton.addEventListener('click', hideStartPage);
+    startGameButton.addEventListener('click', startGame);
+}
+
+function startGame() {
+    for (let card of gameCards) {
+        card.addEventListener('click', turnCard);
+        card.addEventListener('click', timeGame);
+    }
+}
+
 
 /** This function generates cards into the game-container section */
 function generateCards() {
@@ -162,6 +176,8 @@ function checkMatch() {
 
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+            audioMatch.play();
+            console.log('match working');
 
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
@@ -253,9 +269,7 @@ function countFlip() {
 
 // create function that gives different time limits depending on the difficulty selected
 
-
-
-selectDifficulty.addEventListener('change', function difficulty() {
+function difficulty() {
     if (selectDifficulty.value === 'easy') {
         let time = '100';
         timeCount.textContent = time;
@@ -266,7 +280,9 @@ selectDifficulty.addEventListener('change', function difficulty() {
         let time = '5';
         timeCount.textContent = time;
     }
-});
+}
+
+selectDifficulty.addEventListener('change', difficulty);
 
 /**
  * This function decreases the timer by one every second
@@ -279,10 +295,6 @@ function timeGame() {
     for (let card of gameCards) {
         card.removeEventListener('click', timeGame);
     }
-}
-
-for (let card of cards) {
-    card.addEventListener('click', timeGame);
 }
 
 /**
