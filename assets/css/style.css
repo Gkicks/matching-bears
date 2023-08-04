@@ -225,6 +225,19 @@ body {
     border-radius: 25px;
 }
 
+/* sytling for audio button */
+#audio-option {
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    height: 8vh;
+    width: 8vh;
+    background: #BA9D8C;
+    border: 1px solid #312C2D;
+    color: #312C2D;
+    border-radius: 5px;
+}
+
 /* animation so the bear images wiggle when the user has matched them all */
 .won-game-bears {
     animation: wiggle 1s infinite;
