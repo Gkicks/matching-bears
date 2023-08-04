@@ -91,31 +91,27 @@ function hideStartPage(event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', loadGame);
-
-function loadGame() {
-    startGameButton.addEventListener('click', hideStartPage);
-    startGameButton.addEventListener('click', startGame);
-}
+document.addEventListener('DOMContentLoaded', startGame);
 
 function startGame() {
-    for (let card of gameCards) {
-        card.addEventListener('click', turnCard);
-        card.addEventListener('click', timeGame);
-    }
-    if (selectDifficulty.value === 'easy') {
-        time = '100';
-    } else if (selectDifficulty.value === 'medium') {
-        time = '60';
-    } else {
-        time = '30';
-    }
-    flips = '0';
+    startGameButton.addEventListener('click', hideStartPage);
+    // startGameButton.addEventListener('click', startGame);
+    startGameButton.addEventListener('click', generateCards);
+
+    // if (selectDifficulty.value === 'easy') {
+    //     time = '100';
+    // } else if (selectDifficulty.value === 'medium') {
+    //     time = '60';
+    // } else {
+    //     time = '30';
+    // }
+    // flips = '0';
 }
+
+// function gamePlay() { }
 
 /** This function generates cards into the game-container section */
 function generateCards() {
-
     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
     // randomise the array  
     cardInfo.sort(() => Math.random() - 0.5);
@@ -141,9 +137,17 @@ function generateCards() {
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
     }
+    for (let card of gameCards) {
+        card.addEventListener('click', turnCard);
+        card.addEventListener('click', timeGame);
+        card.addEventListener('click', flipCard);
+        card.addEventListener('click', checkMatch);
+        card.addEventListener('click', wonGame);
+        card.addEventListener('click', countFlip);
+        card.addEventListener('click', disableGame);
+        card.addEventListener('click', audioFlipPlay);
+    }
 }
-
-generateCards();
 
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
@@ -161,17 +165,12 @@ function turnCard() {
  */
 function flipCard() {
     this.classList.add('flipCard');
-    audioFlip.play();
     console.log('flip working');
 }
 
-for (let card of gameCards) {
-    card.addEventListener('click', turnCard);
-    card.addEventListener('click', flipCard);
-    card.addEventListener('click', checkMatch);
-    card.addEventListener('click', wonGame);
-    card.addEventListener('click', countFlip);
-    card.addEventListener('click', disableGame);
+function audioFlipPlay() {
+    audioFlip.play();
+    console.log('audio.flip');
 }
 
 /**
@@ -240,7 +239,6 @@ function wonGame() {
         buttonWon.addEventListener('click', function () { location.reload(); });
     }
 }
-
 
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
