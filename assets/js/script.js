@@ -95,20 +95,24 @@ document.addEventListener('DOMContentLoaded', startGame);
 
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
-    // startGameButton.addEventListener('click', startGame);
     startGameButton.addEventListener('click', generateCards);
-
-    // if (selectDifficulty.value === 'easy') {
-    //     time = '100';
-    // } else if (selectDifficulty.value === 'medium') {
-    //     time = '60';
-    // } else {
-    //     time = '30';
-    // }
-    // flips = '0';
 }
 
-// function gamePlay() { }
+function restartGame() {
+    if (selectDifficulty.value === 'easy') {
+        timeCount.textContent = '100';
+    } else if (selectDifficulty.value === 'medium') {
+        timeCount.textContent = '60';
+    } else {
+        timeCount.textContent = '30';
+    }
+    flipCount.textContent = '0';
+    for (let card of gameCards) {
+        card.classList.remove('toggleCard');
+    }
+}
+
+restartButton.addEventListener('click', restartGame);
 
 /** This function generates cards into the game-container section */
 function generateCards() {
@@ -228,7 +232,6 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-
             winningPage.classList.remove('won-game-hidden');
             winningPage.classList.add('won-game-show');
             winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
@@ -236,7 +239,7 @@ function wonGame() {
         }, 2000);
 
         // button on winning page to refresh the browser and restart the game
-        buttonWon.addEventListener('click', function () { location.reload(); });
+        // buttonWon.addEventListener('click', function () { location.reload(); });
     }
 }
 
@@ -314,7 +317,7 @@ function lostGame() {
         losingBanner.classList.remove('lost-game-hidden');
         losingBanner.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
-        button.addEventListener('click', function () { location.reload(); });
+        // button.addEventListener('click', function () { location.reload(); });
         losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
@@ -323,7 +326,7 @@ function lostGame() {
 setInterval(lostGame, 100);
 
 //button to give the user the opportunity to restart the game at any time
-restartButton.addEventListener('click', function () { location.reload(); });
+// restartButton.addEventListener('click', function () { location.reload(); });
 
 // // add event default to click functions?
 // // add sound?
