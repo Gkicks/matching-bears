@@ -24,7 +24,7 @@ const cardInfo = [
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
 ];
-const cards = document.getElementsByClassName('card');
+// const cards = document.getElementsByClassName('card');
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
 const toggledCards = document.getElementsByClassName('toggleCard');
@@ -329,6 +329,8 @@ function restartGame() {
         card.style.pointerEvents = 'all';
     }
     matchedCards.length = 0;
+    gameCards.length = 0;
+    // cards.length = 0;
     document.getElementById("select-difficulty").disabled = false;
     abort = true;
     difficulty();
