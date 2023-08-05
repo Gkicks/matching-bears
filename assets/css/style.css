@@ -48,7 +48,7 @@ body {
     border-radius: 25px;
     margin: 2vh 30%;
     padding: 10px 5px;
-    border: 2px solid #4D3B32;
+    border: 1px solid #4D3B32;
 }
 
 .instructions-hidden {
@@ -314,9 +314,12 @@ body {
 /* so all buttons type elements increase slightly on hover */
 button:hover,
 #how-to-play-title:hover,
-#start-button:hover {
-    transition: all 2s ease-out;
-    transform: scale(1.1);
+#start-button:hover,
+#restart-game:hover {
+    transition: all .3s ease;
+    background: #4D3B32;
+    color: #D5BDA9;
+    border: 1px solid #D5BDA9;
 }
 
 /* 404.html page */
