@@ -254,24 +254,21 @@ body {
 }
 
 /* winning page / losing page to appear when the user has either matched all the cards or run out of time */
-.won-game.hidden,
-.lost-game-hidden {
+.end-game.hidden {
     height: 0%;
     width: 0%;
     visibility: hidden;
     opacity: 0;
 }
 
-#winning-title,
-#losing-title {
+#end-game-title {
     font-size: 5em;
     color: #4D3B32;
     text-align: center;
 }
 
 /* refreshes the document and takes the user back to the start of the game */
-.won-game-show button,
-.lost-game-show button {
+.end-game-show button {
     height: 10vh;
     width: 50%;
     text-align: center;
@@ -284,16 +281,14 @@ body {
     pointer-events: all;
 }
 
-.won-game-hidden button,
-.lost-game-hidden button {
+.end-game-hidden button {
     visibility: hidden;
     height: 0;
     width: 0;
 }
 
 /* To make the congratulations screen appear slowly */
-.won-game-show,
-.lost-game-show {
+.end-game-show {
     visibility: visible;
     height: 100%;
     width: 100%;
@@ -303,10 +298,10 @@ body {
     top: 0;
     padding-top: 25vh;
     background: #F6F4F3;
-    animation: won-grow 2s forwards;
+    animation: end-grow 2s forwards;
 }
 
-@keyframes won-grow {
+@keyframes end-grow {
     from {
         opacity: 0;
     }
