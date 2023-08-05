@@ -1,12 +1,60 @@
-/*jshint esversion: 6 */
-
-// to display the how to play instructions with the 'how to play' area is clicked 
-// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
+// global variables
 const howToPlay = document.querySelector('#how-to-play');
 const howToPlayTitle = document.querySelector('#how-to-play-title');
 const instructions = document.querySelector('#instructions-div');
+const startGameButton = document.getElementById('start-button');
+const startGameDiv = document.querySelector('#start-game-div-id');
+const input = document.querySelector('#enter-name');
+const cardArea = document.getElementById('game-container');
+const cardInfo = [
+    { name: 'bearOne', image: 'assets/images/bear-one.webp' },
+    { name: 'bearOne', image: 'assets/images/bear-one.webp' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+];
+const cards = document.querySelectorAll('.card');
+const cardFronts = document.getElementsByClassName('cardFront');
+const flippedCards = document.getElementsByClassName('flipCard');
+const toggledCards = document.getElementsByClassName('toggleCard');
+// an array for the cards to go in when generated
+let gameCards = [];
+// an array for the cards to go in when matched
+let matchedCards = [];
+const flipCount = document.getElementById('flips');
+let flips = 0;
+flipCount.textContent = flips;
+const winningPage = document.getElementById('won-game');
+const winningPageHeading = document.querySelector('#winning-title');
+// const flipsTaken = flipCount.textContent;
+const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
+const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
+const timeCount = document.getElementById('time');
+let time = '100';
+timeCount.textContent = time;
+// const timeRemaining = timeCount.textContent;
+const selectDifficulty = document.getElementById('select-difficulty');
+const losingBanner = document.getElementById('lost-game');
+const losingBannerHeading = document.querySelector('#losing-title');
+const buttonLost = document.getElementById('restart-lost');
+const restartButton = document.getElementById('restart-game');
+const buttonWon = document.getElementById('restart-won');
+
+// to display the how to play instructions with the 'how to play' area is clicked 
+// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
 let state = 0;
-howToPlayTitle.addEventListener('click', function () {
+function howToPlayInstructions() {
     if (state == 0) {
         instructions.classList.add('instructions-visable');
         instructions.classList.remove('instructions-hidden');
@@ -21,17 +69,17 @@ howToPlayTitle.addEventListener('click', function () {
         howToPlay.classList.remove('howToPlayVisible');
         state = 0;
     }
-});
+}
+
+howToPlayTitle.addEventListener('click', howToPlayInstructions);
 
 // to move from the start screen to the main screen
-const startGameButton = document.getElementById('start-button');
-const startGame = document.querySelector('#start-game-div-id');
-const input = document.querySelector('#enter-name');
 // hides the start-game-div by removing the id and putting in a hide-div class
-startGameButton.addEventListener('click', function mainPage(event) {
+
+function hideStartPage(event) {
     if (input.value.length > 0) {
-        startGame.removeAttribute('id');
-        startGame.classList.add('hide-div');
+        startGameDiv.removeAttribute('id');
+        startGameDiv.classList.add('hide-div');
         input.removeAttribute('id');
         input.classList.add('hide-div');
         startGameButton.removeAttribute('id');
@@ -41,59 +89,60 @@ startGameButton.addEventListener('click', function mainPage(event) {
         howToPlay.classList.add('hide-div');
         event.preventDefault();
     }
-});
+}
+
+document.addEventListener('DOMContentLoaded', startGame);
+
+function startGame() {
+    startGameButton.addEventListener('click', hideStartPage);
+    startGameButton.addEventListener('click', generateCards);
+}
+
 
 /** This function generates cards into the game-container section */
 function generateCards() {
-    const cardArea = document.getElementById('game-container');
-    const cardInfo = [
-        { name: 'bearOne', image: 'assets/images/bear-one.webp' },
-        { name: 'bearOne', image: 'assets/images/bear-one.webp' },
-        { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-        { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        // { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-        // { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-    ];
-    // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
-    // randomise the array  
+    //     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
+    //     // randomise the array  
     cardInfo.sort(() => Math.random() - 0.5);
-    // create the HTML
+    //     // create the HTML
     for (let i = 0; i < cardInfo.length; i++) {
         // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
-        const cards = document.createElement('div');
+        let cardsDiv = document.createElement('div');
         // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
         // add cards
-        cards.classList.add('card');
-        cards.setAttribute('name', cardInfo[i].name);
-        cardArea.appendChild(cards);
+        cardsDiv.classList.add('card');
+        cardsDiv.setAttribute('name', cardInfo[i].name);
+        cardArea.appendChild(cardsDiv);
         // add card front, showing the image, to each card
-        const cardFront = document.createElement('img');
+        let cardFront = document.createElement('img');
         cardFront.classList.add('cardFront');
         cardFront.setAttribute('src', cardInfo[i].image);
         cardFront.setAttribute('alt', 'image of a bear');
-        cards.appendChild(cardFront);
+        cardsDiv.appendChild(cardFront);
         // add card back to each card
-        const cardBack = document.createElement('div');
+        let cardBack = document.createElement('div');
         cardBack.textContent = '?';
         cardBack.classList.add('cardBack');
-        cards.appendChild(cardBack);
+        cardsDiv.appendChild(cardBack);
+        gameCards.push(cardsDiv);
+
+        for (let card of gameCards) {
+            card.addEventListener('click', turnCard);
+            card.addEventListener('click', abortTime);
+            card.addEventListener('click', timeGame);
+            card.addEventListener('click', flipCard);
+            // card.addEventListener('click', abortTime);
+            // card.addEventListener('click', function () {
+            //     if (abort === false) {
+            card.addEventListener('click', checkMatch);
+            card.addEventListener('click', wonGame);
+            card.addEventListener('click', countFlip);
+            card.addEventListener('click', disableGame);
+            card.addEventListener('click', disableDifficulty);
+            card.addEventListener('click', audioPlay);
+        }
     }
 }
-
-generateCards();
-
-let gameCards = document.querySelectorAll('.card');
-const cardFronts = document.getElementsByClassName('cardFront');
 
 // https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
@@ -101,7 +150,9 @@ const cardFronts = document.getElementsByClassName('cardFront');
  */
 function turnCard() {
     this.classList.toggle('toggleCard');
-};
+}
+
+
 
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
 // https://foolishdeveloper.com/how-to-play-sound-on-click-using-javascript/
@@ -109,33 +160,27 @@ function turnCard() {
  * This function add a class of 'flipCard' and sound effect to any card that is clicked
  */
 function flipCard() {
-    audio = new Audio('assets/audio/card-flip-audio.mp3');
-    audio.play();
     this.classList.add('flipCard');
 }
 
-const flippedCards = document.getElementsByClassName('flipCard');
 
-// an array for the cards to go in when matched
-let matchedCards = [];
+function audioPlay() {
+    if (flippedCards.length === '2' && flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+        audioFlip.play();
+    } else {
+        audioMatch.play();
+    }
+}
 
 /**
 * This function compares the names of the two flipped cards and check if they match
 */
 function checkMatch() {
-
-    // const button = document.getElementById('restart-won');
-
     // function doesn't execute until it's checked that two cards have been flipped
     if (flippedCards.length === 2) {
 
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-
-            setTimeout(function () {
-                audio = new Audio('assets/audio/card-match-audio.mp3');
-                audio.play();
-            }, 700);
 
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
@@ -173,7 +218,6 @@ function wonGame() {
         // delays animation by half a second to improve user experience
         setTimeout(function () {
             // adds the won-game-bears class which causes the cards to have a wiggle animation
-            // const cardFronts = document.getElementsByClassName('cardFront');
             for (let card of cardFronts) {
                 card.classList.add('won-game-bears');
             }
@@ -181,41 +225,20 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-            const winningPage = document.getElementById('won-game');
-            const winningPageHeading = document.querySelector('#winning-title');
-            const timeCount = document.getElementById('time');
-            const timeRemaining = timeCount.textContent;
-            const flipCount = document.getElementById('flips');
-            const flipsTaken = flipCount.textContent;
             winningPage.classList.remove('won-game-hidden');
             winningPage.classList.add('won-game-show');
             winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
-                    ${flipsTaken} flips and with ${timeRemaining} seconds remaining. Press below to start a new game:`;
+                    ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
 
-        // button on winning page to refresh the browser and restart the game
-        button = document.getElementById('restart-won');
-        button.addEventListener('click', function () { location.reload(); });
+        // button on winning page to refresh the browser and restart the game;
+        buttonWon.addEventListener('click', restartGame);
     }
 }
-
-// function listeners {
-for (let card of gameCards) {
-    card.addEventListener('click', flipCard);
-    card.addEventListener('click', turnCard);
-    card.addEventListener('click', checkMatch);
-    card.addEventListener('click', wonGame);
-    card.addEventListener('click', countFlip);
-    card.addEventListener('click', disableGame);
-}
-// }
-
-// document.addEventListener('');
 
 /**
  * This function disables the event listeners while there are two unmatched cards flipped
  */
-const toggledCards = document.getElementsByClassName('toggleCard');
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
@@ -238,11 +261,8 @@ function disableGame() {
     }
 }
 
+// this fixes a delay for the user being able to click the next card
 setInterval(disableGame, 500);
-
-const flipCount = document.getElementById('flips');
-let flips = 0;
-flipCount.textContent = flips;
 
 function countFlip() {
     flipCount.textContent = flips + 1;
@@ -250,50 +270,43 @@ function countFlip() {
 }
 
 // create function that gives different time limits depending on the difficulty selected
-const timeCount = document.getElementById('time');
-let time = '100';
-timeCount.textContent = time;
-const selectDifficulty = document.getElementById('select-difficulty');
-
 function difficulty() {
     if (selectDifficulty.value === 'easy') {
-        let time = '100';
-        timeCount.textContent = time;
+        time = 100;
+        timeCount.textContent = '100';
     } else if (selectDifficulty.value === 'medium') {
-        let time = '60';
-        timeCount.textContent = time;
+        time = 60;
+        timeCount.textContent = '60';
     } else {
-        let time = '5';
-        timeCount.textContent = time;
+        time = 30;
+        timeCount.textContent = '5';
     }
-};
+}
 
 selectDifficulty.addEventListener('change', difficulty);
 
-// https://www.w3schools.com/jsref/prop_select_disabled.asp
 function disableDifficulty() {
+    // https://www.w3schools.com/jsref/prop_select_disabled.asp
     document.getElementById("select-difficulty").disabled = true;
-}
-
-for (let card of gameCards) {
-    card.addEventListener('click', disableDifficulty);
 }
 
 /**
  * This function decreases the timer by one every second
  */
+let abort = false;
 function timeGame() {
-    let currentTime = timeCount.innerHTML;
-    currentTime--;
-    timeCount.innerHTML = currentTime;
-    setTimeout(timeGame, 1000);
-    for (let card of gameCards) {
-        card.removeEventListener('click', timeGame);
+    if (abort) {
+        return;
+    } else {
+        let currentTime = timeCount.innerHTML;
+        currentTime--;
+        timeCount.innerHTML = currentTime;
+        setTimeout(timeGame, 1000);
+        // to stop the function being called with every click
+        for (let card of gameCards) {
+            card.removeEventListener('click', timeGame);
+        }
     }
-}
-
-for (let card of gameCards) {
-    card.addEventListener('click', timeGame);
 }
 
 /**
@@ -304,13 +317,11 @@ function lostGame() {
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
         // losing banner to appear
-        const losingBanner = document.getElementById('lost-game');
-        const losingBannerHeading = document.querySelector('#losing-title');
+
         losingBanner.classList.remove('lost-game-hidden');
         losingBanner.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
-        const button = document.getElementById('restart-lost');
-        button.addEventListener('click', function () { location.reload(); });
+        buttonLost.addEventListener('click', restartGame);
         losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
@@ -318,15 +329,40 @@ function lostGame() {
 
 setInterval(lostGame, 100);
 
-//button to give the user the opportunity to restart the game at any time
-const restartButton = document.getElementById('restart-game');
-restartButton.addEventListener('click', function () {
-    location.reload();
-    // https://sabe.io/blog/javascript-yes-no-confirmation-box?utm_content=cmp-true
-    confirm('Are you sure you want to restart the game?');
-});
+function restartGame() {
+    for (let card of gameCards) {
+        card.classList.remove('toggleCard');
+        card.style.pointerEvents = 'all';
+    }
+    document.getElementById("select-difficulty").disabled = false;
+    abort = true;
+    difficulty();
+    flips = 0;
+    flipCount.textContent = 0;
+    // https://stackoverflow.com/questions/14555214/remove-all-divs-from-in-a-parent-div
+    document.getElementById('game-container').innerHTML = "";
+    generateCards();
+    losingBanner.classList.add('lost-game-hidden');
+    losingBanner.classList.remove('lost-game-show');
+    losingBannerHeading.textContent = '';
+    winningPage.classList.add('won-game-hidden');
+    winningPage.classList.remove('won-game-show');
+    winningPageHeading.textContent = '';
+}
 
-// add event default to click functions?
-// add sound?
-// make the website responsive
-// add 404 page
+function abortTime() {
+    if (abort === true) {
+        abort = false;
+    }
+}
+
+for (let card of gameCards) {
+    card.addEventListener('click, abortTime');
+}
+
+restartButton.addEventListener('click', restartGame);
+
+// // add event default to click functions?
+// // add sound?
+// // make the website responsive
+// // add 404 page
