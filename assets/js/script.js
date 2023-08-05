@@ -24,7 +24,6 @@ const cardInfo = [
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
 ];
-// const cards = document.getElementsByClassName('card');
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
 const toggledCards = document.getElementsByClassName('toggleCard');
@@ -37,19 +36,14 @@ let flips = 0;
 flipCount.textContent = flips;
 const endPage = document.getElementById('end-game');
 const endPageHeading = document.querySelector('#end-game-title');
-// const flipsTaken = flipCount.textContent;
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
-// const timeRemaining = timeCount.textContent;
 const selectDifficulty = document.getElementById('select-difficulty');
-// const losingBanner = document.getElementById('lost-game');
-// const losingBannerHeading = document.querySelector('#losing-title');
 const endGameButton = document.getElementById('end-game-restart');
 const restartButton = document.getElementById('restart-game');
-// const buttonWon = document.getElementById('restart-won');
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
@@ -98,7 +92,6 @@ function startGame() {
     startGameButton.addEventListener('click', generateCards);
 }
 
-
 /** This function generates cards into the game-container section */
 function generateCards() {
     //     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
@@ -126,18 +119,38 @@ function generateCards() {
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
 
-        for (let card of gameCards) {
-            card.addEventListener('click', turnCard);
-            card.addEventListener('click', abortTime);
-            card.addEventListener('click', timeGame);
-            card.addEventListener('click', flipCard);
-            card.addEventListener('click', checkMatch);
-            card.addEventListener('click', wonGame);
-            card.addEventListener('click', countFlip);
-            card.addEventListener('click', disableGame);
-            card.addEventListener('click', disableDifficulty);
-            card.addEventListener('click', audioPlay);
-        }
+        addCardEventListeners();
+
+    }
+}
+
+function addCardEventListeners() {
+    for (let card of gameCards) {
+        card.addEventListener('click', turnCard);
+        card.addEventListener('click', abortTime);
+        card.addEventListener('click', timeGame);
+        card.addEventListener('click', flipCard);
+        card.addEventListener('click', checkMatch);
+        card.addEventListener('click', wonGame);
+        card.addEventListener('click', countFlip);
+        card.addEventListener('click', disableGame);
+        card.addEventListener('click', disableDifficulty);
+        card.addEventListener('click', audioPlay);
+    }
+}
+
+function removeCardEventListeners() {
+    for (let card of gameCards) {
+        card.removeEventListener('click', turnCard);
+        card.removeEventListener('click', abortTime);
+        card.removeEventListener('click', timeGame);
+        card.removeEventListener('click', flipCard);
+        card.removeEventListener('click', checkMatch);
+        card.removeEventListener('click', wonGame);
+        card.removeEventListener('click', countFlip);
+        card.removeEventListener('click', disableGame);
+        card.removeEventListener('click', disableDifficulty);
+        card.removeEventListener('click', audioPlay);
     }
 }
 
@@ -208,7 +221,7 @@ function checkMatch() {
  */
 function wonGame() {
     // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
-    if (matchedCards.length === cards.length) {
+    if (matchedCards.length === gameCards.length) {
         // delays animation by half a second to improve user experience
         setTimeout(function () {
             // adds the won-game-bears class which causes the cards to have a wiggle animation
@@ -236,22 +249,9 @@ function wonGame() {
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
-        for (let card of gameCards) {
-            card.removeEventListener('click', turnCard);
-            card.removeEventListener('click', flipCard);
-            card.removeEventListener('click', checkMatch);
-            card.removeEventListener('click', wonGame);
-            card.removeEventListener('click', countFlip);
-        }
+        removeCardEventListeners();
     } else {
-        for (let card of gameCards) {
-            card.addEventListener('click', turnCard);
-            card.addEventListener('click', flipCard);
-            card.addEventListener('click', checkMatch);
-            card.addEventListener('click', wonGame);
-            card.addEventListener('click', countFlip);
-            card.addEventListener('click', disableGame);
-        }
+        addCardEventListeners();
     }
 }
 
@@ -311,7 +311,6 @@ function lostGame() {
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
         // losing banner to appear
-
         endPage.classList.remove('end-game-hidden');
         endPage.classList.add('end-game-show');
         // button on losing page to refresh the browser and restart the game
@@ -330,7 +329,6 @@ function restartGame() {
     }
     matchedCards.length = 0;
     gameCards.length = 0;
-    // cards.length = 0;
     document.getElementById("select-difficulty").disabled = false;
     abort = true;
     difficulty();
@@ -342,9 +340,6 @@ function restartGame() {
     endPage.classList.add('end-game-hidden');
     endPage.classList.remove('end-game-show');
     endPageHeading.textContent = '';
-    // winningPage.classList.add('end-game-hidden');
-    // winningPage.classList.remove('end-game-show');
-    // winningPageHeading.textContent = '';
 }
 
 function abortTime() {
@@ -353,9 +348,9 @@ function abortTime() {
     }
 }
 
-for (let card of gameCards) {
-    card.addEventListener('click, abortTime');
-}
+// for (let card of gameCards) {
+//     card.addEventListener('click, abortTime');
+// }
 
 restartButton.addEventListener('click', restartGame);
 

@@ -136,9 +136,14 @@ body {
     background: #D5BDA9;
     border-radius: 25px;
     margin-left: 2vw;
-    padding: 5px;
+    padding: 7px;
     border: 2px solid #4D3B32;
     float: right;
+}
+
+#select-difficulty:hover {
+    background: #4D3B32;
+    color: #D5BDA9;
 }
 
 /* card playing area */
