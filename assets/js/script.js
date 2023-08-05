@@ -24,7 +24,7 @@ const cardInfo = [
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
 ];
-const cards = document.querySelectorAll('.card');
+const cards = document.getElementsByClassName('card');
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
 const toggledCards = document.getElementsByClassName('toggleCard');
@@ -35,8 +35,8 @@ let matchedCards = [];
 const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
-const winningPage = document.getElementById('won-game');
-const winningPageHeading = document.querySelector('#winning-title');
+const endPage = document.getElementById('end-game');
+const endPageHeading = document.querySelector('#end-game-title');
 // const flipsTaken = flipCount.textContent;
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
@@ -45,11 +45,11 @@ let time = '100';
 timeCount.textContent = time;
 // const timeRemaining = timeCount.textContent;
 const selectDifficulty = document.getElementById('select-difficulty');
-const losingBanner = document.getElementById('lost-game');
-const losingBannerHeading = document.querySelector('#losing-title');
-const buttonLost = document.getElementById('restart-lost');
+// const losingBanner = document.getElementById('lost-game');
+// const losingBannerHeading = document.querySelector('#losing-title');
+const endGameButton = document.getElementById('end-game-restart');
 const restartButton = document.getElementById('restart-game');
-const buttonWon = document.getElementById('restart-won');
+// const buttonWon = document.getElementById('restart-won');
 
 // to display the how to play instructions with the 'how to play' area is clicked 
 // https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
@@ -131,9 +131,6 @@ function generateCards() {
             card.addEventListener('click', abortTime);
             card.addEventListener('click', timeGame);
             card.addEventListener('click', flipCard);
-            // card.addEventListener('click', abortTime);
-            // card.addEventListener('click', function () {
-            //     if (abort === false) {
             card.addEventListener('click', checkMatch);
             card.addEventListener('click', wonGame);
             card.addEventListener('click', countFlip);
@@ -152,8 +149,6 @@ function turnCard() {
     this.classList.toggle('toggleCard');
 }
 
-
-
 // https://linuxhint.com/add-class-to-clicked-element-using-javascript/
 // https://foolishdeveloper.com/how-to-play-sound-on-click-using-javascript/
 /**
@@ -162,7 +157,6 @@ function turnCard() {
 function flipCard() {
     this.classList.add('flipCard');
 }
-
 
 function audioPlay() {
     if (flippedCards.length === '2' && flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
@@ -214,7 +208,7 @@ function checkMatch() {
  */
 function wonGame() {
     // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
-    if (matchedCards.length === gameCards.length) {
+    if (matchedCards.length === cards.length) {
         // delays animation by half a second to improve user experience
         setTimeout(function () {
             // adds the won-game-bears class which causes the cards to have a wiggle animation
@@ -225,14 +219,14 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-            winningPage.classList.remove('won-game-hidden');
-            winningPage.classList.add('won-game-show');
-            winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
+            endPage.classList.remove('end-game-hidden');
+            endPage.classList.add('end-game-show');
+            endPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
                     ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
 
         // button on winning page to refresh the browser and restart the game;
-        buttonWon.addEventListener('click', restartGame);
+        endGameButton.addEventListener('click', restartGame);
     }
 }
 
@@ -318,11 +312,11 @@ function lostGame() {
     if (timeCount.textContent === '0') {
         // losing banner to appear
 
-        losingBanner.classList.remove('lost-game-hidden');
-        losingBanner.classList.add('lost-game-show');
+        endPage.classList.remove('lost-game-hidden');
+        endPage.classList.add('lost-game-show');
         // button on losing page to refresh the browser and restart the game
-        buttonLost.addEventListener('click', restartGame);
-        losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
+        // buttonLost.addEventListener('click', restartGame);
+        endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
 }
@@ -342,12 +336,12 @@ function restartGame() {
     // https://stackoverflow.com/questions/14555214/remove-all-divs-from-in-a-parent-div
     document.getElementById('game-container').innerHTML = "";
     generateCards();
-    losingBanner.classList.add('lost-game-hidden');
-    losingBanner.classList.remove('lost-game-show');
-    losingBannerHeading.textContent = '';
-    winningPage.classList.add('won-game-hidden');
-    winningPage.classList.remove('won-game-show');
-    winningPageHeading.textContent = '';
+    endPage.classList.add('end-game-hidden');
+    endPage.classList.remove('end-game-show');
+    endPageHeading.textContent = '';
+    // winningPage.classList.add('end-game-hidden');
+    // winningPage.classList.remove('end-game-show');
+    // winningPageHeading.textContent = '';
 }
 
 function abortTime() {
