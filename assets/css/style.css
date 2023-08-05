@@ -8,6 +8,10 @@
     box-sizing: border-box;
 }
 
+html {
+    overflow: hidden;
+}
+
 body {
     background: #F6F4F3;
     height: 100%;
@@ -17,6 +21,7 @@ body {
     align-items: center;
     position: relative;
     font-family: 'playfair display', cursive;
+    overflow: hidden;
 }
 
 /* start page which appears when the user first loads the page */
@@ -229,6 +234,19 @@ body {
     border: 2px solid #4D3B32;
     margin: 2vh 0;
     border-radius: 25px;
+}
+
+/* sytling for audio button */
+#audio-option {
+    position: absolute;
+    top: 25vh;
+    left: 20vw;
+    height: 8vh;
+    width: 8vh;
+    background: #BA9D8C;
+    border: 1px solid #312C2D;
+    color: #312C2D;
+    border-radius: 5px;
 }
 
 /* animation so the bear images wiggle when the user has matched them all */
