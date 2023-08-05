@@ -312,10 +312,10 @@ function lostGame() {
     if (timeCount.textContent === '0') {
         // losing banner to appear
 
-        endPage.classList.remove('lost-game-hidden');
-        endPage.classList.add('lost-game-show');
+        endPage.classList.remove('end-game-hidden');
+        endPage.classList.add('end-game-show');
         // button on losing page to refresh the browser and restart the game
-        // buttonLost.addEventListener('click', restartGame);
+        endGameButton.addEventListener('click', restartGame);
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
@@ -328,6 +328,7 @@ function restartGame() {
         card.classList.remove('toggleCard');
         card.style.pointerEvents = 'all';
     }
+    matchedCards.length = 0;
     document.getElementById("select-difficulty").disabled = false;
     abort = true;
     difficulty();
