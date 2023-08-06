@@ -87,14 +87,17 @@ function hideStartPage(event) {
         instructions.classList.add('hide-div');
         howToPlay.classList.add('hide-div');
         event.preventDefault();
-        return;
     }
 }
 
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
-    return;
+    startGameButton.addEventListener('click', showAudioChoice);
+}
+
+function showAudioChoice() {
+    audioChoice.style.visibility = 'visible';
 }
 
 /** This function generates cards into the game-container section */
@@ -295,7 +298,7 @@ function lostGame() {
         endPage.classList.remove('end-game-hidden');
         endPage.classList.add('end-game-show');
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
-                 Press below to start a new game:`;
+                 Press below to try again:`;
     }
 }
 
