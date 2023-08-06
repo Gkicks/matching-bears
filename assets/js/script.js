@@ -24,10 +24,6 @@ const cardInfo = [
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
     { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
 ];
-<<<<<<< HEAD
-=======
-const cards = document.querySelectorAll('.card');
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
 const toggledCards = document.getElementsByClassName('toggleCard');
@@ -38,35 +34,21 @@ let matchedCards = [];
 const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
-<<<<<<< HEAD
 const endPage = document.getElementById('end-game');
 const endPageHeading = document.querySelector('#end-game-title');
-=======
-const winningPage = document.getElementById('won-game');
-const winningPageHeading = document.querySelector('#winning-title');
-// const flipsTaken = flipCount.textContent;
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
-<<<<<<< HEAD
 const selectDifficulty = document.getElementById('select-difficulty');
 const endGameButton = document.getElementById('end-game-restart');
 const restartButton = document.getElementById('restart-game');
-=======
-// const timeRemaining = timeCount.textContent;
-const selectDifficulty = document.getElementById('select-difficulty');
-const losingBanner = document.getElementById('lost-game');
-const losingBannerHeading = document.querySelector('#losing-title');
-const buttonLost = document.getElementById('restart-lost');
-const restartButton = document.getElementById('restart-game');
-const buttonWon = document.getElementById('restart-won');
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
+
+// to run statGame function when the DOM has loaded
+document.addEventListener('DOMContentLoaded', startGame);
 
 // to display the how to play instructions with the 'how to play' area is clicked 
-// https://stackoverflow.com/questions/55147410/html-javascript-button-click-again-to-undo
 let state = 0;
 function howToPlayInstructions() {
     if (state == 0) {
@@ -105,27 +87,19 @@ function hideStartPage(event) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', startGame);
 
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
 }
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
 
 /** This function generates cards into the game-container section */
 function generateCards() {
-    //     // learned from website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript/#:~:text=3%20Using%20Lodash-,Using%20Sort()%20Function,sort(()%20%3D%3E%20Math.
-    //     // randomise the array  
+    // randomise the array  
     cardInfo.sort(() => Math.random() - 0.5);
-    //     // create the HTML
+    // create the HTML
     for (let i = 0; i < cardInfo.length; i++) {
-        // learnt from https://stackoverflow.com/questions/5886144/create-divs-from-array-elements
         let cardsDiv = document.createElement('div');
-        // https://stackoverflow.com/questions/1988514/javascript-css-how-to-add-and-remove-multiple-css-classes-to-an-element
         // add cards
         cardsDiv.classList.add('card');
         cardsDiv.setAttribute('name', cardInfo[i].name);
@@ -143,7 +117,6 @@ function generateCards() {
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
 
-<<<<<<< HEAD
         addCardEventListeners();
 
     }
@@ -179,27 +152,6 @@ function removeCardEventListeners() {
     }
 }
 
-=======
-        for (let card of gameCards) {
-            card.addEventListener('click', turnCard);
-            card.addEventListener('click', abortTime);
-            card.addEventListener('click', timeGame);
-            card.addEventListener('click', flipCard);
-            // card.addEventListener('click', abortTime);
-            // card.addEventListener('click', function () {
-            //     if (abort === false) {
-            card.addEventListener('click', checkMatch);
-            card.addEventListener('click', wonGame);
-            card.addEventListener('click', countFlip);
-            card.addEventListener('click', disableGame);
-            card.addEventListener('click', disableDifficulty);
-            card.addEventListener('click', audioPlay);
-        }
-    }
-}
-
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
-// https://www.w3schools.com/howto/howto_js_toggle_class.asp
 /**
  * This function adds or removes the class 'toggleCard' whenever a card is clicked
  */
@@ -207,10 +159,6 @@ function turnCard() {
     this.classList.toggle('toggleCard');
 }
 
-
-
-// https://linuxhint.com/add-class-to-clicked-element-using-javascript/
-// https://foolishdeveloper.com/how-to-play-sound-on-click-using-javascript/
 /**
  * This function add a class of 'flipCard' and sound effect to any card that is clicked
  */
@@ -218,10 +166,6 @@ function flipCard() {
     this.classList.add('flipCard');
 }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
 function audioPlay() {
     if (flippedCards.length === '2' && flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
         audioFlip.play();
@@ -236,16 +180,13 @@ function audioPlay() {
 function checkMatch() {
     // function doesn't execute until it's checked that two cards have been flipped
     if (flippedCards.length === 2) {
-
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
                 card.style.pointerEvents = 'none';
                 matchedCards.push(card);
             }
-
             // removes the flipCard class for those cards that have been matched. 
             // There is a setTimeout of 1.5 seconds as this is how long it takes the card to flip back. 
             // This prevents the user from being able to click it again
@@ -253,14 +194,12 @@ function checkMatch() {
             flippedCards[0].classList.remove('flipCard');
         } else {
             // code if the two flipped cards don't match
-            // https://stackoverflow.com/questions/69300285/how-to-remove-a-class-with-delay-after-a-button-is-pressed
             for (let card of flippedCards) {
                 // removes the toggleCard class so the card flip back over. One second timer set so the card still flips over before flipping back
                 setTimeout(function () {
                     card.classList.remove('toggleCard');
                 }, 1000);
             }
-
             flippedCards[0].classList.remove('flipCard');
             flippedCards[0].classList.remove('flipCard');
         }
@@ -283,24 +222,14 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-<<<<<<< HEAD
             endPage.classList.remove('end-game-hidden');
             endPage.classList.add('end-game-show');
             endPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
-=======
-            winningPage.classList.remove('won-game-hidden');
-            winningPage.classList.add('won-game-show');
-            winningPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
                     ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
 
         // button on winning page to refresh the browser and restart the game;
-<<<<<<< HEAD
         endGameButton.addEventListener('click', restartGame);
-=======
-        buttonWon.addEventListener('click', restartGame);
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
     }
 }
 
@@ -310,28 +239,9 @@ function wonGame() {
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
-<<<<<<< HEAD
         removeCardEventListeners();
     } else {
         addCardEventListeners();
-=======
-        for (let card of gameCards) {
-            card.removeEventListener('click', turnCard);
-            card.removeEventListener('click', flipCard);
-            card.removeEventListener('click', checkMatch);
-            card.removeEventListener('click', wonGame);
-            card.removeEventListener('click', countFlip);
-        }
-    } else {
-        for (let card of gameCards) {
-            card.addEventListener('click', turnCard);
-            card.addEventListener('click', flipCard);
-            card.addEventListener('click', checkMatch);
-            card.addEventListener('click', wonGame);
-            card.addEventListener('click', countFlip);
-            card.addEventListener('click', disableGame);
-        }
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
     }
 }
 
@@ -360,7 +270,6 @@ function difficulty() {
 selectDifficulty.addEventListener('change', difficulty);
 
 function disableDifficulty() {
-    // https://www.w3schools.com/jsref/prop_select_disabled.asp
     document.getElementById("select-difficulty").disabled = true;
 }
 
@@ -390,46 +299,33 @@ function timeGame() {
 function lostGame() {
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
-        // losing banner to appear
-<<<<<<< HEAD
+        // end page to appear
         endPage.classList.remove('end-game-hidden');
         endPage.classList.add('end-game-show');
-        // button on losing page to refresh the browser and restart the game
+        // button on end page to refresh the browser and restart the game
         endGameButton.addEventListener('click', restartGame);
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
-=======
-
-        losingBanner.classList.remove('lost-game-hidden');
-        losingBanner.classList.add('lost-game-show');
-        // button on losing page to refresh the browser and restart the game
-        buttonLost.addEventListener('click', restartGame);
-        losingBannerHeading.textContent = `Sorry ${input.value} you didn't match all the bears in time! 
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
                  Press below to start a new game:`;
     }
 }
 
-setInterval(lostGame, 100);
+// to check each second if the timer has reached zero
+setInterval(lostGame, 1000);
 
 function restartGame() {
     for (let card of gameCards) {
         card.classList.remove('toggleCard');
         card.style.pointerEvents = 'all';
     }
-<<<<<<< HEAD
     matchedCards.length = 0;
     gameCards.length = 0;
-=======
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
     document.getElementById("select-difficulty").disabled = false;
     abort = true;
     difficulty();
     flips = 0;
     flipCount.textContent = 0;
-    // https://stackoverflow.com/questions/14555214/remove-all-divs-from-in-a-parent-div
     document.getElementById('game-container').innerHTML = "";
     generateCards();
-<<<<<<< HEAD
     endPage.classList.add('end-game-hidden');
     endPage.classList.remove('end-game-show');
     endPageHeading.textContent = '';
@@ -437,34 +333,10 @@ function restartGame() {
 
 function abortTime() {
     if (abort === true) {
-=======
-    losingBanner.classList.add('lost-game-hidden');
-    losingBanner.classList.remove('lost-game-show');
-    losingBannerHeading.textContent = '';
-    winningPage.classList.add('won-game-hidden');
-    winningPage.classList.remove('won-game-show');
-    winningPageHeading.textContent = '';
-}
-
-function abortTime() {
-    // console.log(abort);
-    if (abort === true) {
-        // console.log(abort);
-        // if (abort === true) {
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
         abort = false;
     }
 }
 
-<<<<<<< HEAD
-// for (let card of gameCards) {
-//     card.addEventListener('click, abortTime');
-// }
-=======
-for (let card of gameCards) {
-    card.addEventListener('click, abortTime');
-}
->>>>>>> 0f7948cab432d8f099f5686beb7074b7ed027bb9
 
 restartButton.addEventListener('click', restartGame);
 
