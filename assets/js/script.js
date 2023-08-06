@@ -329,6 +329,11 @@ function abortTime() {
 }
 
 restartButton.addEventListener('click', restartGame);
+restartButton.addEventListener('click', confirmRestart);
+
+function confirmRestart() {
+    confirm('Are you sure you want to restart the game?');
+}
 
 function audioFlipPlay() {
     audioFlip.currentTime = 0;
