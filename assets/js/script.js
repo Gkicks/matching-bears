@@ -87,17 +87,14 @@ function hideStartPage(event) {
         instructions.classList.add('hide-div');
         howToPlay.classList.add('hide-div');
         event.preventDefault();
+        return;
     }
 }
 
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
-    startGameButton.addEventListener('click', showAudioChoice);
-}
-
-function showAudioChoice() {
-    audioChoice.style.visibility = 'visible';
+    return;
 }
 
 /** This function generates cards into the game-container section */
@@ -162,10 +159,12 @@ function checkMatch() {
     if (flippedCards.length === 2) {
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-            setTimeout(function () {
-                audioMatch.currentTime = 0;
-                audioMatch.play();
-            }, 500);
+            if (audioState === 0) {
+                setTimeout(function () {
+                    audioMatch.currentTime = 0;
+                    audioMatch.play();
+                }, 500);
+            }
 
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
@@ -258,7 +257,7 @@ function difficulty() {
         timeCount.textContent = '60';
     } else {
         time = 30;
-        timeCount.textContent = '30';
+        timeCount.textContent = '5';
     }
 }
 
@@ -298,7 +297,7 @@ function lostGame() {
         endPage.classList.remove('end-game-hidden');
         endPage.classList.add('end-game-show');
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
-                 Press below to try again:`;
+                 Press below to start a new game:`;
     }
 }
 
@@ -353,11 +352,15 @@ function audioVolume() {
         audioChoiceText.classList.remove('fa-volume-high');
         audioChoiceText.classList.add('fa-volume-xmark');
         audioChoice.muted = true;
+        audioFlipPlay.muted = true;
+        // audioMatch.play().muted = true;
         audioState = 1;
     } else {
         audioChoiceText.classList.add('fa-volume-high');
         audioChoiceText.classList.remove('fa-volume-xmark');
         audioChoice.muted = false;
+        audioFlipPlay.muted = false;
+        // audioMatch.play().muted = false;
         audioState = 0;
     }
 }

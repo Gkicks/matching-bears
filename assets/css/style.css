@@ -74,7 +74,7 @@ body {
     border-radius: 25px;
 }
 
-#start-game-div-id h3 {
+#start-game-div-id>p {
     font-size: 3em;
     color: #4D3B32;
     margin: 2vh 0;
@@ -86,12 +86,6 @@ body {
     width: 60%;
     display: flex;
     justify-content: center;
-}
-
-#start-form label {
-    height: 0;
-    width: 0;
-    visibility: hidden;
 }
 
 #enter-name {
@@ -245,7 +239,6 @@ body {
 
 /* sytling for audio button */
 #audio-choice {
-    visibility: hidden;
     position: absolute;
     top: 25vh;
     left: 20vw;
@@ -528,7 +521,7 @@ button:hover,
         font-size: 0.8em;
     }
 
-    #start-game-div-id h3 {
+    #start-game-div-id>p {
         font-size: 1.5em;
         margin: 0;
     }
