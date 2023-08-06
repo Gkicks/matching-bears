@@ -132,24 +132,9 @@ function addCardEventListeners() {
         card.addEventListener('click', countFlip);
         card.addEventListener('click', disableGame);
         card.addEventListener('click', disableDifficulty);
-        card.addEventListener('click', audioPlay);
+        // card.addEventListener('click', audioPlay);
     }
 }
-
-// function removeCardEventListeners() {
-//     for (let card of gameCards) {
-//         card.removeEventListener('click', turnCard);
-//         card.removeEventListener('click', abortTime);
-//         card.removeEventListener('click', timeGame);
-//         card.removeEventListener('click', flipCard);
-//         card.removeEventListener('click', checkMatch);
-//         card.removeEventListener('click', wonGame);
-//         card.removeEventListener('click', countFlip);
-//         card.removeEventListener('click', disableGame);
-//         card.removeEventListener('click', disableDifficulty);
-//         card.removeEventListener('click', audioPlay);
-//     }
-// }
 
 /**
  * This function adds or removes the class 'toggleCard' whenever a card is clicked
@@ -163,15 +148,7 @@ function turnCard() {
  */
 function flipCard() {
     this.classList.add('flipCard');
-}
-
-function audioPlay() {
-    if (flippedCards.length === '2' && flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
-        audioFlip.play();
-    } else {
-        audioMatch.play();
-        console.log('crazy');
-    }
+    audioFlipPlay();
 }
 
 /**
@@ -182,6 +159,10 @@ function checkMatch() {
     if (flippedCards.length === 2) {
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+            setTimeout(function () {
+                audioMatch.play();
+            }, 500);
+
             // stops the matched cards being able to be clicked again and pushed the cards into a matchedCards array
             for (let card of flippedCards) {
                 card.style.pointerEvents = 'none';
@@ -348,6 +329,11 @@ function abortTime() {
 }
 
 restartButton.addEventListener('click', restartGame);
+
+function audioFlipPlay() {
+    audioFlip.currentTime = 0;
+    audioFlip.play();
+}
 
 // // add event default to click functions?
 // // add sound?
