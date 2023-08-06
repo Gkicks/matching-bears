@@ -35,7 +35,7 @@ const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
 const endPage = document.getElementById('end-game');
-const endPageHeading = document.querySelector('#end-game-title');
+const endPageHeading = document.querySelector('#end-game-paragraph');
 
 const timeCount = document.getElementById('time');
 let time = '100';
