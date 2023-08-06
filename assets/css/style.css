@@ -124,7 +124,7 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    margin: 3vh 0;
+    margin: 1vh 0;
 }
 
 /* section with difficulty selector  */
@@ -174,7 +174,7 @@ body {
     position: relative;
     background: #d5bda9;
     color: #312C2D;
-    font-size: 8vh;
+    font-size: 6vh;
     transition: transform 0.5s ease-in-out;
     transform-style: preserve-3d;
 }
@@ -237,7 +237,7 @@ body {
 }
 
 /* sytling for audio button */
-#audio-option {
+#audio-choice {
     position: absolute;
     top: 25vh;
     left: 20vw;
@@ -247,6 +247,16 @@ body {
     border: 1px solid #312C2D;
     color: #312C2D;
     border-radius: 5px;
+}
+
+.fa-solid {
+    height: 8vh;
+    width: 8vh;
+    font-size: 4vh;
+    color: #4D3B32;
+    text-align: center;
+    /* to centre vertically */
+    margin: 25% 0;
 }
 
 /* animation so the bear images wiggle when the user has matched them all */
