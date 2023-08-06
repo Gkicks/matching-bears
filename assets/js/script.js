@@ -7,22 +7,22 @@ const startGameDiv = document.querySelector('#start-game-div-id');
 const input = document.querySelector('#enter-name');
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
-    { name: 'bearOne', image: 'assets/images/bear-one.webp' },
-    { name: 'bearOne', image: 'assets/images/bear-one.webp' },
-    { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-    { name: 'bearTwo', image: 'assets/images/bear-two.webp' },
-    { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-    { name: 'bearThree', image: 'assets/images/bear-three.webp' },
-    { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-    { name: 'bearFour', image: 'assets/images/bear-four.webp' },
-    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-    { name: 'bearFive', image: 'assets/images/bear-five.webp' },
-    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-    { name: 'bearSix', image: 'assets/images/bear-six.webp' },
-    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-    { name: 'bearSeven', image: 'assets/images/bear-seven.webp' },
-    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
-    { name: 'bearEight', image: 'assets/images/bear-eight.webp' },
+    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'image of yellow bear one' },
+    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'image of yellow bear two' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'image of confused bear one' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'image of confused bear two' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'image of blue bear one' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'image of blue bear two' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'image of brown bear one' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'image of brown bear two' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'image of scary bear one' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'image of scary bear two' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'image of panda bear one' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'image of panda bear two' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'image of mouse bear one' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'image of mouse bear two' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'image of koala bear one' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'image of koala bear two' },
 ];
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
@@ -112,7 +112,7 @@ function generateCards() {
         let cardFront = document.createElement('img');
         cardFront.classList.add('cardFront');
         cardFront.setAttribute('src', cardInfo[i].image);
-        cardFront.setAttribute('alt', 'image of a bear');
+        cardFront.setAttribute('alt', cardInfo[i].alt);
         cardsDiv.appendChild(cardFront);
         // add card back to each card
         let cardBack = document.createElement('div');
