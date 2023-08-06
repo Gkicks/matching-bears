@@ -175,6 +175,7 @@ body {
     background: #d5bda9;
     color: #312C2D;
     font-size: 6vh;
+    padding: 25% 0;
     transition: transform 0.5s ease-in-out;
     transform-style: preserve-3d;
 }

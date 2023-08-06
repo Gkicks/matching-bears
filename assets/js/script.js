@@ -28,9 +28,9 @@ const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
 const toggledCards = document.getElementsByClassName('toggleCard');
 // an array for the cards to go in when generated
-let gameCards = [];
+const gameCards = [];
 // an array for the cards to go in when matched
-let matchedCards = [];
+const matchedCards = [];
 const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
@@ -46,6 +46,7 @@ const restartButton = document.getElementById('restart-game');
 const audioChoice = document.getElementById('audio-choice');
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
+const audioChoiceText = document.getElementById('font-awesome');
 
 // to run statGame function when the DOM has loaded
 document.addEventListener('DOMContentLoaded', startGame);
@@ -86,12 +87,14 @@ function hideStartPage(event) {
         instructions.classList.add('hide-div');
         howToPlay.classList.add('hide-div');
         event.preventDefault();
+        return;
     }
 }
 
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
+    return;
 }
 
 /** This function generates cards into the game-container section */
@@ -118,23 +121,18 @@ function generateCards() {
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
 
-        addCardEventListeners();
+        for (let card of gameCards) {
+            card.addEventListener('click', turnCard);
+            card.addEventListener('click', abortTime);
+            card.addEventListener('click', timeGame);
+            card.addEventListener('click', flipCard);
+            card.addEventListener('click', checkMatch);
+            card.addEventListener('click', wonGame);
+            card.addEventListener('click', countFlip);
+            card.addEventListener('click', disableGame);
+            card.addEventListener('click', disableDifficulty);
+        }
 
-    }
-}
-
-function addCardEventListeners() {
-    for (let card of gameCards) {
-        card.addEventListener('click', turnCard);
-        card.addEventListener('click', abortTime);
-        card.addEventListener('click', timeGame);
-        card.addEventListener('click', flipCard);
-        card.addEventListener('click', checkMatch);
-        card.addEventListener('click', wonGame);
-        card.addEventListener('click', countFlip);
-        card.addEventListener('click', disableGame);
-        card.addEventListener('click', disableDifficulty);
-        // card.addEventListener('click', audioPlay);
     }
 }
 
@@ -162,6 +160,7 @@ function checkMatch() {
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
             setTimeout(function () {
+                audioMatch.currentTime = 0;
                 audioMatch.play();
             }, 500);
 
@@ -192,7 +191,9 @@ function checkMatch() {
 /**
  * Adds a class to cards if all are matched. This gives an animation and then a winning page 
  */
+
 function wonGame() {
+
     // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
     if (matchedCards.length === gameCards.length) {
         // delays animation by half a second to improve user experience
@@ -210,9 +211,6 @@ function wonGame() {
             endPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
                     ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
-
-        // button on winning page to refresh the browser and restart the game;
-        endGameButton.addEventListener('click', restartGame);
     }
 }
 
@@ -223,17 +221,18 @@ function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
         for (let card of gameCards) {
-            // card.style.pointerEvents = 'none';
             card.removeEventListener('click', turnCard);
             card.removeEventListener('click', flipCard);
+            card.removeEventListener('click', wonGame);
+            card.removeEventListener('click', checkMatch);
         }
         checkMatch();
     } else {
         for (let card of gameCards) {
-            // card.style.pointerEvents = 'all';
-            // for (let card of gameCards) {
             card.addEventListener('click', turnCard);
             card.addEventListener('click', flipCard);
+            card.addEventListener('click', checkMatch);
+            card.addEventListener('click', wonGame);
         }
     }
 }
@@ -295,8 +294,6 @@ function lostGame() {
         // end page to appear
         endPage.classList.remove('end-game-hidden');
         endPage.classList.add('end-game-show');
-        // button on end page to refresh the browser and restart the game
-        endGameButton.addEventListener('click', restartGame);
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
                  Press below to start a new game:`;
     }
@@ -304,6 +301,8 @@ function lostGame() {
 
 // to check each tenth second if the timer has reached zero
 setInterval(lostGame, 100);
+
+endGameButton.addEventListener('click', restartGame);
 
 function restartGame() {
     for (let card of gameCards) {
@@ -346,7 +345,6 @@ function audioFlipPlay() {
 }
 
 let audioState = 0;
-const audioChoiceText = document.getElementById('font-awesome');
 function audioVolume() {
     if (audioState == 0) {
         audioChoiceText.classList.remove('fa-volume-high');
@@ -362,10 +360,3 @@ function audioVolume() {
 }
 
 audioChoice.addEventListener('click', audioVolume);
-// audioChoice.addEventListener('click', toggleVolumeImage);
-
-
-// // add event default to click functions?
-// // add sound?
-// // make the website responsive
-// // add 404 page
