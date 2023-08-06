@@ -87,7 +87,6 @@ function hideStartPage(event) {
     }
 }
 
-
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
@@ -137,20 +136,20 @@ function addCardEventListeners() {
     }
 }
 
-function removeCardEventListeners() {
-    for (let card of gameCards) {
-        card.removeEventListener('click', turnCard);
-        card.removeEventListener('click', abortTime);
-        card.removeEventListener('click', timeGame);
-        card.removeEventListener('click', flipCard);
-        card.removeEventListener('click', checkMatch);
-        card.removeEventListener('click', wonGame);
-        card.removeEventListener('click', countFlip);
-        card.removeEventListener('click', disableGame);
-        card.removeEventListener('click', disableDifficulty);
-        card.removeEventListener('click', audioPlay);
-    }
-}
+// function removeCardEventListeners() {
+//     for (let card of gameCards) {
+//         card.removeEventListener('click', turnCard);
+//         card.removeEventListener('click', abortTime);
+//         card.removeEventListener('click', timeGame);
+//         card.removeEventListener('click', flipCard);
+//         card.removeEventListener('click', checkMatch);
+//         card.removeEventListener('click', wonGame);
+//         card.removeEventListener('click', countFlip);
+//         card.removeEventListener('click', disableGame);
+//         card.removeEventListener('click', disableDifficulty);
+//         card.removeEventListener('click', audioPlay);
+//     }
+// }
 
 /**
  * This function adds or removes the class 'toggleCard' whenever a card is clicked
@@ -171,6 +170,7 @@ function audioPlay() {
         audioFlip.play();
     } else {
         audioMatch.play();
+        console.log('crazy');
     }
 }
 
@@ -239,9 +239,19 @@ function wonGame() {
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
     if (toggledCards.length - matchedCards.length >= 2) {
-        removeCardEventListeners();
+        for (let card of gameCards) {
+            // card.style.pointerEvents = 'none';
+            card.removeEventListener('click', turnCard);
+            card.removeEventListener('click', flipCard);
+        }
+        checkMatch();
     } else {
-        addCardEventListeners();
+        for (let card of gameCards) {
+            // card.style.pointerEvents = 'all';
+            // for (let card of gameCards) {
+            card.addEventListener('click', turnCard);
+            card.addEventListener('click', flipCard);
+        }
     }
 }
 
@@ -309,8 +319,8 @@ function lostGame() {
     }
 }
 
-// to check each second if the timer has reached zero
-setInterval(lostGame, 1000);
+// to check each tenth second if the timer has reached zero
+setInterval(lostGame, 100);
 
 function restartGame() {
     for (let card of gameCards) {
@@ -336,7 +346,6 @@ function abortTime() {
         abort = false;
     }
 }
-
 
 restartButton.addEventListener('click', restartGame);
 
