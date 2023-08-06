@@ -36,14 +36,16 @@ let flips = 0;
 flipCount.textContent = flips;
 const endPage = document.getElementById('end-game');
 const endPageHeading = document.querySelector('#end-game-title');
-const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
-const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
+
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
 const selectDifficulty = document.getElementById('select-difficulty');
 const endGameButton = document.getElementById('end-game-restart');
 const restartButton = document.getElementById('restart-game');
+const audioChoice = document.getElementById('audio-choice');
+const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
+const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 
 // to run statGame function when the DOM has loaded
 document.addEventListener('DOMContentLoaded', startGame);
@@ -336,9 +338,32 @@ function confirmRestart() {
 }
 
 function audioFlipPlay() {
+    if (audioState === 1) {
+        return;
+    }
     audioFlip.currentTime = 0;
     audioFlip.play();
 }
+
+let audioState = 0;
+const audioChoiceText = document.getElementById('font-awesome');
+function audioVolume() {
+    if (audioState == 0) {
+        audioChoiceText.classList.remove('fa-volume-high');
+        audioChoiceText.classList.add('fa-volume-xmark');
+        audioChoice.muted = true;
+        audioState = 1;
+    } else {
+        audioChoiceText.classList.add('fa-volume-high');
+        audioChoiceText.classList.remove('fa-volume-xmark');
+        audioChoice.muted = false;
+        audioState = 0;
+    }
+}
+
+audioChoice.addEventListener('click', audioVolume);
+// audioChoice.addEventListener('click', toggleVolumeImage);
+
 
 // // add event default to click functions?
 // // add sound?
