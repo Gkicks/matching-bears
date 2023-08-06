@@ -255,7 +255,7 @@ function difficulty() {
         timeCount.textContent = '60';
     } else {
         time = 30;
-        timeCount.textContent = '5';
+        timeCount.textContent = '30';
     }
 }
 
