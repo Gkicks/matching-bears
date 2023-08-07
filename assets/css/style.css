@@ -66,7 +66,7 @@ body {
 #start-game-paragraph {
     font-size: 3em;
     color: #4D3B32;
-    margin: 2vh 10%;
+    margin: 2vh auto;
     width: 80%;
     text-align: center;
 }
@@ -392,7 +392,7 @@ body {
         font-size: 3em;
     }
 
-    #start-game-div-id h1 {
+    #start-game h1 {
         margin: 4vh 0;
     }
 }
@@ -400,7 +400,7 @@ body {
 /* for screens less than 840px */
 @media (max-width: 840px) {
 
-    #start-game-div-id h1,
+    #start-game h1,
     #title {
         font-size: 4em;
     }
@@ -418,7 +418,7 @@ body {
 
 /* for screens less than 600px */
 @media (max-width: 600px) {
-    #start-game-div-id h1 {
+    #start-game h1 {
         font-size: 3em;
         margin-bottom: 2vh;
     }
@@ -431,16 +431,17 @@ body {
         font-size: 1.5em;
     }
 
-    #start-game-div-id>p {
+    #start-game-paragraph {
         font-size: 2em;
     }
 
-    .instructions-visable {
+    /* .instructions-visable {
         font-size: 1em;
-    }
+    } */
 
-    .howToPlayVisible {
-        height: 40vh;
+    #instructions-paragraph {
+        height: 25vh;
+        font-size: 1em;
     }
 
     #enter-name,
@@ -478,10 +479,16 @@ body {
     }
 }
 
+@media (max-width: 455px) {
+    #instructions-paragraph {
+        height: 70%;
+    }
+}
+
 /* for screens less than 355px */
 @media (max-width: 355px) {
 
-    #start-game-div-id h1,
+    #start-game h1,
     #title {
         font-size: 2em;
     }
@@ -500,18 +507,13 @@ body {
         height: 5vh;
     }
 
-    #game-info button,
-    .instructions-visable {
+    #game-info button {
         font-size: 0.8em;
     }
 
-    #start-game-div-id>p {
+    #start-game-paragraph {
         font-size: 1.5em;
-        margin: 0;
-    }
-
-    .instructions-visable {
-        height: 70%;
+        /* margin: 0; */
     }
 
     #select-difficulty,
