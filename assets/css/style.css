@@ -117,21 +117,31 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
+    /* margin-top: 2vh; */
+}
+
+#audio-difficulty {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 #select-difficulty-div {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 /* section with difficulty selector  */
 #select-difficulty-div label {
     font-size: 2em;
     color: #4D3B32;
-    float: left;
+    /* float: left; */
 }
 
 #select-difficulty {
+    height: fit-content;
     font-size: 2em;
     color: #4D3B32;
     text-align: center;
@@ -139,13 +149,34 @@ body {
     border-radius: 25px;
     margin-left: 2vw;
     padding: 7px;
+    align-items: center;
     border: 2px solid #4D3B32;
-    float: right;
+    /* float: right; */
 }
 
 #select-difficulty:hover {
     background: #4D3B32;
     color: #D5BDA9;
+}
+
+.audio-choice-show {
+    height: 8vh;
+    width: 8vh;
+    background: #BA9D8C;
+    border: 1px solid #312C2D;
+    color: #312C2D;
+    border-radius: 5px;
+    margin-right: 10vw;
+}
+
+.fa-solid {
+    height: 8vh;
+    width: 8vh;
+    font-size: 4vh;
+    color: #4D3B32;
+    text-align: center;
+    /* to centre vertically */
+    margin: 25% auto;
 }
 
 /* card playing area */
@@ -235,30 +266,11 @@ body {
     background: #D5BDA9;
     border: 2px solid #4D3B32;
     margin: 2vh 0;
+    padding: 0 1vw;
     border-radius: 25px;
 }
 
-.audio-choice-show {
-    position: absolute;
-    top: 25vh;
-    left: 25vw;
-    height: 8vh;
-    width: 8vh;
-    background: #BA9D8C;
-    border: 1px solid #312C2D;
-    color: #312C2D;
-    border-radius: 5px;
-}
 
-.fa-solid {
-    height: 8vh;
-    width: 8vh;
-    font-size: 4vh;
-    color: #4D3B32;
-    text-align: center;
-    /* to centre vertically */
-    margin: 25% 0;
-}
 
 /* animation so the bear images wiggle when the user has matched them all */
 .won-game-bears {
@@ -414,6 +426,18 @@ body {
     #game-info h2 {
         font-size: 2em;
     }
+
+    #select-difficulty {
+        padding: 5px;
+    }
+}
+
+@media (max-width: 700px) {
+
+    #select-difficulty-div label,
+    #select-difficulty {
+        font-size: 1.5em;
+    }
 }
 
 /* for screens less than 600px */
@@ -450,9 +474,13 @@ body {
         font-size: 1em;
     }
 
-    #select-difficulty,
+    #select-difficulty {
+        font-size: 1em;
+        padding: 3px;
+    }
+
     #select-difficulty-div label {
-        font-size: 1.5em;
+        font-size: 1em;
     }
 
     #game-info button {
@@ -460,7 +488,8 @@ body {
     }
 
     #game-container-outer {
-        height: 38vh;
+        height: 39.5vh;
+        width: 39.5vh;
     }
 
     #game-container {
@@ -477,12 +506,36 @@ body {
     #game-info h2 {
         font-size: 1.5em;
     }
+
+    .audio-choice-show {
+        height: 6vh;
+        width: 6vh;
+        /* top: 13%; */
+    }
+
+    .fa-solid {
+        height: 6vh;
+        width: 6vh;
+        font-size: 3vh;
+    }
 }
 
 @media (max-width: 455px) {
     #instructions-paragraph {
         height: 70%;
     }
+
+    #game-info h2 {
+        font-size: 1em;
+    }
+
+    #game-info button {
+        font-size: 0.8em;
+    }
+
+    /* .audio-choice-show {
+            top: 7vh;
+        } */
 }
 
 /* for screens less than 355px */
@@ -507,22 +560,18 @@ body {
         height: 5vh;
     }
 
-    #game-info button {
-        font-size: 0.8em;
-    }
-
     #start-game-paragraph {
         font-size: 1.5em;
         /* margin: 0; */
     }
 
-    #select-difficulty,
     #select-difficulty-div label {
         font-size: 1em;
     }
 
     #game-container-outer {
-        height: 28vh;
+        height: 29vh;
+        width: 29vh;
     }
 
     #game-container {
@@ -538,5 +587,19 @@ body {
 
     #game-info h2 {
         font-size: 1em;
+    }
+
+    .audio-choice-show {
+        height: 5vh;
+        width: 5vh;
+        /* top: 8vh;
+            left: 80vw; */
+        /* left: 1vw; */
+    }
+
+    .fa-solid {
+        height: 5vh;
+        width: 5vh;
+        font-size: 2vh;
     }
 }
