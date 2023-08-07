@@ -205,6 +205,7 @@ function wonGame() {
         setTimeout(function () {
             endPage.classList.remove('hidden');
             endPage.classList.add('end-game-show');
+            endGameButton.classList.remove('hidden');
             endPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
                     ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
         }, 2000);
@@ -296,6 +297,7 @@ function lostGame() {
         // end page to appear
         endPage.classList.remove('hidden');
         endPage.classList.add('end-game-show');
+        endGameButton.classList.remove('hidden');
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
                  Press below to try again:`;
     }
@@ -326,6 +328,7 @@ function restartGame() {
     endPage.classList.add('hidden');
     endPage.classList.remove('end-game-show');
     endPageHeading.textContent = '';
+    endGameButton.classList.add('hidden');
 }
 
 /** 
