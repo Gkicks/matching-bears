@@ -13,10 +13,8 @@
     <!-- link to favicon -->
     <link rel="icon" type="image/x-icon" href="assets/images/bear-favicon.webp">
 
-
     <!-- font awesome script -->
     <script src="https://kit.fontawesome.com/f0e297bd7f.js" crossorigin="anonymous"></script>
-
 
     <title>Matching Bears</title>
 
@@ -30,18 +28,18 @@
             <h1>Matching Bears</h1>
             <div id="how-to-play">
                 <h2 id="how-to-play-title">How to Play</h2>
+                <!-- clickable div to display instuctions on how to play the game -->
                 <div id="instructions-div" class="hidden">
                     <p id="instructions-paragraph">There are eight sets of matching bears. Can you find them all before
-                        the timer runs out?
-                        Select your difficulty from the drop down box and click a square to begin. <br><br> Easy - you
-                        have
-                        100 seconds to find the matches <br> Medium - you have 60 seconds to find the matches <br> Hard
-                        -
-                        you have 30 seconds to find the matches</p>
+                        the timer runs out? Select your difficulty from the drop down box and click a square to begin.
+                        <br><br> Easy - you have 100 seconds to find the matches <br> Medium - you have 60 seconds to
+                        find the matches <br> Hard - you have 30 seconds to find the matches
+                    </p>
                 </div>
             </div>
             <div>
                 <p id="start-game-paragraph">Enter your name and press <em>start</em> to begin!</p>
+                <!-- form for the user to enter their name -->
                 <form id="start-form">
                     <label for="enter-name" class="hidden">Enter Name</label>
                     <input id="enter-name" type="text" placeholder="Enter name" required>
@@ -54,16 +52,14 @@
     <!-- main page -->
     <main id="main-page" class="hidden">
         <h1 id="title">Matching Bears</h1>
-
-        <!-- how to play information and difficulty selector -->
-        <!-- <section id="game-start-info"> -->
-
+        <!-- audio button and difficulty selector -->
         <div id="audio-difficulty">
             <div>
-                <!-- button to give the user the option to mute the audio -->
+                <!-- button to give the user the option to play or mute the audio -->
                 <button id="audio-choice" class="hidden" aria-label="toggles sound on or off"><i id="font-awesome"
                         class="fa-solid fa-volume-high"></i></button>
             </div>
+            <!-- dropdown selector to choose difficulty level -->
             <div id="select-difficulty-div">
                 <label for="select-difficulty">Select difficulty: </label>
                 <select name="difficulty" id="select-difficulty">
@@ -74,11 +70,10 @@
             </div>
         </div>
 
+        <!-- card playing area. The cards are generated in the JavaScript file -->
         <div id="game-container-outer">
             <div id="game-container"></div>
         </div>
-
-
 
         <!-- gives info on time countdown and how many flips the user has taken -->
         <div id="game-info">
@@ -92,6 +87,16 @@
     <div id="end-game" class="hidden">
         <p id="end-game-paragraph"></p>
         <button id="end-game-restart">Restart Game</button>
+        <div>
+            <!-- external link to Animal Asia -->
+            <p id="charity-paragraph">If you've enjoyed playing this game please click below to find out how you can
+                help the bears:</p>
+            <div id="charity-link">
+                <a href="https://www.animalsasia.org/uk/our-work/end-bear-bile-farming/" target="_blank"
+                    aria-label="takes you to the Animal Asia website">Help the
+                    Bears</a>
+            </div>
+        </div>
     </div>
 
     <!-- link to JavaScript file -->
