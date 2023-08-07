@@ -50,6 +50,7 @@ body {
     border: 1px solid #4D3B32;
 }
 
+/* instructions that show when the #how-to-play h2 is clicked */
 .instructions-visable {
     visibility: visible;
     height: 65%;
@@ -105,6 +106,7 @@ body {
     border: 1px solid #4D3B32;
 }
 
+/* class to hide elements through JavaScript */
 .hidden {
     height: 0;
     width: 0;
@@ -117,9 +119,9 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    /* margin-top: 2vh; */
 }
 
+/* section with audio button and difficulty selector */
 #audio-difficulty {
     display: flex;
     justify-content: center;
@@ -133,11 +135,9 @@ body {
     align-items: center;
 }
 
-/* section with difficulty selector  */
 #select-difficulty-div label {
     font-size: 2em;
     color: #4D3B32;
-    /* float: left; */
 }
 
 #select-difficulty {
@@ -151,7 +151,6 @@ body {
     padding: 7px;
     align-items: center;
     border: 2px solid #4D3B32;
-    /* float: right; */
 }
 
 #select-difficulty:hover {
@@ -169,6 +168,7 @@ body {
     margin-right: 10vw;
 }
 
+/* image on audio button */
 .fa-solid {
     height: 8vh;
     width: 8vh;
@@ -221,7 +221,6 @@ body {
     left: 0;
     border-radius: 10px;
     /* To disable click on the child div and image of card div */
-    /* https: //stackoverflow.com/questions/28083708/how-to-disable-clicking-inside-div */
     pointer-events: none;
 }
 
@@ -270,8 +269,6 @@ body {
     border-radius: 25px;
 }
 
-
-
 /* animation so the bear images wiggle when the user has matched them all */
 .won-game-bears {
     animation: wiggle 1s infinite;
@@ -299,6 +296,7 @@ body {
     }
 }
 
+/* end game to appear when user either wins or loses */
 #end-game-paragraph {
     font-size: 5em;
     color: #4D3B32;
@@ -333,7 +331,7 @@ body {
     transition: transform 2s ease;
 }
 
-/* refreshes the document and takes the user back to the start of the game */
+/* restarts the game and hides the end game div */
 .end-game-show button {
     height: 10vh;
     width: 50%;
@@ -347,7 +345,7 @@ body {
     pointer-events: all;
 }
 
-/* To make the congratulations screen appear slowly */
+/* To make the end game div appear slowly */
 .end-game-show {
     visibility: visible;
     height: 100%;
@@ -371,7 +369,7 @@ body {
     }
 }
 
-/* so all buttons type elements increase slightly on hover */
+/* so all buttons type elements change colour on hover */
 #how-to-play-title:hover,
 #start-button:hover,
 #restart-game:hover,
@@ -449,41 +447,40 @@ body {
     }
 }
 
+/* for screens less than 914px */
 @media (max-width: 914px) {
     #charity-link {
         height: 8vh;
         width: 60%;
         padding-top: 1vh;
     }
+}
 
-    /* for screens less than 840px */
-    @media (max-width: 840px) {
+/* for screens less than 840px */
+@media (max-width: 840px) {
 
-        #start-game h1,
-        #title {
-            font-size: 4em;
-        }
+    #start-game h1,
+    #title {
+        font-size: 4em;
+    }
 
-        #enter-name,
-        #start-button,
-        #game-info button {
-            font-size: 1.5em;
-        }
+    #enter-name,
+    #start-button,
+    #game-info button {
+        font-size: 1.5em;
+    }
 
-        #game-info h2 {
-            font-size: 2em;
-        }
+    #game-info h2 {
+        font-size: 2em;
+    }
 
-        #select-difficulty {
-            padding: 5px;
-        }
-
+    #select-difficulty {
+        padding: 5px;
     }
 
     #charity-link a {
         font-size: 3vh;
     }
-
 }
 
 @media (max-width: 700px) {
