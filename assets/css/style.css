@@ -384,7 +384,7 @@ body {
 /* 404.html page */
 #nav-error {
     height: auto;
-    margin-top: 20vh;
+    margin-top: 10vh;
 }
 
 #nav-error h2 {
@@ -402,7 +402,7 @@ body {
 }
 
 #nav-error-paragraph {
-    font-size: 300%;
+    font-size: 150%;
     margin-bottom: 50px;
 }
 
