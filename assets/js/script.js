@@ -365,4 +365,10 @@ function audioVolume() {
     }
 }
 
+function audioButtonShow() {
+    audioChoice.classList.remove('audio-choice-hidden');
+    audioChoice.classList.add('audio-choice-sho');
+}
+
 audioChoice.addEventListener('click', audioVolume);
+audioChoice.addEventListener('click', audioButtonShow);

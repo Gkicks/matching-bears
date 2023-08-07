@@ -24,6 +24,29 @@
 
 <body>
 
+    <!-- to appear at the start of the game  -->
+    <header class="start-game">
+        <div id="start-game-div-id">
+            <h1>Matching Bears</h1>
+            <div id="how-to-play">
+                <h2 id="how-to-play-title">How to Play</h2>
+                <div id="instructions-div" class="instructions-hidden">
+                    <p>There are eight sets of matching bears. Can you find them all before the timer runs out?
+                        Select your difficulty from the drop down box and click a square to begin. <br><br> Easy - you
+                        have
+                        100 seconds to find the matches <br> Medium - you have 60 seconds to find the matches <br> Hard
+                        -
+                        you have 30 seconds to find the matches</p>
+                </div>
+            </div>
+            <p>Enter your name and press <em>start</em> to begin!</p>
+            <form id="start-form">
+                <input id="enter-name" type="text" placeholder="Enter name" required>
+                <input id="start-button" type="submit" value="Start">
+            </form>
+        </div>
+    </header>
+
     <!-- main page -->
     <h1 id="title">Matching Bears</h1>
 
@@ -44,7 +67,7 @@
     </div>
 
     <!-- button to give the user the option to mute the audio -->
-    <button id="audio-choice" aria-label="toggles sound on or off"><i id="font-awesome"
+    <button id="audio-choice" class="audio-choice-hidden" aria-label="toggles sound on or off"><i id="font-awesome"
             class="fa-solid fa-volume-high"></i></button>
 
     <!-- gives info on time countdown and how many flips the user has taken -->
@@ -54,36 +77,13 @@
         <h2>Flips: <span id="flips"></span></h2>
     </div>
 
-    <!-- to appear at the start of the game  -->
-    <div id="start-game-div-id" class="start-game">
-        <h1>Matching Bears</h1>
-        <div id="how-to-play">
-            <h2 id="how-to-play-title">How to Play</h2>
-            <div id="instructions-div" class="instructions-hidden">
-                <p>There are eight sets of matching bears. Can you find them all before the timer runs out?
-                    Select your difficulty from the drop down box and click a square to begin. <br><br> Easy - you have
-                    100 seconds to find the matches <br> Medium - you have 60 seconds to find the matches <br> Hard -
-                    you have 30 seconds to find the matches</p>
-            </div>
-        </div>
-        <p>Enter your name and press <em>start</em> to begin!</p>
-        <form id="start-form">
-            <input id="enter-name" type="text" placeholder="Enter name" required>
-            <input id="start-button" type="submit" value="Start">
-        </form>
-    </div>
+
 
     <!-- to appear when user has matched all cards -->
     <div id="end-game" class="end-game-hidden">
         <p id="end-game-paragraph"></p>
         <button id="end-game-restart">Restart Game</button>
     </div>
-
-    <!-- to appear when the timer runs out -->
-    <!-- <div id="lost-game" class="lost-game-hidden">
-        <h1 id="losing-title"></h1>
-        <button id="restart-lost">Restart Game</button>
-    </div> -->
 
     <!-- link to JavaScript file -->
     <script src="assets/js/script.js"></script>

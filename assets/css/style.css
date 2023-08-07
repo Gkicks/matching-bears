@@ -77,13 +77,13 @@ body {
 #start-game-div-id>p {
     font-size: 3em;
     color: #4D3B32;
-    margin: 2vh 0;
+    margin: 2vh 10%;
     width: 80%;
     text-align: center;
 }
 
 #start-form {
-    width: 60%;
+    /* width: 60%; */
     display: flex;
     justify-content: center;
 }
@@ -238,7 +238,13 @@ body {
 }
 
 /* sytling for audio button */
-#audio-choice {
+.audio-choice-hidden {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+
+.audio-choice-show {
     position: absolute;
     top: 25vh;
     left: 20vw;
