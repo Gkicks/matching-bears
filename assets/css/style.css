@@ -8,10 +8,6 @@
     box-sizing: border-box;
 }
 
-html {
-    overflow: hidden;
-}
-
 body {
     background: #F6F4F3;
     height: 100%;
@@ -25,19 +21,17 @@ body {
 }
 
 /* start page which appears when the user first loads the page */
-.start-game {
+.start-game-visible {
     height: 100%;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    position: absolute;
-    top: 0;
     background: #F6F4F3;
     opacity: 1;
 }
 
-#start-game-div-id h1 {
+#start-game h1 {
     font-family: 'laila', sans-serif;
     font-size: 6em;
     color: #4D3B32;
@@ -56,10 +50,6 @@ body {
     border: 1px solid #4D3B32;
 }
 
-.instructions-hidden {
-    visibility: hidden;
-}
-
 .instructions-visable {
     visibility: visible;
     height: 65%;
@@ -67,14 +57,13 @@ body {
     text-align: center;
     padding: 20px 10px;
     margin: 0 7.5%;
-    font-size: 1.5em;
     color: #4D3B32;
     background: #BA9D8C;
     color: #4D3B32;
     border-radius: 25px;
 }
 
-#start-game-div-id>p {
+#start-game-paragraph {
     font-size: 3em;
     color: #4D3B32;
     margin: 2vh 10%;
@@ -82,13 +71,17 @@ body {
     text-align: center;
 }
 
+#instructions-paragraph {
+    font-size: 1.5em;
+}
+
 #start-form {
-    /* width: 60%; */
     display: flex;
     justify-content: center;
 }
 
 #enter-name {
+    font-family: 'laila', sans-serif;
     height: 7vh;
     width: 50%;
     border-radius: 25px;
@@ -102,6 +95,7 @@ body {
     height: 7vh;
     width: 30%;
     border-radius: 25px;
+    font-family: 'laila', sans-serif;
     font-size: 2em;
     padding: 0 5vw;
     margin: 2vh 2vw;
@@ -111,8 +105,7 @@ body {
     border: 1px solid #4D3B32;
 }
 
-/* this class hides the div once the user has clicked submit */
-.hide-div {
+.hidden {
     height: 0;
     width: 0;
     visibility: hidden;
@@ -124,7 +117,11 @@ body {
     font-size: 6em;
     color: #4D3B32;
     text-align: center;
-    margin: 1vh 0;
+}
+
+#select-difficulty-div {
+    display: flex;
+    justify-content: center;
 }
 
 /* section with difficulty selector  */
@@ -153,10 +150,14 @@ body {
 
 /* card playing area */
 #game-container-outer {
+    display: flex;
+    justify-content: center;
+    text-align: center;
     height: 50vh;
+    width: 50vh;
     background: #D5BDA9;
     border-radius: 25px;
-    margin-top: 3vh;
+    margin: 2vh auto;
 }
 
 #game-container {
@@ -164,7 +165,7 @@ body {
     grid-template-columns: repeat(4, 10vh);
     grid-template-rows: repeat(4, 10vh);
     grid-gap: 2vh;
-    margin: 2vh;
+    margin-top: 2vh;
     perspective: 600px;
 }
 
@@ -237,17 +238,10 @@ body {
     border-radius: 25px;
 }
 
-/* sytling for audio button */
-.audio-choice-hidden {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
 .audio-choice-show {
     position: absolute;
     top: 25vh;
-    left: 20vw;
+    left: 25vw;
     height: 8vh;
     width: 8vh;
     background: #BA9D8C;
@@ -293,14 +287,6 @@ body {
     }
 }
 
-/* winning page / losing page to appear when the user has either matched all the cards or run out of time */
-.end-game.hidden {
-    height: 0%;
-    width: 0%;
-    visibility: hidden;
-    opacity: 0;
-}
-
 #end-game-paragraph {
     font-size: 5em;
     color: #4D3B32;
@@ -319,12 +305,6 @@ body {
     margin: 5vh 25%;
     border-radius: 25px;
     pointer-events: all;
-}
-
-.end-game-hidden button {
-    visibility: hidden;
-    height: 0;
-    width: 0;
 }
 
 /* To make the congratulations screen appear slowly */
@@ -352,7 +332,6 @@ body {
 }
 
 /* so all buttons type elements increase slightly on hover */
-button:hover,
 #how-to-play-title:hover,
 #start-button:hover,
 #restart-game:hover {
@@ -363,7 +342,6 @@ button:hover,
 }
 
 /* 404.html page */
-
 #nav-error {
     height: auto;
     margin-top: 20vh;

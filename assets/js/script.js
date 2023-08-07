@@ -1,10 +1,12 @@
 // global variables
-const howToPlay = document.querySelector('#how-to-play');
-const howToPlayTitle = document.querySelector('#how-to-play-title');
-const instructions = document.querySelector('#instructions-div');
+const startGameArea = document.getElementById('start-game');
+const howToPlay = document.getElementById('how-to-play');
+const howToPlayTitle = document.getElementById('how-to-play-title');
+const instructions = document.getElementById('instructions-div');
 const startGameButton = document.getElementById('start-button');
-const startGameDiv = document.querySelector('#start-game-div-id');
-const input = document.querySelector('#enter-name');
+const startGameDiv = document.getElementById('start-game-div-id');
+const input = document.getElementById('enter-name');
+const mainPage = document.getElementById('main-page');
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
     { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'image of yellow bear one' },
@@ -35,8 +37,7 @@ const flipCount = document.getElementById('flips');
 let flips = 0;
 flipCount.textContent = flips;
 const endPage = document.getElementById('end-game');
-const endPageHeading = document.querySelector('#end-game-paragraph');
-
+const endPageHeading = document.getElementById('end-game-paragraph');
 const timeCount = document.getElementById('time');
 let time = '100';
 timeCount.textContent = time;
@@ -56,16 +57,11 @@ let state = 0;
 function howToPlayInstructions() {
     if (state == 0) {
         instructions.classList.add('instructions-visable');
-        instructions.classList.remove('instructions-hidden');
-        howToPlay.classList.remove('how-to-play-dropbox');
-        howToPlay.classList.add('howToPlayVisible');
+        instructions.classList.remove('hidden');
         state = 1;
-        // to remove the how to play instructions when the how to play area is clicked again
     } else {
         instructions.classList.remove('instructions-visable');
-        instructions.classList.add('instructions-hidden');
-        howToPlay.classList.add('how-to-play-dropbox');
-        howToPlay.classList.remove('howToPlayVisible');
+        instructions.classList.add('hidden');
         state = 0;
     }
 }
@@ -75,26 +71,20 @@ howToPlayTitle.addEventListener('click', howToPlayInstructions);
 // to move from the start screen to the main screen
 // hides the start-game-div by removing the id and putting in a hide-div class
 
-function hideStartPage(event) {
-    if (input.value.length > 0) {
-        startGameDiv.removeAttribute('id');
-        startGameDiv.classList.add('hide-div');
-        input.removeAttribute('id');
-        input.classList.add('hide-div');
-        startGameButton.removeAttribute('id');
-        startGameButton.classList.add('hide-div');
-        instructions.removeAttribute('id');
-        instructions.classList.add('hide-div');
-        howToPlay.classList.add('hide-div');
-        event.preventDefault();
-        return;
-    }
-}
-
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
-    return;
+}
+
+function hideStartPage(event) {
+    if (input.value.length > 0) {
+        startGameArea.classList.remove('start-game-visible');
+        startGameArea.classList.add('hidden');
+        mainPage.classList.remove('hidden');
+        audioChoice.classList.remove('hidden');
+        audioChoice.classList.add('audio-choice-show');
+        event.preventDefault();
+    }
 }
 
 /** This function generates cards into the game-container section */
@@ -208,7 +198,7 @@ function wonGame() {
 
         // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
-            endPage.classList.remove('end-game-hidden');
+            endPage.classList.remove('hidden');
             endPage.classList.add('end-game-show');
             endPageHeading.textContent = `Congratulations ${input.value}! You found all the matching bears in 
                     ${flipCount.textContent} flips and with ${timeCount.textContent} seconds remaining. Press below to start a new game:`;
@@ -294,7 +284,7 @@ function lostGame() {
     // check to see if the timer reaches zero
     if (timeCount.textContent === '0') {
         // end page to appear
-        endPage.classList.remove('end-game-hidden');
+        endPage.classList.remove('hidden');
         endPage.classList.add('end-game-show');
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
                  Press below to start a new game:`;
@@ -320,7 +310,7 @@ function restartGame() {
     flipCount.textContent = 0;
     document.getElementById('game-container').innerHTML = "";
     generateCards();
-    endPage.classList.add('end-game-hidden');
+    endPage.classList.add('hidden');
     endPage.classList.remove('end-game-show');
     endPageHeading.textContent = '';
 }
@@ -366,8 +356,8 @@ function audioVolume() {
 }
 
 function audioButtonShow() {
-    audioChoice.classList.remove('audio-choice-hidden');
-    audioChoice.classList.add('audio-choice-sho');
+    audioChoice.classList.remove('hidden');
+    audioChoice.classList.add('audio-choice-show');
 }
 
 audioChoice.addEventListener('click', audioVolume);
