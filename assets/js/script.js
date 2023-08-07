@@ -2,6 +2,7 @@
 const startGameArea = document.getElementById('start-game');
 const howToPlayTitle = document.getElementById('how-to-play-title');
 const instructions = document.getElementById('instructions-div');
+const input = document.getElementById('enter-name')
 const startGameButton = document.getElementById('start-button');
 const startGameDiv = document.getElementById('start-game-div-id');
 const mainPage = document.getElementById('main-page');

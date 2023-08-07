@@ -305,6 +305,33 @@ body {
     text-align: center;
 }
 
+#charity-paragraph {
+    font-size: 4em;
+    color: #4D3B32;
+    text-align: center;
+}
+
+#charity-link {
+    height: 8vh;
+    width: 40%;
+    background: #BA9D8C;
+    text-align: center;
+    margin: 4vh auto;
+    border: 2px solid #312C2D;
+    border-radius: 25px;
+}
+
+#charity-link a {
+    text-decoration: none;
+    color: #312C2D;
+    font-size: 4em;
+}
+
+#charity-link:hover {
+    transform: scale(1.2);
+    transition: transform 2s ease;
+}
+
 /* refreshes the document and takes the user back to the start of the game */
 .end-game-show button {
     height: 10vh;
@@ -328,7 +355,7 @@ body {
     padding: 0px 15vw;
     position: absolute;
     top: 0;
-    padding-top: 25vh;
+    padding-top: 15vh;
     background: #F6F4F3;
     animation: end-grow 2s forwards;
 }
@@ -346,7 +373,8 @@ body {
 /* so all buttons type elements increase slightly on hover */
 #how-to-play-title:hover,
 #start-button:hover,
-#restart-game:hover {
+#restart-game:hover,
+#end-game-restart:hover {
     transition: all .3s ease;
     background: #4D3B32;
     color: #D5BDA9;
