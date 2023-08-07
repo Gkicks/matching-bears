@@ -407,6 +407,13 @@ body {
     #start-game h1 {
         margin: 4vh 0;
     }
+
+    .end-game-show button {
+        height: 8vh;
+        font-size: 4vh;
+        width: 60%;
+        margin: 5vh 20%;
+    }
 }
 
 /* for screens less than 840px */
@@ -430,6 +437,7 @@ body {
     #select-difficulty {
         padding: 5px;
     }
+
 }
 
 @media (max-width: 700px) {
@@ -437,6 +445,10 @@ body {
     #select-difficulty-div label,
     #select-difficulty {
         font-size: 1.5em;
+    }
+
+    #end-game-paragraph {
+        font-size: 3em;
     }
 }
 
@@ -458,10 +470,6 @@ body {
     #start-game-paragraph {
         font-size: 2em;
     }
-
-    /* .instructions-visable {
-        font-size: 1em;
-    } */
 
     #instructions-paragraph {
         height: 25vh;
@@ -510,7 +518,6 @@ body {
     .audio-choice-show {
         height: 6vh;
         width: 6vh;
-        /* top: 13%; */
     }
 
     .fa-solid {
@@ -533,9 +540,12 @@ body {
         font-size: 0.8em;
     }
 
-    /* .audio-choice-show {
-            top: 7vh;
-        } */
+    .end-game-show button {
+        height: 8vh;
+        font-size: 3vh;
+        width: 80%;
+        margin: 5vh 10%;
+    }
 }
 
 /* for screens less than 355px */
@@ -601,5 +611,9 @@ body {
         height: 5vh;
         width: 5vh;
         font-size: 2vh;
+    }
+
+    #end-game-paragraph {
+        font-size: 2.5em;
     }
 }
