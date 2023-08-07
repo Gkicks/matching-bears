@@ -1,11 +1,9 @@
 // global variables
 const startGameArea = document.getElementById('start-game');
-const howToPlay = document.getElementById('how-to-play');
 const howToPlayTitle = document.getElementById('how-to-play-title');
 const instructions = document.getElementById('instructions-div');
 const startGameButton = document.getElementById('start-button');
 const startGameDiv = document.getElementById('start-game-div-id');
-const input = document.getElementById('enter-name');
 const mainPage = document.getElementById('main-page');
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
