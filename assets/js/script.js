@@ -2,7 +2,7 @@
 const startGameArea = document.getElementById('start-game');
 const howToPlayTitle = document.getElementById('how-to-play-title');
 const instructions = document.getElementById('instructions-div');
-const input = document.getElementById('enter-name')
+const input = document.getElementById('enter-name');
 const startGameButton = document.getElementById('start-button');
 const startGameDiv = document.getElementById('start-game-div-id');
 const mainPage = document.getElementById('main-page');
@@ -51,8 +51,10 @@ const audioChoiceText = document.getElementById('font-awesome');
 // to run statGame function when the DOM has loaded
 document.addEventListener('DOMContentLoaded', startGame);
 
-// to display the how to play instructions with the 'how to play' area is clicked 
 let state = 0;
+/** 
+ * Toggles the classes on the instructions div to either show or hid it
+ */
 function howToPlayInstructions() {
     if (state == 0) {
         instructions.classList.add('instructions-visable');
@@ -67,14 +69,17 @@ function howToPlayInstructions() {
 
 howToPlayTitle.addEventListener('click', howToPlayInstructions);
 
-// to move from the start screen to the main screen
-// hides the start-game-div by removing the id and putting in a hide-div class
-
+/**
+ * Adds event listeners to the start game button
+ */
 function startGame() {
     startGameButton.addEventListener('click', hideStartPage);
     startGameButton.addEventListener('click', generateCards);
 }
 
+/**
+ *  Adds and removes classes to hide the start screen and show the main screen
+ */
 function hideStartPage(event) {
     if (input.value.length > 0) {
         startGameArea.classList.remove('start-game-visible');
@@ -86,7 +91,9 @@ function hideStartPage(event) {
     }
 }
 
-/** This function generates cards into the game-container section */
+/**
+ *  Generates cards into the game-container section
+ */
 function generateCards() {
     // randomise the array  
     cardInfo.sort(() => Math.random() - 0.5);
@@ -110,6 +117,7 @@ function generateCards() {
         cardsDiv.appendChild(cardBack);
         gameCards.push(cardsDiv);
 
+        // adds event listeners to each card
         for (let card of gameCards) {
             card.addEventListener('click', turnCard);
             card.addEventListener('click', abortTime);
@@ -126,14 +134,14 @@ function generateCards() {
 }
 
 /**
- * This function adds or removes the class 'toggleCard' whenever a card is clicked
+ * Adds or removes the class 'toggleCard' whenever a card is clicked
  */
 function turnCard() {
     this.classList.toggle('toggleCard');
 }
 
 /**
- * This function add a class of 'flipCard' and sound effect to any card that is clicked
+ * Adds a class of 'flipCard' and sound effect to any card that is clicked
  */
 function flipCard() {
     this.classList.add('flipCard');
@@ -141,7 +149,7 @@ function flipCard() {
 }
 
 /**
-* This function compares the names of the two flipped cards and check if they match
+* Compares the names of the two flipped cards and check if they match
 */
 function checkMatch() {
     // function doesn't execute until it's checked that two cards have been flipped
@@ -182,9 +190,7 @@ function checkMatch() {
 /**
  * Adds a class to cards if all are matched. This gives an animation and then a winning page 
  */
-
 function wonGame() {
-
     // checks how many cards are in the matchedCards array. If this equals the number of cards in game the user has won
     if (matchedCards.length === gameCards.length) {
         // delays animation by half a second to improve user experience
@@ -195,7 +201,7 @@ function wonGame() {
             }
         }, 500);
 
-        // Congratulation page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
+        // end page that appears two seconds after user has won the game. The delay is so the user will see the wiggle animation
         setTimeout(function () {
             endPage.classList.remove('hidden');
             endPage.classList.add('end-game-show');
@@ -206,7 +212,7 @@ function wonGame() {
 }
 
 /**
- * This function disables the event listeners while there are two unmatched cards flipped
+ * Disables the event listeners while there are two unmatched cards flipped
  */
 function disableGame() {
     // this needs to be a formula as the toggleClass class still shows when the cards are matched. This ensures it's only the number of  
@@ -236,7 +242,9 @@ function countFlip() {
     flips = parseInt(flipCount.textContent);
 }
 
-// create function that gives different time limits depending on the difficulty selected
+/** 
+ *  Gives different time limits depending on the difficulty selected
+ */
 function difficulty() {
     if (selectDifficulty.value === 'easy') {
         time = 100;
@@ -246,18 +254,21 @@ function difficulty() {
         timeCount.textContent = '60';
     } else {
         time = 30;
-        timeCount.textContent = '5';
+        timeCount.textContent = '30';
     }
 }
 
 selectDifficulty.addEventListener('change', difficulty);
 
+/**
+ * Disables the select-difficulty select 
+ */
 function disableDifficulty() {
     document.getElementById("select-difficulty").disabled = true;
 }
 
 /**
- * This function decreases the timer by one every second
+ * Decreases the timer by one every second
  */
 let abort = false;
 function timeGame() {
@@ -276,8 +287,8 @@ function timeGame() {
 }
 
 /**
- * This function checks, each second, if the timer has reached zero. If so it will 
- * display a lost game page
+ * Checks, each second, if the timer has reached zero. If so it will 
+ * display a end game page
  */
 function lostGame() {
     // check to see if the timer reaches zero
@@ -286,15 +297,18 @@ function lostGame() {
         endPage.classList.remove('hidden');
         endPage.classList.add('end-game-show');
         endPageHeading.textContent = `Sorry ${input.value}, you didn't match all the bears in time! 
-                 Press below to start a new game:`;
+                 Press below to try again:`;
     }
 }
 
-// to check each tenth second if the timer has reached zero
-setInterval(lostGame, 100);
+// to check each half a second if the timer has reached zero
+setInterval(lostGame, 500);
 
 endGameButton.addEventListener('click', restartGame);
 
+/**
+ * Restarts the game - shuffles the cards, rests the time and flip counters
+ */
 function restartGame() {
     for (let card of gameCards) {
         card.classList.remove('toggleCard');
@@ -314,6 +328,9 @@ function restartGame() {
     endPageHeading.textContent = '';
 }
 
+/** 
+ * Allows function to be aborted and then can be enabled again
+ */
 function abortTime() {
     if (abort === true) {
         abort = false;
@@ -323,10 +340,17 @@ function abortTime() {
 restartButton.addEventListener('click', restartGame);
 restartButton.addEventListener('click', confirmRestart);
 
+/**
+ * Displays an alert that allows the user to select if they would like to restart 
+ * or cancel the request
+ */
 function confirmRestart() {
     confirm('Are you sure you want to restart the game?');
 }
 
+/** 
+ * Checks the status of the audio button and plays audio on flip
+ */
 function audioFlipPlay() {
     if (audioState === 1) {
         return;
@@ -336,24 +360,28 @@ function audioFlipPlay() {
 }
 
 let audioState = 0;
+/**
+ * Changes whether the game's sound if audible or muted
+ */
 function audioVolume() {
     if (audioState == 0) {
         audioChoiceText.classList.remove('fa-volume-high');
         audioChoiceText.classList.add('fa-volume-xmark');
         audioChoice.muted = true;
         audioFlipPlay.muted = true;
-        // audioMatch.play().muted = true;
         audioState = 1;
     } else {
         audioChoiceText.classList.add('fa-volume-high');
         audioChoiceText.classList.remove('fa-volume-xmark');
         audioChoice.muted = false;
         audioFlipPlay.muted = false;
-        // audioMatch.play().muted = false;
         audioState = 0;
     }
 }
 
+/** 
+ * Shows audio button in the main page
+ */
 function audioButtonShow() {
     audioChoice.classList.remove('hidden');
     audioChoice.classList.add('audio-choice-show');

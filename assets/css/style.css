@@ -483,6 +483,7 @@ body {
     }
 }
 
+/* for screens less than 700px */
 @media (max-width: 700px) {
 
     #select-difficulty-div label,
@@ -578,6 +579,7 @@ body {
     }
 }
 
+/* for screens less than 455px */
 @media (max-width: 455px) {
     #instructions-paragraph {
         height: 70%;
@@ -633,7 +635,6 @@ body {
 
     #start-game-paragraph {
         font-size: 1.5em;
-        /* margin: 0; */
     }
 
     #select-difficulty-div label {
@@ -663,9 +664,6 @@ body {
     .audio-choice-show {
         height: 5vh;
         width: 5vh;
-        /* top: 8vh;
-            left: 80vw; */
-        /* left: 1vw; */
     }
 
     .fa-solid {
