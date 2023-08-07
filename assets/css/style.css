@@ -312,11 +312,12 @@ body {
 }
 
 #charity-link {
-    height: 8vh;
+    height: 12vh;
     width: 40%;
     background: #BA9D8C;
     text-align: center;
     margin: 4vh auto;
+    padding-top: 2.5vh;
     border: 2px solid #312C2D;
     border-radius: 25px;
 }
@@ -355,7 +356,7 @@ body {
     padding: 0px 15vw;
     position: absolute;
     top: 0;
-    padding-top: 15vh;
+    padding-top: 10vh;
     background: #F6F4F3;
     animation: end-grow 2s forwards;
 }
@@ -442,28 +443,45 @@ body {
         width: 60%;
         margin: 5vh 20%;
     }
+
+    #charity-link {
+        padding-top: 2vh;
+    }
 }
 
-/* for screens less than 840px */
-@media (max-width: 840px) {
-
-    #start-game h1,
-    #title {
-        font-size: 4em;
+@media (max-width: 914px) {
+    #charity-link {
+        height: 8vh;
+        width: 60%;
+        padding-top: 1vh;
     }
 
-    #enter-name,
-    #start-button,
-    #game-info button {
-        font-size: 1.5em;
+    /* for screens less than 840px */
+    @media (max-width: 840px) {
+
+        #start-game h1,
+        #title {
+            font-size: 4em;
+        }
+
+        #enter-name,
+        #start-button,
+        #game-info button {
+            font-size: 1.5em;
+        }
+
+        #game-info h2 {
+            font-size: 2em;
+        }
+
+        #select-difficulty {
+            padding: 5px;
+        }
+
     }
 
-    #game-info h2 {
-        font-size: 2em;
-    }
-
-    #select-difficulty {
-        padding: 5px;
+    #charity-link a {
+        font-size: 3vh;
     }
 
 }
@@ -477,6 +495,10 @@ body {
 
     #end-game-paragraph {
         font-size: 3em;
+    }
+
+    #charity-paragraph {
+        font-size: 2.5em
     }
 }
 
@@ -553,6 +575,10 @@ body {
         width: 6vh;
         font-size: 3vh;
     }
+
+    #charity-link {
+        width: 60%;
+    }
 }
 
 @media (max-width: 455px) {
@@ -573,6 +599,16 @@ body {
         font-size: 3vh;
         width: 80%;
         margin: 5vh 10%;
+    }
+
+    #charity-link {
+        height: 6vh;
+        width: 70%;
+        padding-top: 1vh;
+    }
+
+    #charity-link a {
+        font-size: 2em;
     }
 }
 
