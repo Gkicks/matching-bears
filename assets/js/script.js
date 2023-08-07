@@ -9,22 +9,22 @@ const input = document.getElementById('enter-name');
 const mainPage = document.getElementById('main-page');
 const cardArea = document.getElementById('game-container');
 const cardInfo = [
-    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'image of yellow bear one' },
-    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'image of yellow bear two' },
-    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'image of confused bear one' },
-    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'image of confused bear two' },
-    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'image of blue bear one' },
-    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'image of blue bear two' },
-    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'image of brown bear one' },
-    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'image of brown bear two' },
-    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'image of scary bear one' },
-    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'image of scary bear two' },
-    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'image of panda bear one' },
-    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'image of panda bear two' },
-    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'image of mouse bear one' },
-    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'image of mouse bear two' },
-    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'image of koala bear one' },
-    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'image of koala bear two' },
+    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'yellow bear one' },
+    { name: 'bearOne', image: 'assets/images/bear-one.webp', alt: 'yellow bear two' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'confused bear one' },
+    { name: 'bearTwo', image: 'assets/images/bear-two.webp', alt: 'confused bear two' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'blue bear one' },
+    { name: 'bearThree', image: 'assets/images/bear-three.webp', alt: 'blue bear two' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'brown bear one' },
+    { name: 'bearFour', image: 'assets/images/bear-four.webp', alt: 'brown bear two' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'scary bear one' },
+    { name: 'bearFive', image: 'assets/images/bear-five.webp', alt: 'scary bear two' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'panda bear one' },
+    { name: 'bearSix', image: 'assets/images/bear-six.webp', alt: 'panda bear two' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'mouse bear one' },
+    { name: 'bearSeven', image: 'assets/images/bear-seven.webp', alt: 'mouse bear two' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'koala bear one' },
+    { name: 'bearEight', image: 'assets/images/bear-eight.webp', alt: 'koala bear two' },
 ];
 const cardFronts = document.getElementsByClassName('cardFront');
 const flippedCards = document.getElementsByClassName('flipCard');
