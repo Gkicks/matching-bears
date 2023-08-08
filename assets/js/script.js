@@ -223,6 +223,7 @@ function disableGame() {
             card.removeEventListener('click', flipCard);
             card.removeEventListener('click', wonGame);
             card.removeEventListener('click', checkMatch);
+            card.removeEventListener('click', countFlip);
         }
         checkMatch();
     } else {
@@ -231,6 +232,7 @@ function disableGame() {
             card.addEventListener('click', flipCard);
             card.addEventListener('click', checkMatch);
             card.addEventListener('click', wonGame);
+            card.addEventListener('click', countFlip);
         }
     }
 }
@@ -241,6 +243,13 @@ setInterval(disableGame, 500);
 function countFlip() {
     flipCount.textContent = flips + 1;
     flips = parseInt(flipCount.textContent);
+}
+
+for (card of gameCards) {
+    card.addEventListener('click', function () {
+        console.log('toggled cards length is' + toggledCards.length);
+        console.log('flipped cards length is' + flipCards.length);
+    });
 }
 
 /** 
@@ -312,9 +321,6 @@ endGameButton.addEventListener('click', restartGame);
  * Restarts the game - shuffles the cards, rests the time and flip counters
  */
 function restartGame() {
-    if (abort === false) {
-        abort = true;
-    }
     for (let card of gameCards) {
         card.classList.remove('toggleCard');
         card.style.pointerEvents = 'all';
@@ -322,7 +328,7 @@ function restartGame() {
     matchedCards.length = 0;
     gameCards.length = 0;
     document.getElementById("select-difficulty").disabled = false;
-    // abort = true;
+    abort = true;
     difficulty();
     flips = 0;
     flipCount.textContent = 0;
