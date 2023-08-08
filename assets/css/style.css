@@ -18,6 +18,13 @@ body {
     position: relative;
     font-family: 'playfair display', cursive;
     overflow: hidden;
+
+}
+
+header {
+    position: relative;
+    top: 0;
+    left: 0;
 }
 
 /* start page which appears when the user first loads the page */
