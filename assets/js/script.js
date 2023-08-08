@@ -94,41 +94,43 @@ function hideStartPage(event) {
  *  Generates cards into the game-container section
  */
 function generateCards() {
-    // randomise the array  
-    cardInfo.sort(() => Math.random() - 0.5);
-    // create the HTML
-    for (let i = 0; i < cardInfo.length; i++) {
-        let cardsDiv = document.createElement('div');
-        // add cards
-        cardsDiv.classList.add('card');
-        cardsDiv.setAttribute('name', cardInfo[i].name);
-        cardArea.appendChild(cardsDiv);
-        // add card front, showing the image, to each card
-        let cardFront = document.createElement('img');
-        cardFront.classList.add('cardFront');
-        cardFront.setAttribute('src', cardInfo[i].image);
-        cardFront.setAttribute('alt', cardInfo[i].alt);
-        cardsDiv.appendChild(cardFront);
-        // add card back to each card
-        let cardBack = document.createElement('div');
-        cardBack.textContent = '?';
-        cardBack.classList.add('cardBack');
-        cardsDiv.appendChild(cardBack);
-        gameCards.push(cardsDiv);
+    if (input.value.length > 0) {
+        // randomise the array
+        cardInfo.sort(() => Math.random() - 0.5);
+        // create the HTML
+        for (let i = 0; i < cardInfo.length; i++) {
+            let cardsDiv = document.createElement('div');
+            // add cards
+            cardsDiv.classList.add('card');
+            cardsDiv.setAttribute('name', cardInfo[i].name);
+            cardArea.appendChild(cardsDiv);
+            // add card front, showing the image, to each card
+            let cardFront = document.createElement('img');
+            cardFront.classList.add('cardFront');
+            cardFront.setAttribute('src', cardInfo[i].image);
+            cardFront.setAttribute('alt', cardInfo[i].alt);
+            cardsDiv.appendChild(cardFront);
+            // add card back to each card
+            let cardBack = document.createElement('div');
+            cardBack.textContent = '?';
+            cardBack.classList.add('cardBack');
+            cardsDiv.appendChild(cardBack);
+            gameCards.push(cardsDiv);
 
-        // adds event listeners to each card
-        for (let card of gameCards) {
-            card.addEventListener('click', turnCard);
-            card.addEventListener('click', abortTime);
-            card.addEventListener('click', timeGame);
-            card.addEventListener('click', flipCard);
-            card.addEventListener('click', checkMatch);
-            card.addEventListener('click', wonGame);
-            card.addEventListener('click', countFlip);
-            card.addEventListener('click', disableGame);
-            card.addEventListener('click', disableDifficulty);
+            // adds event listeners to each card
+            for (let card of gameCards) {
+                card.addEventListener('click', turnCard);
+                card.addEventListener('click', abortTime);
+                card.addEventListener('click', timeGame);
+                card.addEventListener('click', flipCard);
+                card.addEventListener('click', checkMatch);
+                card.addEventListener('click', wonGame);
+                card.addEventListener('click', countFlip);
+                card.addEventListener('click', disableGame);
+                card.addEventListener('click', disableDifficulty);
+            }
+
         }
-
     }
 }
 
