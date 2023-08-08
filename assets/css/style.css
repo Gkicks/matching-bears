@@ -106,6 +106,10 @@ body {
     border: 1px solid #4D3B32;
 }
 
+input:active {
+    border: 1px solid #4D3B32;
+}
+
 /* class to hide elements through JavaScript */
 .hidden {
     height: 0;
