@@ -1,4 +1,5 @@
 // global variables
+const title = document.getElementById('title');
 const startGameArea = document.getElementById('start-game');
 const howToPlayTitle = document.getElementById('how-to-play-title');
 const instructions = document.getElementById('instructions-div');
@@ -46,6 +47,12 @@ const audioChoice = document.getElementById('audio-choice');
 const audioFlip = new Audio('assets/audio/card-flip-audio.mp3');
 const audioMatch = new Audio('assets/audio/card-match-audio.mp3');
 const audioChoiceText = document.getElementById('font-awesome');
+
+// causes the page to displat at the top if the user reloads
+window.addEventListener('DOMContentLoaded', function () {
+    window.scrollTo(0, 0);
+    title.scrollIntoView();
+});
 
 // to run statGame function when the DOM has loaded
 document.addEventListener('DOMContentLoaded', startGame);
