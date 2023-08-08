@@ -113,7 +113,13 @@ header {
     border: 1px solid #4D3B32;
 }
 
-input:active {
+input:active,
+input:-moz-focusring {
+    border: 1px solid #4D3B32;
+    outline: 1px solid #4D3B32;
+}
+
+input:-moz-focusring {
     border: 1px solid #4D3B32;
 }
 
@@ -147,7 +153,7 @@ input:active {
     align-items: center;
 }
 
-#select-difficulty-div label {
+fa #select-difficulty-div label {
     font-size: 2em;
     color: #4D3B32;
 }
@@ -245,10 +251,22 @@ input:active {
 .cardFront {
     background: #F6F4F3;
     padding: 5%;
+    opacity: 1;
 }
 
 .toggleCard {
     transform: rotateY(180deg);
+    animation: font-fade 1s forwards;
+}
+
+@keyframes font-fade {
+    25% {
+        color: rgb(77, 59, 50, 0.1);
+    }
+
+    100% {
+        color: rgb(77, 59, 50, 0);
+    }
 }
 
 .flipCard {
