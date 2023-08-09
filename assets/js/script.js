@@ -254,13 +254,6 @@ function countFlip() {
     flips = parseInt(flipCount.textContent);
 }
 
-for (card of gameCards) {
-    card.addEventListener('click', function () {
-        console.log('toggled cards length is' + toggledCards.length);
-        console.log('flipped cards length is' + flipCards.length);
-    });
-}
-
 /** 
  *  Gives different time limits depending on the difficulty selected
  */
