@@ -25,15 +25,14 @@ Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching
     - [Favicon](#favicon)
     - [Card Images](#card-images)
   - [Wireframes](#wireframes)
-    - [Desktop](#desktop)
-      - [Start Page](#start-page)
-      - [Main Page](#main-page-one)
-      - [End Page](#end-page-one)
+    - [Start Page](#start-page)
+    - [Main Page](#main-page)
+    - [End Page](#end-page)
 - [Features](#features)
   - [Existing Features](#existing-features)
-    - [The Landing Page](#the-landing-page)
-    - [The Main Page](#main-page-two)
-    - [The End Page](#end-page-two)
+    - [The Landing Page](#landing-page)
+    - [The Main Page](#main-page-1)
+    - [The End Page](#end-page-1)
     - [404.html](#404html)
   - [Future Implementations](#future-implementations)
   - [Accessibility](#accessibility)
@@ -55,15 +54,15 @@ Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching
       - [Desktop](#desktop-1)
       - [Mobile](#mobile-1)
     - [404.html](#404html-1)
-      - [Desktop](#desktop-5)
-      - [Mobile](#mobile-5)
+      - [Desktop](#desktop-2)
+      - [Mobile](#mobile-2)
   - [Testing User Stories](#testing-user-stories)
     - [Client Goals](#client-goals-1)
     - [Visitor Goals](#visitor-goals-1)
   - [Full Testing](#full-testing)
-    - [Start Page](#start-page-two)
-    - [Main Page](#main-page-three)
-    - [End Page](#end-page-three)
+    - [Start Page](#start-page-1)
+    - [Main Page](#main-page-2)
+    - [End Page](#end-page-2)
     - [404 Page](#404-page)
   - [Bugs](#bugs)
     - [Resolved Bugs](#resolved-bugs)
@@ -81,7 +80,7 @@ Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching
 
 ## Initial Discussion
 
-Matching Bears is a game playing website. The name Matching Bears is a wordplay on the well known game Matching Pairs. The website is user-friendly and easy to navigate, giving the user a smooth game playing experience
+Matching Bears is a game playing website. The name Matching Bears is a wordplay on the well known game, Matching Pairs. The website is user-friendly and easy to navigate, giving the user a smooth game playing experience
 
 ### Key Information for the Site
 
@@ -116,7 +115,7 @@ Matching Bears is a game playing website. The name Matching Bears is a wordplay 
 ## Colour Scheme
 
 - Five colours have been used throughout the website - #F6F4F3, #D5BDA9, #BA9D8C, #4C3B32 and #312C2D
-- The brown colours were taken from a colour pallette, from the website Coolors, and were chosen as the brown reflects the bear theme
+- The brown colours were taken from a colour pallette from the website, Coolors and were chosen as the brown reflects the bear theme
 
 ![Coolers brown colour image](assets/readme-images/coolers-img-1.png)
 
@@ -144,16 +143,16 @@ Matching Bears is a game playing website. The name Matching Bears is a wordplay 
 
 - These images were all found on the website pixabay.com. There are eight different images, for the sixteen game cards, as there is a pair of each
 
-| Card Description |                     Card Image                     |
-| :--------------: | :------------------------------------------------: |
-|   Yellow Bear    |   ![Yellow Bear](assets/images/yellow-bear.webp)   |
-|  Confused Bear   | ![Confused Bear](assets/images/confused-bear.webp) |
-|    Blue Bear     |     ![Blue Bear](assets/images/blue-bear.webp)     |
-|    Brown Bear    |    ![Brown Bear](assets/images/brown-bear.webp)    |
-|    Scary Bear    |    ![Scary Bear](assets/images/scary-bear.webp)    |
-|    Panda Bear    |    ![Panda Bear](assets/images/panda-bear.webp)    |
-|    Mouse Bear    |    ![Mouse Bear](assets/images/mouse-bear.webp)    |
-|    Koala Bear    |    ![Koala Bear](assets/images/koala-bear.webp)    |
+| Card Description |                    Card Image                     |
+| :--------------: | :-----------------------------------------------: |
+|   Yellow Bear    |   ![Yellow Bear](assets/images/yellow-bear.png)   |
+|  Confused Bear   | ![Confused Bear](assets/images/confused-bear.png) |
+|    Blue Bear     |     ![Blue Bear](assets/images/blue-bear.png)     |
+|    Brown Bear    |    ![Brown Bear](assets/images/brown-bear.png)    |
+|    Scary Bear    |    ![Scary Bear](assets/images/scary-bear.png)    |
+|    Panda Bear    |    ![Panda Bear](assets/images/panda-bear.png)    |
+|    Mouse Bear    |    ![Mouse Bear](assets/images/mouse-bear.png)    |
+|    Koala Bear    |    ![Koala Bear](assets/images/koala-bear.png)    |
 
 ## Wireframes
 
@@ -282,16 +281,16 @@ View desktop wireframes on the Figma site: [Desktop](https://www.figma.com/file/
 
 ![screenshot of winning message](assets/readme-images/winning-message.png)
 
-- If the player runs out of time a losing message will appear. This will also pull the name of the user from the input entry
+- If the player runs out of time a losing message will appear. This will also pull the name of the user, from the input entry
 
 ![screenshot of losing message](assets/readme-images/losing-message.png)
 
 - The end message fades in to make the transition less jarring and to create a more pleasant user experience
 - There is an option for the user to restart the game. This has the same hover styling as the other button elements. The restart button will hide the end game message and take the player back to the main screen where the game will be reset in the same way as the restart button does on the main page
 
-![screenshot of restart button](assets/readme-images/restart-game.png)
+![screenshot of restart button](assets/readme-images/restart-button-initial.png)
 
-- There is no confirm alert on the restart button on the end page as restarting is the only option to continue the game at this point
+- There is no confirm alert, on the restart button, in the end page as restarting is the only option to continue the game at this point
 - Beneath the restart game option there is a link the user can click. This will take them to the Animal Asia charity website where, if they wish, they can make a donation to help the bears
 
 ![screenshot of help the bears button](assets/readme-images/help-the-bears-initial.png)
@@ -321,7 +320,7 @@ View desktop wireframes on the Figma site: [Desktop](https://www.figma.com/file/
 
 - All pages use semantic html
 - Aria-labels were used to improve accessibility for those using assistive technology. These are in all links apart from those in the footer. This is due to the footer text already telling those using a screen reader where the link would take them
-- I used the Google Chrome extensions:
+- I used the Google Chrome extension:
   - Web Disability Simulator – simulated the website for people with sight, mobility, reading and writing and concentration disabilities to view the webpage how others could see it. There were no concerns noted in these simulations
 
 ### Wave Validator
@@ -369,7 +368,7 @@ HTML, CSS and JavaScript were used to create this website.
 
 This site is deployed using Github pages:
 
-- \*Sign up and login to GitHub
+- Sign up and login to GitHub
 - Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
 - Click “settings”
 - In the lefthand navigation panel locate and click “pages”
@@ -533,54 +532,37 @@ Full testing was completed on the following devices:
 
 ### Main Page
 
-|                           Feature                            |                                                      Expected Outcome                                                      |                                                 Testing Performed                                                  |                                                                Result                                                                 | Pass / Fail |
-| :----------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :---------: |
-|                         Audio Button                         |                              Display to toggle between volume icon and mute icon when clicked                              |                                                 Clicked on button                                                  |                                           Diplay toggled between volume icon and mute icon                                            |    Pass     |
-|            Audio Button with Volume Icon Showing             |     Flipping card sound to be played when the user flips a card and a ding sound to play when the user matches a card      |                               Played game with audio button showing the volume icon                                |                  Flipping card sound played when a card flipped and a ding sound played when two cards were matched                   |    Pass     |
-|             Audio Button with Mute Icon Showing              |                                         No sound to be played throughout the game                                          |                                Played game with audio button showing the mute icon                                 |                                                No sound was played throughout the game                                                |    Pass     |
-|                     Difficulty Selector                      |               When clicked, a drop down box to appear that gives the user the option of easy, medium or hard               |                                                 Clicked on Select                                                  |                            A dropdpwn box showed with three option to select from – easy, medium and hard                             |    Pass     |
-|                 Difficulty Selector on hover                 |                                                   Colours to be inverted                                                   |                                                 Hovered on Select                                                  |                                                       Colours inverted on hover                                                       |    Pass     |
-| Difficulty Selector when card has been clicked to start game |                                                   Select to be disabled                                                    |                                      Clicked on Card and then clicked Select                                       |                                           Select was faded out and I was unable to click it                                           |    Pass     |
-|                         Time Counter                         | To have a different starting number based on difficulty selected. For easy to display 100, for medium 60 and, for hard, 30 |                                           Clicked on each Select option                                            |                             The timer showed 100 when easy was selected, 60 when medium and 30 when hard                              |    Pass     |
-|                Time Counter during game play                 |                              To reduce by one each second from when the first card is clicked                              | Clicked on a card at each of the three difficulty levels. Timed the countdown, with a stopwatch, to check accuracy | The timer started, at each of the difficulty levels, when the first card was clicked. The countdown time matched that of my stopwatch |    Pass     |
-|                  Time Counter reaching zero                  |                                       End page to be displayed with a losing message                                       |                                         Waited for the time to reach zero                                          |                                     The end game page was displayed with a commiseration message                                      |    Pass     |
-|            Time Counter on all card being matched            |                                                   To stop counting down                                                    |                                                    Won the game                                                    |                                                           The timer stopped                                                           |    Pass     |
-|                        Restart Button                        |               A confirmation alert to appear, asking the user if they’re sure they want to restart the game                |
-
-The game to be restarted:
-
-- The difficulty selector to be enabled
-- The time to reset to the difficulty and not count down until first card is clicked again
-- Flips to be reset to zero
-- Any cards that have been matched to be flipped back over
-- Cards to be reshuffled
-  | Played the game for a while and then clicked the restart button | A confimation box appeared on click. I clicked ‘okay’.
-  I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled
-  | Pass |
-  | Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
-  | Flip Counter | To increase by one each time a card is clicked | Played the game. I tried clicking on different areas during play | There was a bug that, when two unmatched cards were turned, I was still able to clicked an unturned card and increased the flip counter. I fixed this (see bug section) and the flip counter only increases when a card flips | Pass |
-  | Card | To flip over when clicked. To stay facing up until another card is flipped | Clicked card | Card flipped over and stayed facing up | Pass |
-  | Two unmatched cards flipped | To display both card faces before flipping back over. To not be able to flip any other cards until they have both flipped back | Clicked on two cards in an unmatched pair. Tried cllicking other cards while they were still facing up | The two unmatched cards were displayed before flipping back. While these two card were in play I was unable to flip an other cards | Pass |
-  | Two matched cards flipped | For the two matching cards to remain facing upwards throughout the game | Played the game | Any two matched cards remaining facing upwards until the game ended | Pass |
-  | All cards on all being matched | All cards to display a wiggle animation before a winning end page is displayed | Won the game | The cards wiggled before the winning game display was shown | Pass |
+|                           Feature                            |                                                        Expected Outcome                                                        |                                                                                                                           Testing Performed                                                                                                                            |                                                                                                            Result                                                                                                             |                                                                                                                                                       Pass / Fail                                                                                                                                                       |
+| :----------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | ---- |
+|                         Audio Button                         |                                Display to toggle between volume icon and mute icon when clicked                                |                                                                                                                           Clicked on button                                                                                                                            |                                                                                       Diplay toggled between volume icon and mute icon                                                                                        |                                                                                                                                                          Pass                                                                                                                                                           |
+|            Audio Button with Volume Icon Showing             |       Flipping card sound to be played when the user flips a card and a ding sound to play when the user matches a card        |                                                                                                         Played game with audio button showing the volume icon                                                                                                          |                                                              Flipping card sound played when a card flipped and a ding sound played when two cards were matched                                                               |                                                                                                                                                          Pass                                                                                                                                                           |
+|             Audio Button with Mute Icon Showing              |                                           No sound to be played throughout the game                                            |                                                                                                          Played game with audio button showing the mute icon                                                                                                           |                                                                                            No sound was played throughout the game                                                                                            |                                                                                                                                                          Pass                                                                                                                                                           |
+|                     Difficulty Selector                      |                 When clicked, a drop down box to appear that gives the user the option of easy, medium or hard                 |                                                                                                                           Clicked on Select                                                                                                                            |                                                                        A dropdpwn box showed with three option to select from – easy, medium and hard                                                                         |                                                                                                                                                          Pass                                                                                                                                                           |
+|                 Difficulty Selector on hover                 |                                                     Colours to be inverted                                                     |                                                                                                                           Hovered on Select                                                                                                                            |                                                                                                   Colours inverted on hover                                                                                                   |                                                                                                                                                          Pass                                                                                                                                                           |
+| Difficulty Selector when card has been clicked to start game |                                                     Select to be disabled                                                      |                                                                                                                Clicked on Card and then clicked Select                                                                                                                 |                                                                                       Select was faded out and I was unable to click it                                                                                       |                                                                                                                                                          Pass                                                                                                                                                           |
+|                         Time Counter                         |   To have a different starting number based on difficulty selected. For easy to display 100, for medium 60 and, for hard, 30   |                                                                                                                     Clicked on each Select option                                                                                                                      |                                                                         The timer showed 100 when easy was selected, 60 when medium and 30 when hard                                                                          |                                                                                                                                                          Pass                                                                                                                                                           |
+|                Time Counter during game play                 |                                To reduce by one each second from when the first card is clicked                                |                                                                           Clicked on a card at each of the three difficulty levels. Timed the countdown, with a stopwatch, to check accuracy                                                                           |                                             The timer started, at each of the difficulty levels, when the first card was clicked. The countdown time matched that of my stopwatch                                             |                                                                                                                                                          Pass                                                                                                                                                           |
+|                  Time Counter reaching zero                  |                                         End page to be displayed with a losing message                                         |                                                                                                                   Waited for the time to reach zero                                                                                                                    |                                                                                 The end game page was displayed with a commiseration message                                                                                  |                                                                                                                                                          Pass                                                                                                                                                           |
+|            Time Counter on all card being matched            |                                                     To stop counting down                                                      |                                                                                                                              Won the game                                                                                                                              |                                                                                                       The timer stopped                                                                                                       |                                                                                                                                                          Pass                                                                                                                                                           |
+|                        Restart Button                        |                 A confirmation alert to appear, asking the user if they’re sure they want to restart the game                  | The game to be restarted: The difficulty selector to be enabled, the time to reset to the difficulty and not count down until first card is clicked again, flips to be reset to zero, any cards that have been matched to be flipped back over, cards to be reshuffled |                                                                                Played the game for a while and then clicked the restart button                                                                                | A confimation box appeared on click. I clicked ‘okay’. I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled | Pass |
+|                   Restart button on hover                    |                                                       Colours to invert                                                        |                                                                                                                          Hovered over button                                                                                                                           |                                                                                                       Colours inverted                                                                                                        |                                                                                                                                                          Pass                                                                                                                                                           |
+|                         Flip Counter                         |                                         To increase by one each time a card is clicked                                         |                                                                                                    Played the game. I tried clicking on different areas during play                                                                                                    | There was a bug that, when two unmatched cards were turned, I was still able to clicked an unturned card and increased the flip counter. I fixed this (see bug section) and the flip counter only increases when a card flips |                                                                                                                                                          Pass                                                                                                                                                           |
+|                             Card                             |                           To flip over when clicked. To stay facing up until another card is flipped                           |                                                                                                                              Clicked card                                                                                                                              |                                                                                            Card flipped over and stayed facing up                                                                                             |                                                                                                                                                          Pass                                                                                                                                                           |
+|                 Two unmatched cards flipped                  | To display both card faces before flipping back over. To not be able to flip any other cards until they have both flipped back |                                                                                 Clicked on two cards in an unmatched pair. Tried cllicking other cards while they were still facing up                                                                                 |                                              The two unmatched cards were displayed before flipping back. While these two card were in play I was unable to flip an other cards                                               |                                                                                                                                                          Pass                                                                                                                                                           |
+|                  Two matched cards flipped                   |                            For the two matching cards to remain facing upwards throughout the game                             |                                                                                                                            Played the game                                                                                                                             |                                                                              Any two matched cards remaining facing upwards until the game ended                                                                              |                                                                                                                                                          Pass                                                                                                                                                           |
+|                All cards on all being matched                |                         All cards to display a wiggle animation before a winning end page is displayed                         |                                                                                                                              Won the game                                                                                                                              |                                                                                  The cards wiggled before the winning game display was shown                                                                                  |                                                                                                                                                          Pass                                                                                                                                                           |
 
 ### End Page
 
-|     Feature     |                                                                Expected Outcome                                                                | Testing Performed |                                                          Result                                                           | Pass / Fail |
-| :-------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :---------------: | :-----------------------------------------------------------------------------------------------------------------------: | :---------: |
-| Winning Message | To use the name the user inputted at the start. To pull the time that was remaining and the number of flips the user had completed the game in |   Won the game    | The winning message was displayed. It showed my name, the time I had remianing and the number of flips I had taken to win |    Pass     |
-| Losing Message  |                                                To use the name the user inputted at the start.                                                 |   Lost the game   |                The losing message was displayed and it contained the name I had inputting at the beginning                |    Pass     |
-| Restart button  |                                  The end game message to disappear and the game playing area to be displayed                                   |
-
-- The difficulty selector to be enabled
-- The time to reset to the difficulty and not count down until first card is clicked again
-- Flips to be reset to zero
-- Any cards that have been matched to be flipped back over
-- Cards to be reshuffled | Clicked the button | The end game message disappeared and the game playing area was displayed.
-  I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled | Pass |
-  | Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
-  | Help the Bears link | The user to be taken to the Animal Asia charity page in a new window | Clicked the link | Opened the correct website in a new browser page | Pass |
-  | Help the Bears link hover | Size to increase | Hovered over the link | Link size expanded | Pass |
+|                                                                                                                             Feature                                                                                                                              |                                                                Expected Outcome                                                                |                                                                                                              Testing Performed                                                                                                               |                                                          Result                                                           |                                Pass / Fail                                |
+| :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------: |
+|                                                                                                                         Winning Message                                                                                                                          | To use the name the user inputted at the start. To pull the time that was remaining and the number of flips the user had completed the game in |                                                                                                                 Won the game                                                                                                                 | The winning message was displayed. It showed my name, the time I had remianing and the number of flips I had taken to win |                                   Pass                                    |
+|                                                                                                                          Losing Message                                                                                                                          |                                                To use the name the user inputted at the start.                                                 |                                                                                                                Lost the game                                                                                                                 |                The losing message was displayed and it contained the name I had inputting at the beginning                |                                   Pass                                    |
+|                                                                                                                          Restart button                                                                                                                          |                                  The end game message to disappear and the game playing area to be displayed                                   | The difficulty selector to be enabled, the time to reset to the difficulty and not count down until first card is clicked again, flips to be reset to zero, any cards that have been matched to be flipped back over, cards to be reshuffled |                                                    Clicked the button                                                     | The end game message disappeared and the game playing area was displayed. |
+| I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled |                                                                      Pass                                                                      |
+|                                                                                                                     Restart button on hover                                                                                                                      |                                                               Colours to invert                                                                |                                                                                                             Hovered over button                                                                                                              |                                                     Colours inverted                                                      |                                   Pass                                    |
+|                                                                                                                       Help the Bears link                                                                                                                        |                                      The user to be taken to the Animal Asia charity page in a new window                                      |                                                                                                               Clicked the link                                                                                                               |                                     Opened the correct website in a new browser page                                      |                                   Pass                                    |
+|                                                                                                                    Help the Bears link hover                                                                                                                     |                                                                Size to increase                                                                |                                                                                                            Hovered over the link                                                                                                             |                                                    Link size expanded                                                     |                                   Pass                                    |
 
 ### 404 Page
 
@@ -593,97 +575,125 @@ The game to be restarted:
 ### Resolved Bugs
 
 - When I put transform rotateY styling on the card I tested it by using .card:hover. This worked but both the image and the back on the card were showing on hover. This needed to be the other way round.
-    - I changed the order that the backFace div and image were appended, to the card divs so the image was first and then the backFace after, so this would be the last created. I then moved the backface-visibility to the cardFront image
+
+  - I changed the order that the backFace div and image were appended, to the card divs so the image was first and then the backFace after, so this would be the last created. I then moved the backface-visibility to the cardFront image
 
 - When the card was turning there was no background colour so, when the edge of the card went over the background div, it made it look like the card was transparent.
-    - I first added a background colour to the image. This didn’t go to the edges as I’d set the image size to 90% to stop it touching the sides of the card. I set the image size to 100% and put in 5% padding. This meant the background colour went to the edges of the card
+
+  - I first added a background colour to the image. This didn’t go to the edges as I’d set the image size to 90% to stop it touching the sides of the card. I set the image size to 100% and put in 5% padding. This meant the background colour went to the edges of the card
 
 - The function to check the first two cards flipped matched was executing before any cards had been clicked
-    - I contacted Student Support and they helped me realise that I was calling the function before any cards had been clicked. I separated the event listener for clicking the cards from the function for matching the cards. I then added the function for checking the cards after the event listener.
+
+  - I contacted Student Support and they helped me realise that I was calling the function before any cards had been clicked. I separated the event listener for clicking the cards from the function for matching the cards. I then added the function for checking the cards after the event listener.
 
 - Once a matching pair had been found the user could still click on one of those cards and flip them back over, when they should remain facing up
-    - I added pointerEvents = ‘none’, to the matching pair, which prevents the user clicking on it again
+
+  - I added pointerEvents = ‘none’, to the matching pair, which prevents the user clicking on it again
 
 - When a game had finished, and the end game page was displayed, the page was reloading before the restart button was clicked
-    - I’d put location.reload in but hadn’t put this as a function. I made this a function and it worked as it should (this was later removed as I added a start page and added a restartGame function so the user could restart the game without the start page being shown again)
+
+  - I’d put location.reload in but hadn’t put this as a function. I made this a function and it worked as it should (this was later removed as I added a start page and added a restartGame function so the user could restart the game without the start page being shown again)
 
 - On the user matching all the pairs, the end game display was loading immediately and not giving the user time to enjoy their win
-    - Added a setTimeout to delay the end game message being displayed. Also added some animation to the images, on the user getting all matches, to improve user experience
+
+  - Added a setTimeout to delay the end game message being displayed. Also added some animation to the images, on the user getting all matches, to improve user experience
 
 - Some cards weren’t turning unless I clicked in a very specific area
-    - I looked at the elements by showing them in Chrome Dev Tools. I saw that the cards that weren’t clicking were covered by the hidden ‘restart game’ button in the hidden end game div. I changed the size of this div so it was 0 height and width. I then amended the Javascript so the dimensions were put back on the div when it became displayed, through adding and removing classes
+
+  - I looked at the elements by showing them in Chrome Dev Tools. I saw that the cards that weren’t clicking were covered by the hidden ‘restart game’ button in the hidden end game div. I changed the size of this div so it was 0 height and width. I then amended the Javascript so the dimensions were put back on the div when it became displayed, through adding and removing classes
 
 - The winning end game display had some brown lines at the top of it
-    - This was because I’d put a top positioning of 10%. I changed this to 0
+
+  - This was because I’d put a top positioning of 10%. I changed this to 0
 
 - The ears of the pictures on the cards were being cutoff
-    - This was due to the border radius. I decreased the border-radius to 10px. I thought this looked better and resolved the issue
+
+  - This was due to the border radius. I decreased the border-radius to 10px. I thought this looked better and resolved the issue
 
 - When I pressed the start submit button it was going to the main screen without needing a name.
-    - I put a condition, in the hideStartPage function, that the length of the input value needed to be greater than zero before it was executed
+
+  - I put a condition, in the hideStartPage function, that the length of the input value needed to be greater than zero before it was executed
 
 - The user was still able to click on other cards while two unmatched cards were still in play
-    - I added a disableCards function which removed the event listeners from the cards if the unmatched toggledCards was equal to two
+
+  - I added a disableCards function which removed the event listeners from the cards if the unmatched toggledCards was equal to two
 
 - Following the above I was finding that I was having to double click on the first card clicked, after finding no match, twice. This was because the function didn’t execute until a card was clicked again
-    - I put a setTimer on the function to check it every half a second
+
+  - I put a setTimer on the function to check it every half a second
 
 - When I was making the website responsive the main page was showing, under the start page, on smaller screens
-    - Added overflow: hidden to the body element
+
+  - Added overflow: hidden to the body element
 
 - On restart flips were resetting to 0 but then, once card pressed, was recounting from last flip count
-    - Added flips = 0 into the restart functions
+
+  - Added flips = 0 into the restart functions
 
 - On restart the timeCount started before a button was clicked
-    - This was happening because tThe timeGame function was never stopped. I added an if abort = true, return to the timeGame function to abort the TimeCount function. I then made an abort function to be able to turn abort back to false, once the user started playing again, so the timer restarted
+
+  - This was happening because tThe timeGame function was never stopped. I added an if abort = true, return to the timeGame function to abort the TimeCount function. I then made an abort function to be able to turn abort back to false, once the user started playing again, so the timer restarted
 
 - On restart, after the user had won the game, the winning animation was playing as soon as a card was pressed to start the next game
-    - There was no code to empty the matchedCards array following a win. I added matchedCards = 0 into the restartGame function
+
+  - There was no code to empty the matchedCards array following a win. I added matchedCards = 0 into the restartGame function
 
 - Two sets of cards were being generated, occasionally, on restartGame
-    - Added gameCards = 0 to restartGame function
+
+  - Added gameCards = 0 to restartGame function
 
 - The time countdown was speeding up as the cards were being clicked
-    - The disable game was making the timeGame run on each click, rather than once. I removed the addEventListener and removeEventListener functions from the disableGame function and only put in the event listeners that needed to be added / removed
 
-- Doing the above caused the second pair clicked to not toggle back over until another card was clicked. This was because the eventListener for this had been disabled. 
-    - Added for the checkMatch function to be run after the eventListeners had been disabled
+  - The disable game was making the timeGame run on each click, rather than once. I removed the addEventListener and removeEventListener functions from the disableGame function and only put in the event listeners that needed to be added / removed
+
+- Doing the above caused the second pair clicked to not toggle back over until another card was clicked. This was because the eventListener for this had been disabled.
+
+  - Added for the checkMatch function to be run after the eventListeners had been disabled
 
 - The audioFlip wasn’t playing on every flip
-    - Added audioFlip.currentTime = 0 to the start of the function as the clip for the previous card flip may still have been running
+
+  - Added audioFlip.currentTime = 0 to the start of the function as the clip for the previous card flip may still have been running
 
 - Font awesome image wasn’t loading until after main page was being displayed
-    - Added fontawesome script to the head of the page rather than the end. My research indicated this would help the icons load quicker and it did appear to do so
 
-- Unless the user matched all the pairs, with no mistakes, the wonGame function wasn’t working. 
-    - This was due to the disableGame function removing and adding the turnCard function, so the turnCard function was being executed after the wonGame function was. I added for the wonGame and checkMatch functions to also be added and removed in the disableGame function. I put them to be added in the order they needed to be executed
+  - Added fontawesome script to the head of the page rather than the end. My research indicated this would help the icons load quicker and it did appear to do so
+
+- Unless the user matched all the pairs, with no mistakes, the wonGame function wasn’t working.
+
+  - This was due to the disableGame function removing and adding the turnCard function, so the turnCard function was being executed after the wonGame function was. I added for the wonGame and checkMatch functions to also be added and removed in the disableGame function. I put them to be added in the order they needed to be executed
 
 - audioMatch was still playing when mute on
-    - Added a check to make sure audioState is 0 before audioMatch sound played
 
-- When restarting from the end game page, the restart button wasn’t disappearing  immediately and was fading out
-    - Added the hidden class to the restart button and used JavaScript to remove this when the end game part appears. Add opacity: 0 to the hidden class
+  - Added a check to make sure audioState is 0 before audioMatch sound played
+
+- When restarting from the end game page, the restart button wasn’t disappearing immediately and was fading out
+
+  - Added the hidden class to the restart button and used JavaScript to remove this when the end game part appears. Add opacity: 0 to the hidden class
 
 - The input element’s border was turning yellow when the user clicked on it
-    - Added input:active code, in CSS, for there to be a border when this is active. This disn’t resolve the issue in Firefox so I added input:-moz-focusring into css and that the outline be outline: 1px solid #4D3B32
+
+  - Added input:active code, in CSS, for there to be a border when this is active. This disn’t resolve the issue in Firefox so I added input:-moz-focusring into css and that the outline be outline: 1px solid #4D3B32
 
 - The timer continued after the user finished the game. This meant the end page winning message would turn into a losing message if the user was still on that screen when the time ran out
-    - Added an abort line, in the wonGame function, so the timer stops when the user has matched all the cards
+
+  - Added an abort line, in the wonGame function, so the timer stops when the user has matched all the cards
 
 - When two unmatched cards were face up the flip counter was still increasing, when the user clicked another card, even though the game was disabled
-    - Added for the countFlip event listener to be removed / added within the disableGame function 
+
+  - Added for the countFlip event listener to be removed / added within the disableGame function
 
 - If the user didn’t enter a name into the input, and pressed start, they would be asked to input their name. If they then inputed their name and pressed start, two sets of cards would be generated
-    - Added if statement, to check input.length > 0 before the generateCards function was generated
+
+  - Added if statement, to check input.length > 0 before the generateCards function was generated
 
 - When the user reloaded they then had to scroll up to see the start page
-    - Added display: none to the hidden class css
-    - Removed align-items: centre from the body
-    - Changed overflow: hidden to overflow-x: hidden
+  - Added display: none to the hidden class css
+  - Removed align-items: centre from the body
+  - Changed overflow: hidden to overflow-x: hidden
 
 ### Unresolved Bugs
 
-- •	In Firefox there is still a brief period of time where the question mark appears over the image until it flips back. The soloutions I tested affected how the game looked on the other browsers so I decided to leave it as it is. This is something that could be resolved at a later time
+- In Firefox there is still a brief period of time where the question mark appears over the image until it flips back. The soloutions I tested affected how the game looked on the other browsers so I decided to leave it as it is. This is something that could be resolved at a later time
 
 [Back to top](#matching-bears)
 
@@ -691,7 +701,7 @@ The game to be restarted:
 
 ## Code Used
 
-- • cardInfo.sort(() => Math.random() - 0.5);
+- cardInfo.sort(() => Math.random() - 0.5);
 
 This code was taken from the website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript and was using in my generateCards function to shuffle the cards
 
