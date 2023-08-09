@@ -25,12 +25,12 @@ Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching
     - [Favicon](#favicon)
     - [Card Images](#card-images)
   - [Wireframes](#wireframes)
-    - [Start Page](#start-page)
+    - [Landing Page](#landing-page)
     - [Main Page](#main-page)
     - [End Page](#end-page)
 - [Features](#features)
   - [Existing Features](#existing-features)
-    - [The Landing Page](#landing-page)
+    - [The Landing Page](#landing-page-1)
     - [The Main Page](#main-page-1)
     - [The End Page](#end-page-1)
     - [404.html](#404html)
@@ -60,7 +60,7 @@ Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching
     - [Client Goals](#client-goals-1)
     - [Visitor Goals](#visitor-goals-1)
   - [Full Testing](#full-testing)
-    - [Start Page](#start-page-1)
+    - [Landing Page](#landing-page-2)
     - [Main Page](#main-page-2)
     - [End Page](#end-page-2)
     - [404 Page](#404-page)
@@ -159,9 +159,9 @@ Matching Bears is a game playing website. The name Matching Bears is a wordplay 
 - Wireframes were created using figma.com
 - The website was designed to be the same across desktop and mobile
 
-### Start Page
+### Landing Page
 
-![wireframe screenshot for start page](assets/readme-images/wireframe-start-page.png)
+![wireframe screenshot for landing page](assets/readme-images/wireframe-start-page.png)
 
 ### Main Page
 
@@ -521,7 +521,7 @@ Full testing was completed on the following devices:
 - Dell Computer (desktop)
 - iPad 8th Generation (tablet)
 
-### Start Page
+### Landing Page
 
 |          Feature           |                                                                  Expected Outcome                                                                   |        Testing Performed        |                                        Result                                        | Pass / Fail |
 | :------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------: | :----------------------------------------------------------------------------------: | :---------: |
@@ -574,122 +574,36 @@ Full testing was completed on the following devices:
 
 ### Resolved Bugs
 
-- When I put transform rotateY styling on the card I tested it by using .card:hover. This worked but both the image and the back on the card were showing on hover. This needed to be the other way round.
-
-  - I changed the order that the backFace div and image were appended, to the card divs so the image was first and then the backFace after, so this would be the last created. I then moved the backface-visibility to the cardFront image
-
-- When the card was turning there was no background colour so, when the edge of the card went over the background div, it made it look like the card was transparent.
-
-  - I first added a background colour to the image. This didn’t go to the edges as I’d set the image size to 90% to stop it touching the sides of the card. I set the image size to 100% and put in 5% padding. This meant the background colour went to the edges of the card
-
-- The function to check the first two cards flipped matched was executing before any cards had been clicked
-
-  - I contacted Student Support and they helped me realise that I was calling the function before any cards had been clicked. I separated the event listener for clicking the cards from the function for matching the cards. I then added the function for checking the cards after the event listener.
-
-- Once a matching pair had been found the user could still click on one of those cards and flip them back over, when they should remain facing up
-
-  - I added pointerEvents = ‘none’, to the matching pair, which prevents the user clicking on it again
-
-- When a game had finished, and the end game page was displayed, the page was reloading before the restart button was clicked
-
-  - I’d put location.reload in but hadn’t put this as a function. I made this a function and it worked as it should (this was later removed as I added a start page and added a restartGame function so the user could restart the game without the start page being shown again)
-
-- On the user matching all the pairs, the end game display was loading immediately and not giving the user time to enjoy their win
-
-  - Added a setTimeout to delay the end game message being displayed. Also added some animation to the images, on the user getting all matches, to improve user experience
-
-- Some cards weren’t turning unless I clicked in a very specific area
-
-  - I looked at the elements by showing them in Chrome Dev Tools. I saw that the cards that weren’t clicking were covered by the hidden ‘restart game’ button in the hidden end game div. I changed the size of this div so it was 0 height and width. I then amended the Javascript so the dimensions were put back on the div when it became displayed, through adding and removing classes
-
-- The winning end game display had some brown lines at the top of it
-
-  - This was because I’d put a top positioning of 10%. I changed this to 0
-
-- The ears of the pictures on the cards were being cutoff
-
-  - This was due to the border radius. I decreased the border-radius to 10px. I thought this looked better and resolved the issue
-
-- When I pressed the start submit button it was going to the main screen without needing a name.
-
-  - I put a condition, in the hideStartPage function, that the length of the input value needed to be greater than zero before it was executed
-
-- The user was still able to click on other cards while two unmatched cards were still in play
-
-  - I added a disableCards function which removed the event listeners from the cards if the unmatched toggledCards was equal to two
-
-- Following the above I was finding that I was having to double click on the first card clicked, after finding no match, twice. This was because the function didn’t execute until a card was clicked again
-
-  - I put a setTimer on the function to check it every half a second
-
-- When I was making the website responsive the main page was showing, under the start page, on smaller screens
-
-  - Added overflow: hidden to the body element
-
-- On restart flips were resetting to 0 but then, once card pressed, was recounting from last flip count
-
-  - Added flips = 0 into the restart functions
-
-- On restart the timeCount started before a button was clicked
-
-  - This was happening because tThe timeGame function was never stopped. I added an if abort = true, return to the timeGame function to abort the TimeCount function. I then made an abort function to be able to turn abort back to false, once the user started playing again, so the timer restarted
-
-- On restart, after the user had won the game, the winning animation was playing as soon as a card was pressed to start the next game
-
-  - There was no code to empty the matchedCards array following a win. I added matchedCards = 0 into the restartGame function
-
-- Two sets of cards were being generated, occasionally, on restartGame
-
-  - Added gameCards = 0 to restartGame function
-
-- The time countdown was speeding up as the cards were being clicked
-
-  - The disable game was making the timeGame run on each click, rather than once. I removed the addEventListener and removeEventListener functions from the disableGame function and only put in the event listeners that needed to be added / removed
-
-- Doing the above caused the second pair clicked to not toggle back over until another card was clicked. This was because the eventListener for this had been disabled.
-
-  - Added for the checkMatch function to be run after the eventListeners had been disabled
-
-- The audioFlip wasn’t playing on every flip
-
-  - Added audioFlip.currentTime = 0 to the start of the function as the clip for the previous card flip may still have been running
-
-- Font awesome image wasn’t loading until after main page was being displayed
-
-  - Added fontawesome script to the head of the page rather than the end. My research indicated this would help the icons load quicker and it did appear to do so
-
-- Unless the user matched all the pairs, with no mistakes, the wonGame function wasn’t working.
-
-  - This was due to the disableGame function removing and adding the turnCard function, so the turnCard function was being executed after the wonGame function was. I added for the wonGame and checkMatch functions to also be added and removed in the disableGame function. I put them to be added in the order they needed to be executed
-
-- audioMatch was still playing when mute on
-
-  - Added a check to make sure audioState is 0 before audioMatch sound played
-
-- When restarting from the end game page, the restart button wasn’t disappearing immediately and was fading out
-
-  - Added the hidden class to the restart button and used JavaScript to remove this when the end game part appears. Add opacity: 0 to the hidden class
-
-- The input element’s border was turning yellow when the user clicked on it
-
-  - Added input:active code, in CSS, for there to be a border when this is active. This disn’t resolve the issue in Firefox so I added input:-moz-focusring into css and that the outline be outline: 1px solid #4D3B32
-
-- The timer continued after the user finished the game. This meant the end page winning message would turn into a losing message if the user was still on that screen when the time ran out
-
-  - Added an abort line, in the wonGame function, so the timer stops when the user has matched all the cards
-
-- When two unmatched cards were face up the flip counter was still increasing, when the user clicked another card, even though the game was disabled
-
-  - Added for the countFlip event listener to be removed / added within the disableGame function
-
-- If the user didn’t enter a name into the input, and pressed start, they would be asked to input their name. If they then inputed their name and pressed start, two sets of cards would be generated
-
-  - Added if statement, to check input.length > 0 before the generateCards function was generated
-
-- When the user reloaded they then had to scroll up to see the start page
-  - Added display: none to the hidden class css
-  - Removed align-items: centre from the body
-  - Changed overflow: hidden to overflow-x: hidden
+|        Bug        |    Solution                |
+| :-------------------: | :--------------------: |
+| When I put transform rotateY styling on the card I tested it by using .card:hover. This worked but both the image and the back on the card were showing on hover. This needed to be the other way round | I changed the order that the backFace div and image were appended, to the card divs so the image was first and then the backFace after, so this would be the last created. I then moved the backface-visibility to the cardFront image |
+| When the card was turning there was no background colour so, when the edge of the card went over the background div, it made it look like the card was transparent | I first added a background colour to the image. This didn’t go to the edges as I’d set the image size to 90% to stop it touching the sides of the card. I set the image size to 100% and put in 5% padding. This meant the background colour went to the edges of the card |
+| The function to check the first two cards flipped matched was executing before any cards had been clicked | I contacted Student Support and they helped me realise that I was calling the function before any cards had been clicked. I separated the event listener for clicking the cards from the function for matching the cards. I then added the function for checking the cards after the event listener |
+| Once a matching pair had been found the user could still click on one of those cards and flip them back over, when they should remain facing up | I added pointerEvents = ‘none’, to the matching pair, which prevents the user clicking on it again
+| When a game had finished, and the end game page was displayed, the page was reloading before the restart button was clicked | I’d put location.reload in but hadn’t put this as a function. I made this a function and it worked as it should (this was later removed as I added a start page and added a restartGame function so the user could restart the game without the landing page being shown again) |
+| On the user matching all the pairs, the end game display was loading immediately and not giving the user time to enjoy their win |  Added a setTimeout to delay the end game message being displayed. Also added some animation to the images, on the user getting all matches, to improve user experience | Some cards weren’t turning unless I clicked in a very specific area | I looked at the elements by showing them in Chrome Dev Tools. I saw that the cards that weren’t clicking were covered by the hidden ‘restart game’ button in the hidden end game div. I changed the size of this div so it was 0 height and width. I then amended the Javascript so the dimensions were put back on the div when it became displayed, through adding and removing classes |
+| The winning end game display had some brown lines at the top of it | This was because I’d put a top positioning of 10%. I changed this to 0 |
+| The ears of the pictures on the cards were being cutoff | This was due to the border radius. I decreased the border-radius to 10px. I thought this looked better and resolved the issue |
+| When I pressed the start submit button it was going to the main screen without needing a name | I put a condition, in the hideStartPage function, that the length of the input value needed to be greater than zero before it was executed |
+| The user was still able to click on other cards while two unmatched cards were still in play | I added a disableCards function which removed the event listeners from the cards if the unmatched toggledCards was equal to two |
+| Following the above I was finding that I was having to double click on the first card clicked, after finding no match, twice. This was because the function didn’t execute until a card was clicked again | I put a setTimer on the function to check it every half a second |
+| When I was making the website responsive the main page was showing, under the landing page, on smaller screens |  Added overflow: hidden to the body element |
+| On restart flips were resetting to 0 but then, once card pressed, was recounting from last flip count | Added flips = 0 into the restart functions |
+| On restart the timeCount started before a button was clicked | This was happening because tThe timeGame function was never stopped. I added an if abort = true, return to the timeGame function to abort the TimeCount function. I then made an abort function to be able to turn abort back to false, once the user started playing again, so the timer restarted | On restart, after the user had won the game, the winning animation was playing as soon as a card was pressed to start the next game |
+| There was no code to empty the matchedCards array following a win. I added matchedCards = 0 into the restartGame function | 
+|Two sets of cards were being generated, occasionally, on restartGame | Added gameCards = 0 to restartGame function |
+| The time countdown was speeding up as the cards were being clicked | The disable game was making the timeGame run on each click, rather than once. I removed the addEventListener and removeEventListener functions from the disableGame function and only put in the event listeners that needed to be added / removed |
+| Doing the above caused the second pair clicked to not toggle back over until another card was clicked. This was because the eventListener for this had been disabled | Added for the checkMatch function to be run after the eventListeners had been disabled |
+| The audioFlip wasn’t playing on every flip | Added audioFlip.currentTime = 0 to the start of the function as the clip for the previous card flip may still have been running |
+| Font awesome image wasn’t loading until after main page was being displayed | Added fontawesome script to the head of the page rather than the end. My research indicated this would help the icons load quicker and it did appear to do so |
+| Unless the user matched all the pairs, with no mistakes, the wonGame function wasn’t working | This was due to the disableGame function removing and adding the turnCard function, so the turnCard function was being executed after the wonGame function was. I added for the wonGame and checkMatch functions to also be added and removed in the disableGame function. I put them to be added in the order they needed to be executed |
+| audioMatch was still playing when mute on | Added a check to make sure audioState is 0 before audioMatch sound played |
+| When restarting from the end game page, the restart button wasn’t disappearing immediately and was fading out | Added the hidden class to the restart button and used JavaScript to remove this when the end game part appears. Add opacity: 0 to the hidden class |
+| The input element’s border was turning yellow when the user clicked on it | Added input:active code, in CSS, for there to be a border when this is active. This disn’t resolve the issue in Firefox so I added input:-moz-focusring into css and that the outline be outline: 1px solid #4D3B32 |
+| The timer continued after the user finished the game. This meant the end page winning message would turn into a losing message if the user was still on that screen when the time ran out | Added an abort line, in the wonGame function, so the timer stops when the user has matched all the cards |
+| When two unmatched cards were face up the flip counter was still increasing, when the user clicked another card, even though the game was disabled | Added for the countFlip event listener to be removed / added within the disableGame function |
+| If the user didn’t enter a name into the input, and pressed start, they would be asked to input their name. If they then inputed their name and pressed start, two sets of cards would be generated | Added if statement, to check input.length > 0 before the generateCards function was generated |
+| When the user reloaded they then had to scroll up to see the content on the landing page | Added display: none to the hidden class css, removed align-items: centre from the body, changed overflow: hidden to overflow-x: hidden|
 
 ### Unresolved Bugs
 
