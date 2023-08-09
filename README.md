@@ -6,7 +6,7 @@ This website is designed for the user to play a matching pairs game.
 
 ![am-i-responsive](assets/readme-images/am-i-responsive.png)
 
-Visit the deployed site here: [Matching Bears](https://gkicks.github.io/chuckles-comedy-club/)
+Visit the deployed site here: [Matching Bears](https://gkicks.github.io/matching-bears/)
 
 # Contents
 
@@ -322,7 +322,7 @@ View desktop wireframes on the Figma site: [Desktop](https://www.figma.com/file/
 - All pages use semantic html
 - Aria-labels were used to improve accessibility for those using assistive technology. These are in all links apart from those in the footer. This is due to the footer text already telling those using a screen reader where the link would take them
 - I used the Google Chrome extensions:
-    - Web Disability Simulator – simulated the website for people with sight, mobility, reading and writing and concentration disabilities to view the webpage how others could see it. There were no concerns noted in these simulations
+  - Web Disability Simulator – simulated the website for people with sight, mobility, reading and writing and concentration disabilities to view the webpage how others could see it. There were no concerns noted in these simulations
 
 ### Wave Validator
 
@@ -345,7 +345,7 @@ I used the Wave validator to check if I could improve the user experience of the
 
 ## Languages Used
 
-HTML, CSS and JavaScript were used to create this website. 
+HTML, CSS and JavaScript were used to create this website.
 
 ## Frameworks, libraries and programs used
 
@@ -354,12 +354,12 @@ HTML, CSS and JavaScript were used to create this website.
 - Convertio - To change images to webp format and reduce file size
 - Figma – To create wireframes
 - Font Awesome - For the iconography on the social media links
-- Github - To save and store files 
+- Github - To save and store files
 - Google Dev Tools – Used to troubleshoot and debug
 - Google Fonts - To import the fonts used on the website
 - JShint – to check for any issues in the JavaScript code
 - Wave Validator – To check if improvement could be made for those users with disabilities
-- WC3 Validator / Jigsaw – To check code meets the required standard 
+- WC3 Validator / Jigsaw – To check code meets the required standard
 
 [Back to top](#matching-bears)
 
@@ -369,39 +369,39 @@ HTML, CSS and JavaScript were used to create this website.
 
 This site is deployed using Github pages:
 
-* *Sign up and login to GitHub
-* Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
-* Click “settings”
-* In the lefthand navigation panel locate and click “pages”
-* Change the branch from “none” to “main”
-* Click “save”
-* The website will then be deployed. This process my take a few minutes and then “your site is live at …” will appear towards the top of the page
+- \*Sign up and login to GitHub
+- Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
+- Click “settings”
+- In the lefthand navigation panel locate and click “pages”
+- Change the branch from “none” to “main”
+- Click “save”
+- The website will then be deployed. This process my take a few minutes and then “your site is live at …” will appear towards the top of the page
 
 ## Local Development
 
 ### How to Fork
 
-* Sign up and login to GitHub
-* Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
-* Locate the “fork” button which is located towards the top of the page. Click this button
+- Sign up and login to GitHub
+- Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
+- Locate the “fork” button which is located towards the top of the page. Click this button
 
 ### How to Clone
 
-* Sign up and login to GitHub
-* Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
-* Locate the “<> Code” button and click this. This will bring up a new panel
-* Click the local tab
-* Decide if you would like to clone with HTTPS, SSH or GitHub CLI – copy the link shown under the one of your choosing
-* Open your code editor
-* Open a new terminal in your code editor and change the working directory to the location you want to use for the clone directory (you can use the cd command to change directories)
-* When you are in your chosen directory type “git clone” followed by pasting in the URL you copied in GitHub
-* Press enter to execute the command and your clone will be created
+- Sign up and login to GitHub
+- Find the GitHub repository <https://github.com/Gkicks/matching-bears.git>
+- Locate the “<> Code” button and click this. This will bring up a new panel
+- Click the local tab
+- Decide if you would like to clone with HTTPS, SSH or GitHub CLI – copy the link shown under the one of your choosing
+- Open your code editor
+- Open a new terminal in your code editor and change the working directory to the location you want to use for the clone directory (you can use the cd command to change directories)
+- When you are in your chosen directory type “git clone” followed by pasting in the URL you copied in GitHub
+- Press enter to execute the command and your clone will be created
 
 [Back to top](#matching-bears)
 
 # Testing
 
-## Automated Testing 
+## Automated Testing
 
 I tested the website in the following browsers:
 
@@ -432,19 +432,15 @@ I also used Chrome Developer tools to look for bugs throughout designing and bui
 - Nest Hub Max
 - iPhone 6/7/8
 - Facebook for Android v407 on Pixel 6
-Of these, the narrowest screensize was the Galaxy Fold so I made sure the website was responsive down to this size. I have a Galaxy Fold 4 so also tested the website on this device.
+  Of these, the narrowest screensize was the Galaxy Fold so I made sure the website was responsive down to this size. I have a Galaxy Fold 4 so also tested the website on this device.
 
 I asked friends and family to test the website on their devices. There was one concern raised from this:
 
 - On a IPhone 8 only the bottom third of the screen was showing. I had also found a bug with the webpage not being displayed, at the top of the page, on reload, and I suspected this was the same issue. I resolved this by:
 
-    - Added  window.addEventListener('DOMContentLoaded', function () {
-    window.scrollTo(0, 0);
-    title.scrollIntoView();
-});
-to script.js
-    - Removed align-items: centre from the body element
-    - Changed overflow: hidden to overflow-x: hidden on the body element
+  - Added display: none to the hidden class css
+  - Removed align-items: centre from the body
+  - Changed overflow: hidden to overflow-x: hidden
 
 This resolved both issues
 
@@ -496,109 +492,198 @@ I used Lighthouse, within the Chrome developer tools, to check the performance, 
 
 ### Client Goals
 
-| Goal | How is this achieved? |
-|:----:| :-------------------: |
-| To be responsive on a range of devices | The website was tested on various sizes and was responsive to all sizes tested – see automated testing section |
-| The game to have different difficulty levels | There are three difficulty levels the user can choose from. At the easy level they have 100 seconds to complete the game, at medium they have 60 seconds and, at hard, 30 seconds |
-| Statistics of the game to be displayed | There is a countdown timer in the bottom lefthand corner of the screen which tells the user how much time they have left. In the right hand corner there is a flip counter which increases, by one, each time a card is flipped. The winning message tells the user how much time they have remaining and how many flips it took them to complete the game |
-| Have a link to a bears charity | This is included in the end game div and contains an external link to a charity that helps bears that are farmed for their bile
+|                     Goal                     |                                                                                                                                                                   How is this achieved?                                                                                                                                                                    |
+| :------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|    To be responsive on a range of devices    |                                                                                                                       The website was tested on various sizes and was responsive to all sizes tested – see automated testing section                                                                                                                       |
+| The game to have different difficulty levels |                                                                                     There are three difficulty levels the user can choose from. At the easy level they have 100 seconds to complete the game, at medium they have 60 seconds and, at hard, 30 seconds                                                                                      |
+|    Statistics of the game to be displayed    | There is a countdown timer in the bottom lefthand corner of the screen which tells the user how much time they have left. In the right hand corner there is a flip counter which increases, by one, each time a card is flipped. The winning message tells the user how much time they have remaining and how many flips it took them to complete the game |
+|        Have a link to a bears charity        |                                                                                                              This is included in the end game div and contains an external link to a charity that helps bears that are farmed for their bile                                                                                                               |
 
 ### Visitor Goals
 
-| Goal | How is this achieved? |
-|:----:| :-------------------: |
-| To be able to easily navigate the website | The website is intuative and easy to navigate. Any buttons are where the user would expect them to be and clearly visible |
-| Understand the features of the website | The design has been kept simple, so it's clear the function of each part of the site. Buttons are designed to make the function very clear to the user |
-| To have an enjoyable game playing experience | The site is simple to use and offers different difficulty levels, as well as game playing statistics, to enhance the user experience. All those I asked to test the game said they had enjoyed playing it |
-| To have the option of sound during the game but to be able to mute this | The game has an audio button that’s located just under the main title. This can be toggled between audio and mute |
-| Be rewarded when they have won the game | When all the cards have been matched there is an animation where the cards will wiggle briefly, because a congratulations message appears |
-| To be able to play the game at different difficulty levels | There are three difficulty levels the user can choose from. At the easy level they have 100 seconds to complete the game, at medium they have 60 seconds and, at hard, 30 seconds |
-| To be able to see their game playing statistics | There is a countdown timer in the bottom lefthand corner of the screen which tells the user how much time they have left. In the right hand corner there is a flip counter which increases, by one, each time a card is flipped. The winning message tells the user how much time they have remaining and how many flips it took them to complete the game | 
-| To have the opportunity to donate to a charity relating to bears | This is included in the end game div and contains an external link to a charity that helps bears that are farmed for their bile |
-
+|                                  Goal                                   |                                                                                                                                                                   How is this achieved?                                                                                                                                                                    |
+| :---------------------------------------------------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: |
+|                To be able to easily navigate the website                |                                                                                                                 The website is intuative and easy to navigate. Any buttons are where the user would expect them to be and clearly visible                                                                                                                  |
+|                 Understand the features of the website                  |                                                                                                   The design has been kept simple, so it's clear the function of each part of the site. Buttons are designed to make the function very clear to the user                                                                                                   |
+|              To have an enjoyable game playing experience               |                                                                         The site is simple to use and offers different difficulty levels, as well as game playing statistics, to enhance the user experience. All those I asked to test the game said they had enjoyed playing it                                                                          |
+| To have the option of sound during the game but to be able to mute this |                                                                                                                     The game has an audio button that’s located just under the main title. This can be toggled between audio and mute                                                                                                                      |
+|                 Be rewarded when they have won the game                 |                                                                                                         When all the cards have been matched there is an animation where the cards will wiggle briefly, because a congratulations message appears                                                                                                          |
+|       To be able to play the game at different difficulty levels        |                                                                                     There are three difficulty levels the user can choose from. At the easy level they have 100 seconds to complete the game, at medium they have 60 seconds and, at hard, 30 seconds                                                                                      |
+|             To be able to see their game playing statistics             | There is a countdown timer in the bottom lefthand corner of the screen which tells the user how much time they have left. In the right hand corner there is a flip counter which increases, by one, each time a card is flipped. The winning message tells the user how much time they have remaining and how many flips it took them to complete the game |
+|    To have the opportunity to donate to a charity relating to bears     |                                                                                                              This is included in the end game div and contains an external link to a charity that helps bears that are farmed for their bile                                                                                                               |
 
 ## Full Testing
 
 Full testing was completed on the following devices:
-	
-* Galaxy Fold 4 (mobile)
-* Galaxy A20e (mobile)
-* Galaxy Book2 Pro360 (15.6” laptop)
-* Dell Computer (desktop)
-* iPad 8th Generation (tablet)
+
+- Galaxy Fold 4 (mobile)
+- Galaxy A20e (mobile)
+- Galaxy Book2 Pro360 (15.6” laptop)
+- Dell Computer (desktop)
+- iPad 8th Generation (tablet)
 
 ### Start Page
 
-| Feature |	Expected Outcome | Testing Performed | Result | Pass / Fail |
-| :-----: | :--------------: | :---------------: | :----: | :---------: |
-| How to Play Title | For the colours to be inverted on hover and for an instructions area to be displayed when clicked. The instructions to disappear when clicked again | Clicked on title | Colours inverted on hover. The instructions display was toggled with repeated clicks | Pass |
-|Input fields | Allow user to enter their personal details | Entered details into each input | Information inputted | Pass |
-| Start Game button | The display to move to the main page on click | Clicked on button | Game play area was displayed on click | Pass |
-| Start Game button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
-
+|          Feature           |                                                                  Expected Outcome                                                                   |        Testing Performed        |                                        Result                                        | Pass / Fail |
+| :------------------------: | :-------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------------------------: | :----------------------------------------------------------------------------------: | :---------: |
+|     How to Play Title      | For the colours to be inverted on hover and for an instructions area to be displayed when clicked. The instructions to disappear when clicked again |        Clicked on title         | Colours inverted on hover. The instructions display was toggled with repeated clicks |    Pass     |
+|        Input fields        |                                                     Allow user to enter their personal details                                                      | Entered details into each input |                                 Information inputted                                 |    Pass     |
+|     Start Game button      |                                                    The display to move to the main page on click                                                    |        Clicked on button        |                        Game play area was displayed on click                         |    Pass     |
+| Start Game button on hover |                                                                  Colours to invert                                                                  |       Hovered over button       |                                   Colours inverted                                   |    Pass     |
 
 ### Main Page
 
-| Feature |	Expected Outcome | Testing Performed | Result | Pass / Fail |
-| :-----: | :--------------: | :---------------: | :----: | :---------: |
-| Audio Button | Display to toggle between volume icon and mute icon when clicked | Clicked on button | Diplay toggled between volume icon and mute icon | Pass |
-| Audio Button with Volume Icon Showing | Flipping card sound to be played when the user flips a card and a ding sound to play when the user matches a card | Played game with audio button showing the volume icon | Flipping card sound played when a card flipped and a ding sound played when two cards were matched | Pass |
-| Audio Button with Mute Icon Showing | No sound to be played throughout the game | Played game with audio button showing the mute icon | No sound was played throughout the game | Pass |
-| Difficulty Selector | When clicked, a drop down box to appear that gives the user the option of easy, medium or hard | Clicked on Select | A dropdpwn box showed with three option to select from – easy, medium and hard | Pass |
-| Difficulty Selector on hover |  Colours to be inverted | Hovered on Select | Colours inverted on hover | Pass |
-| Difficulty Selector when card has been clicked to start game | Select to be disabled | Clicked on Card and then clicked Select | Select was faded out and I was unable to click it | Pass |
-| Time Counter | To have a different starting number based on difficulty selected. For easy to display 100, for medium 60 and, for hard, 30 | Clicked on each Select option | The timer showed 100 when easy was selected, 60 when medium and 30 when hard | Pass |
-| Time Counter during game play | To reduce by one each second from when the first card is clicked | Clicked on a card at each of the three difficulty levels. Timed the countdown, with a stopwatch, to check accuracy | The timer started, at each of the difficulty levels, when the first card was clicked. The countdown time matched that of my stopwatch | Pass |
-| Time Counter reaching zero | End page to be displayed with a losing message | Waited for the time to reach zero | The end game page was displayed with a commiseration message | Pass |
-| Time Counter on all card being matched | To stop counting down | Won the game | The timer stopped | Pass |
-| Restart Button | A confirmation alert to appear, asking the user if they’re sure they want to restart the game
+|                           Feature                            |                                                      Expected Outcome                                                      |                                                 Testing Performed                                                  |                                                                Result                                                                 | Pass / Fail |
+| :----------------------------------------------------------: | :------------------------------------------------------------------------------------------------------------------------: | :----------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------: | :---------: |
+|                         Audio Button                         |                              Display to toggle between volume icon and mute icon when clicked                              |                                                 Clicked on button                                                  |                                           Diplay toggled between volume icon and mute icon                                            |    Pass     |
+|            Audio Button with Volume Icon Showing             |     Flipping card sound to be played when the user flips a card and a ding sound to play when the user matches a card      |                               Played game with audio button showing the volume icon                                |                  Flipping card sound played when a card flipped and a ding sound played when two cards were matched                   |    Pass     |
+|             Audio Button with Mute Icon Showing              |                                         No sound to be played throughout the game                                          |                                Played game with audio button showing the mute icon                                 |                                                No sound was played throughout the game                                                |    Pass     |
+|                     Difficulty Selector                      |               When clicked, a drop down box to appear that gives the user the option of easy, medium or hard               |                                                 Clicked on Select                                                  |                            A dropdpwn box showed with three option to select from – easy, medium and hard                             |    Pass     |
+|                 Difficulty Selector on hover                 |                                                   Colours to be inverted                                                   |                                                 Hovered on Select                                                  |                                                       Colours inverted on hover                                                       |    Pass     |
+| Difficulty Selector when card has been clicked to start game |                                                   Select to be disabled                                                    |                                      Clicked on Card and then clicked Select                                       |                                           Select was faded out and I was unable to click it                                           |    Pass     |
+|                         Time Counter                         | To have a different starting number based on difficulty selected. For easy to display 100, for medium 60 and, for hard, 30 |                                           Clicked on each Select option                                            |                             The timer showed 100 when easy was selected, 60 when medium and 30 when hard                              |    Pass     |
+|                Time Counter during game play                 |                              To reduce by one each second from when the first card is clicked                              | Clicked on a card at each of the three difficulty levels. Timed the countdown, with a stopwatch, to check accuracy | The timer started, at each of the difficulty levels, when the first card was clicked. The countdown time matched that of my stopwatch |    Pass     |
+|                  Time Counter reaching zero                  |                                       End page to be displayed with a losing message                                       |                                         Waited for the time to reach zero                                          |                                     The end game page was displayed with a commiseration message                                      |    Pass     |
+|            Time Counter on all card being matched            |                                                   To stop counting down                                                    |                                                    Won the game                                                    |                                                           The timer stopped                                                           |    Pass     |
+|                        Restart Button                        |               A confirmation alert to appear, asking the user if they’re sure they want to restart the game                |
+
 The game to be restarted:
+
 - The difficulty selector to be enabled
 - The time to reset to the difficulty and not count down until first card is clicked again
 - Flips to be reset to zero
 - Any cards that have been matched to be flipped back over
-- Cards to be reshuffled 
- | Played the game for a while and then clicked the restart button | A confimation box appeared on click. I clicked ‘okay’.
-I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled
- | Pass |
- | Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
- | Flip Counter | To increase by one each time a card is clicked | Played the game. I tried clicking on different areas during play | There was a bug that, when two unmatched cards were turned, I was still able to clicked an unturned card and increased the flip counter. I fixed this (see bug section) and the flip counter only increases when a card flips | Pass |
- | Card | To flip over when clicked. To stay facing up until another card is flipped | Clicked card | Card flipped over and stayed facing up | Pass | 
- | Two unmatched cards flipped | To display both card faces before flipping back over. To not be able to flip any other cards until they have both flipped back | Clicked on two cards in an unmatched pair. Tried cllicking other cards while they were still facing up | The two unmatched cards were displayed before flipping back. While these two card were in play I was unable to flip an other cards | Pass |
- | Two matched cards flipped | For the two matching cards to remain facing upwards throughout the game | Played the game | Any two matched cards remaining facing upwards until the game ended | Pass |
- | All cards on all being matched | All cards to display a wiggle animation before a winning end page is displayed | Won the game | The cards wiggled before the winning game display was shown | Pass |
+- Cards to be reshuffled
+  | Played the game for a while and then clicked the restart button | A confimation box appeared on click. I clicked ‘okay’.
+  I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled
+  | Pass |
+  | Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
+  | Flip Counter | To increase by one each time a card is clicked | Played the game. I tried clicking on different areas during play | There was a bug that, when two unmatched cards were turned, I was still able to clicked an unturned card and increased the flip counter. I fixed this (see bug section) and the flip counter only increases when a card flips | Pass |
+  | Card | To flip over when clicked. To stay facing up until another card is flipped | Clicked card | Card flipped over and stayed facing up | Pass |
+  | Two unmatched cards flipped | To display both card faces before flipping back over. To not be able to flip any other cards until they have both flipped back | Clicked on two cards in an unmatched pair. Tried cllicking other cards while they were still facing up | The two unmatched cards were displayed before flipping back. While these two card were in play I was unable to flip an other cards | Pass |
+  | Two matched cards flipped | For the two matching cards to remain facing upwards throughout the game | Played the game | Any two matched cards remaining facing upwards until the game ended | Pass |
+  | All cards on all being matched | All cards to display a wiggle animation before a winning end page is displayed | Won the game | The cards wiggled before the winning game display was shown | Pass |
 
-### End Page 
+### End Page
 
-| Feature |	Expected Outcome | Testing Performed | Result | Pass / Fail |
-| :-----: | :--------------: | :---------------: | :----: | :---------: |
-| Winning Message | To use the name the user inputted at the start. To pull the time that was remaining and the number of flips the user had completed the game in | Won the game | The winning message was displayed. It showed my name, the time I had remianing and the number of flips I had taken to win | Pass |
-| Losing Message | To use the name the user inputted at the start. | Lost the game | The losing message was displayed and it contained the name I had inputting at the beginning | Pass |
-| Restart button | The end game message to disappear and the game playing area to be displayed
+|     Feature     |                                                                Expected Outcome                                                                | Testing Performed |                                                          Result                                                           | Pass / Fail |
+| :-------------: | :--------------------------------------------------------------------------------------------------------------------------------------------: | :---------------: | :-----------------------------------------------------------------------------------------------------------------------: | :---------: |
+| Winning Message | To use the name the user inputted at the start. To pull the time that was remaining and the number of flips the user had completed the game in |   Won the game    | The winning message was displayed. It showed my name, the time I had remianing and the number of flips I had taken to win |    Pass     |
+| Losing Message  |                                                To use the name the user inputted at the start.                                                 |   Lost the game   |                The losing message was displayed and it contained the name I had inputting at the beginning                |    Pass     |
+| Restart button  |                                  The end game message to disappear and the game playing area to be displayed                                   |
+
 - The difficulty selector to be enabled
 - The time to reset to the difficulty and not count down until first card is clicked again
 - Flips to be reset to zero
 - Any cards that have been matched to be flipped back over
-- Cards to be reshuffled | Clicked the button | The end game message disappeared and the game playing area was displayed. 
-I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled | Pass |
-| Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
-| Help the Bears link | The user to be taken to the Animal Asia charity page in a new window | Clicked the link | Opened the correct website in a new browser page | Pass |
-| Help the Bears link hover | Size to increase | Hovered over the link | Link size expanded | Pass |
+- Cards to be reshuffled | Clicked the button | The end game message disappeared and the game playing area was displayed.
+  I was able to change the difficulty, the time count reset to that determined by the difficulty level, the flip counts rest to zero, any cards that were facing up flipped back over. The cards were not the same as they previously were and had been reshuffled | Pass |
+  | Restart button on hover | Colours to invert | Hovered over button | Colours inverted | Pass |
+  | Help the Bears link | The user to be taken to the Animal Asia charity page in a new window | Clicked the link | Opened the correct website in a new browser page | Pass |
+  | Help the Bears link hover | Size to increase | Hovered over the link | Link size expanded | Pass |
 
 ### 404 Page
 
-| Feature |	Expected Outcome | Testing Performed | Result | Pass / Fail |
-| :-----: | :--------------: | :---------------: | :----: | :---------: |
-| Return to Home button	| Links to the Home Page | Clicked button | Home Page opened | Pass |
+|        Feature        |    Expected Outcome    | Testing Performed |      Result      | Pass / Fail |
+| :-------------------: | :--------------------: | :---------------: | :--------------: | :---------: |
+| Return to Home button | Links to the Home Page |  Clicked button   | Home Page opened |    Pass     |
 
 ## Bugs
 
 ### Resolved Bugs
 
+- When I put transform rotateY styling on the card I tested it by using .card:hover. This worked but both the image and the back on the card were showing on hover. This needed to be the other way round.
+    - I changed the order that the backFace div and image were appended, to the card divs so the image was first and then the backFace after, so this would be the last created. I then moved the backface-visibility to the cardFront image
 
+- When the card was turning there was no background colour so, when the edge of the card went over the background div, it made it look like the card was transparent.
+    - I first added a background colour to the image. This didn’t go to the edges as I’d set the image size to 90% to stop it touching the sides of the card. I set the image size to 100% and put in 5% padding. This meant the background colour went to the edges of the card
+
+- The function to check the first two cards flipped matched was executing before any cards had been clicked
+    - I contacted Student Support and they helped me realise that I was calling the function before any cards had been clicked. I separated the event listener for clicking the cards from the function for matching the cards. I then added the function for checking the cards after the event listener.
+
+- Once a matching pair had been found the user could still click on one of those cards and flip them back over, when they should remain facing up
+    - I added pointerEvents = ‘none’, to the matching pair, which prevents the user clicking on it again
+
+- When a game had finished, and the end game page was displayed, the page was reloading before the restart button was clicked
+    - I’d put location.reload in but hadn’t put this as a function. I made this a function and it worked as it should (this was later removed as I added a start page and added a restartGame function so the user could restart the game without the start page being shown again)
+
+- On the user matching all the pairs, the end game display was loading immediately and not giving the user time to enjoy their win
+    - Added a setTimeout to delay the end game message being displayed. Also added some animation to the images, on the user getting all matches, to improve user experience
+
+- Some cards weren’t turning unless I clicked in a very specific area
+    - I looked at the elements by showing them in Chrome Dev Tools. I saw that the cards that weren’t clicking were covered by the hidden ‘restart game’ button in the hidden end game div. I changed the size of this div so it was 0 height and width. I then amended the Javascript so the dimensions were put back on the div when it became displayed, through adding and removing classes
+
+- The winning end game display had some brown lines at the top of it
+    - This was because I’d put a top positioning of 10%. I changed this to 0
+
+- The ears of the pictures on the cards were being cutoff
+    - This was due to the border radius. I decreased the border-radius to 10px. I thought this looked better and resolved the issue
+
+- When I pressed the start submit button it was going to the main screen without needing a name.
+    - I put a condition, in the hideStartPage function, that the length of the input value needed to be greater than zero before it was executed
+
+- The user was still able to click on other cards while two unmatched cards were still in play
+    - I added a disableCards function which removed the event listeners from the cards if the unmatched toggledCards was equal to two
+
+- Following the above I was finding that I was having to double click on the first card clicked, after finding no match, twice. This was because the function didn’t execute until a card was clicked again
+    - I put a setTimer on the function to check it every half a second
+
+- When I was making the website responsive the main page was showing, under the start page, on smaller screens
+    - Added overflow: hidden to the body element
+
+- On restart flips were resetting to 0 but then, once card pressed, was recounting from last flip count
+    - Added flips = 0 into the restart functions
+
+- On restart the timeCount started before a button was clicked
+    - This was happening because tThe timeGame function was never stopped. I added an if abort = true, return to the timeGame function to abort the TimeCount function. I then made an abort function to be able to turn abort back to false, once the user started playing again, so the timer restarted
+
+- On restart, after the user had won the game, the winning animation was playing as soon as a card was pressed to start the next game
+    - There was no code to empty the matchedCards array following a win. I added matchedCards = 0 into the restartGame function
+
+- Two sets of cards were being generated, occasionally, on restartGame
+    - Added gameCards = 0 to restartGame function
+
+- The time countdown was speeding up as the cards were being clicked
+    - The disable game was making the timeGame run on each click, rather than once. I removed the addEventListener and removeEventListener functions from the disableGame function and only put in the event listeners that needed to be added / removed
+
+- Doing the above caused the second pair clicked to not toggle back over until another card was clicked. This was because the eventListener for this had been disabled. 
+    - Added for the checkMatch function to be run after the eventListeners had been disabled
+
+- The audioFlip wasn’t playing on every flip
+    - Added audioFlip.currentTime = 0 to the start of the function as the clip for the previous card flip may still have been running
+
+- Font awesome image wasn’t loading until after main page was being displayed
+    - Added fontawesome script to the head of the page rather than the end. My research indicated this would help the icons load quicker and it did appear to do so
+
+- Unless the user matched all the pairs, with no mistakes, the wonGame function wasn’t working. 
+    - This was due to the disableGame function removing and adding the turnCard function, so the turnCard function was being executed after the wonGame function was. I added for the wonGame and checkMatch functions to also be added and removed in the disableGame function. I put them to be added in the order they needed to be executed
+
+- audioMatch was still playing when mute on
+    - Added a check to make sure audioState is 0 before audioMatch sound played
+
+- When restarting from the end game page, the restart button wasn’t disappearing  immediately and was fading out
+    - Added the hidden class to the restart button and used JavaScript to remove this when the end game part appears. Add opacity: 0 to the hidden class
+
+- The input element’s border was turning yellow when the user clicked on it
+    - Added input:active code, in CSS, for there to be a border when this is active. This disn’t resolve the issue in Firefox so I added input:-moz-focusring into css and that the outline be outline: 1px solid #4D3B32
+
+- The timer continued after the user finished the game. This meant the end page winning message would turn into a losing message if the user was still on that screen when the time ran out
+    - Added an abort line, in the wonGame function, so the timer stops when the user has matched all the cards
+
+- When two unmatched cards were face up the flip counter was still increasing, when the user clicked another card, even though the game was disabled
+    - Added for the countFlip event listener to be removed / added within the disableGame function 
+
+- If the user didn’t enter a name into the input, and pressed start, they would be asked to input their name. If they then inputed their name and pressed start, two sets of cards would be generated
+    - Added if statement, to check input.length > 0 before the generateCards function was generated
+
+- When the user reloaded they then had to scroll up to see the start page
+    - Added display: none to the hidden class css
+    - Removed align-items: centre from the body
+    - Changed overflow: hidden to overflow-x: hidden
 
 ### Unresolved Bugs
 
+- •	In Firefox there is still a brief period of time where the question mark appears over the image until it flips back. The soloutions I tested affected how the game looked on the other browsers so I decided to leave it as it is. This is something that could be resolved at a later time
 
 [Back to top](#matching-bears)
 
@@ -606,7 +691,7 @@ I was able to change the difficulty, the time count reset to that determined by 
 
 ## Code Used
 
-- •	cardInfo.sort(() => Math.random() - 0.5);
+- • cardInfo.sort(() => Math.random() - 0.5);
 
 This code was taken from the website https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript and was using in my generateCards function to shuffle the cards
 
