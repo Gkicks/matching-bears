@@ -10,13 +10,12 @@
 
 body {
     background: #F6F4F3;
-    height: 100%;
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: start;
     position: relative;
     font-family: 'playfair display', cursive;
-    overflow-x: hidden;
 }
 
 header {
@@ -127,6 +126,7 @@ input:-moz-focusring {
     width: 0;
     visibility: hidden;
     opacity: 0;
+    display: none;
 }
 
 /* main page */
