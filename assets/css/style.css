@@ -277,7 +277,7 @@ fa #select-difficulty-div label {
     grid-template-columns: repeat(3, 30vw);
     text-align: center;
     align-items: center;
-    margin-top: 2vh;
+    margin: 2vh 5vw;
 }
 
 #game-info h2 {

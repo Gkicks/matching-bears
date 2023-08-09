@@ -96,7 +96,7 @@ function hideStartPage(event) {
  */
 function generateCards() {
     if (input.value.length > 0) {
-        // randomise the array
+        // randomise the array - from https://www.slingacademy.com/article/ways-to-shuffle-an-array-in-javascript
         cardInfo.sort(() => Math.random() - 0.5);
         // create the HTML
         for (let i = 0; i < cardInfo.length; i++) {
@@ -158,6 +158,7 @@ function checkMatch() {
     if (flippedCards.length === 2) {
         // checks if the name value of the two cards match
         if (flippedCards[0].getAttribute('name') === flippedCards[1].getAttribute('name')) {
+            // 500ms delay so the cardMatch sound plays after the cardFlip sound
             if (audioState === 0) {
                 setTimeout(function () {
                     audioMatch.currentTime = 0;
